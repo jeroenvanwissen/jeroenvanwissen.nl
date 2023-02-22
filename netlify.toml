@@ -1,0 +1,18 @@
+# example netlify.toml
+[build]
+  command = "astro build"
+  functions = "netlify/functions"
+  publish = "dist"
+
+#[functions]
+#  external_node_modules = ["astro"]
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  [[plugins.inputs.audits]]
+    url = "https://jeroenvanwissen.nl/"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+  cache-control = "max-age=0,no-cache,no-store,must-revalidate"

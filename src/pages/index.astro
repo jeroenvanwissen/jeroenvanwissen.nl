@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../components/Layout.astro';
+
+const blogs = await getCollection('blog').then(entries => entries.filter(entry => !entry.data.draft).map((entry) => ({...entry.data, type: 'blog', url: `/blog/${entry.slug}`})));
+const recipes = await getCollection('recipes').then(entries => entries.filter(entry => !entry.data.draft).map((entry) => ({...entry.data, type: 'recipes', url: `/recipes/${entry.slug}`})));
+const posts = [...blogs, ...recipes].sort((a: any, b: any) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+---
+<Layout title="">
+	<div class="bg-gray-900 shadow-lg rounded-b mx-auto">
+		<div class="flex">
+		<div class="md:flex items-start px-4 py-6">
+			<img class="w-40 h-40 rounded-full object-cover mr-4 shadow" src="/images/avatar2.webp" alt="avatar">
+			<div class="">
+				<div class="flex items-center justify-between">
+					<h2 class="text-lg font-bold text-neutral-200">Jeroen van Wissen</h2>
+					<!-- <small class="text-sm text-gray-700">43y ago</small> -->
+				</div>
+				<p class="text-neutral-300">JavaScript Developer / Engineering Manager / Tech Lead</p>
+				<p class="mt-3 text-neutral-200 text-sm">
+					Over 20 years of experience as a developer, with over 5 years of experience as a Tech Lead / Engineering Manager. Started out with PHP but now fully focused on JavaScript (ReactJS, NodeJS). Versatile and passionate, problem solver and always looking out for new things to learn. Experience with AWS DevOps & Gitlab CI/CD.
+				</p>
+				<div class="mt-3 text-neutral-200 text-sm flex">find me on<a href="https://linkedin.com/in/jeroenvanwissen" title="LinkedIn Profile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 241.6 61.3" class="fill-neutral-200 h-5 ml-2"><path d="M26.896 43.398v8.704H0V9.043h9.433v34.355zM31.062 22.9h9.066v29.2h-9.066zm4.534-14.505a5.26 5.26 0 0 1 5.259 5.257c0 2.906-2.356 5.255-5.26 5.255s-5.256-2.35-5.256-5.255a5.26 5.26 0 0 1 5.256-5.257m61.76 14.502h11.1l-11.9 13.5L108.207 52.1H96.825l-9.62-14.425h-.117V52.1h-9.063V9.04h9.063v25.735zm-52.212.017h8.702v4h.12c1.208-2.297 4.17-4.713 8.58-4.713 9.188 0 10.88 6.043 10.88 13.898v16H64.36V37.903c0-3.386-.062-7.735-4.716-7.735-4.713 0-5.436 3.687-5.436 7.493v14.43h-9.066V22.914zm82.407 11.194c.06-3.022-2.298-5.56-5.564-5.56-3.987 0-6.164 2.72-6.403 5.56zm7.674 12.93c-2.9 3.687-7.673 5.804-12.4 5.804-9.064 0-16.317-6.047-16.317-15.414s7.253-15.4 16.317-15.4c8.468 0 13.78 6.043 13.78 15.4v2.84h-21.032c.72 3.445 3.323 5.68 6.83 5.68 2.962 0 4.955-1.5 6.467-3.567zm20.27-17.072c-4.53 0-7.248 3.024-7.248 7.432 0 4.416 2.72 7.434 7.248 7.434 4.536 0 7.257-3.018 7.257-7.434-.001-4.408-2.72-7.432-7.257-7.432m15.6 22.12h-8.342v-3.87h-.118c-1.395 2.115-4.897 4.594-9.008 4.594-8.706 0-14.446-6.283-14.446-15.17 0-8.16 5.076-15.654 13.416-15.654 3.75 0 7.255 1.027 9.3 3.867h.118V9.04h9.07z"/><path d="M236.78 0h-52.107c-2.5 0-4.513 1.974-4.513 4.406v52.327c0 2.435 2.023 4.41 4.513 4.41h52.107c2.494 0 4.526-1.976 4.526-4.41V4.406C241.307 1.974 239.275 0 236.78 0z" fill="#0177b5"/><path d="M189.226 22.923h9.07v29.18h-9.07zm4.537-14.505a5.26 5.26 0 0 1 5.255 5.257 5.26 5.26 0 0 1-5.255 5.259 5.26 5.26 0 0 1-5.26-5.259 5.26 5.26 0 0 1 5.26-5.257m10.22 14.505h8.698V26.9h.12c1.2-2.294 4.17-4.713 8.58-4.713 9.184 0 10.88 6.044 10.88 13.9v16.005H223.2v-14.2c0-3.384-.062-7.737-4.713-7.737-4.72 0-5.443 3.686-5.443 7.492v14.435h-9.06v-29.18z" fill="#fff"/></svg></a></div>
+			</div>
+		</div>
+		</div>
+		<section class="px-2 py-2">
+			<div class="">
+				<div class="md:flex items-start justify-left">
+					{posts.map((post) => (
+						<div class="p-2 md:w-1/3">
+						<div class="h-full rounded-xl bg-neutral-200 overflow-hidden">
+						{/*<img class="lg:h-48 md:h-36 w-full bg-wissen-blue object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src="" alt="">*/}
+							<div class="p-6">
+								<div class="flex items-center justify-between">
+									<span class="text-xs text-neutral-600">{post.date.toLocaleString('en-US', {day: 'numeric', month: 'long', year: 'numeric'})}</span>							
+									<h3 class="text-xs text-neutral-600">{post.type}</h3>
+								</div>
+								<h2 class="text-lg text-neutral-600 mt-2 mb-3">{post.title}</h2>
+								<p class="mb-3 text-sm">{post.description}</p>
+								<div class="flex items-center flex-wrap ">
+									<a href={post.url} class="bg-wissen-blue hover:scale-105 shadow px-4 py-1 rounded-lg">read more..</a>
+								</div>
+							</div>
+						</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	</div>
+</Layout>

@@ -1,0 +1,41 @@
+---
+import { getEntryBySlug } from 'astro:content';
+import Layout from '../../components/Layout.astro';
+
+const { slug } = Astro.params;
+const post = await getEntryBySlug('blog', slug);
+const { Content } = await post.render();
+---
+<Layout title="Blog">
+    <div class="bg-gray-900 shadow-lg rounded-b mx-auto">
+        <article class="px-2 py-2">
+            <div class="p-2">
+                    {/*<img class="lg:h-48 md:h-36 w-full bg-wissen-blue object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src="" alt="">*/}
+                    <div class="p-6">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-neutral-500">{post.data.date.toLocaleString('en-US', {day: 'numeric', month: 'long', year: 'numeric'})}</span>							
+                            <!-- <h3 class="text-xs text-neutral-500">{post.data.type}</h3> -->
+                        </div>
+                        <h2>{post.data.title}</h2>
+                        <p>{post.data.description}</p>
+                        <Content />
+                        <p>
+                            <a href="/blog">&larr; back to all posts</a>
+                        </p>
+                    </div>
+            </div>
+        </article>
+	</div>
+</Layout>
+
+<style is:global>
+    article h2 {
+        @apply mt-6 text-xl text-neutral-100
+    }
+    article p {
+        @apply mt-3 mb-4 text-neutral-200 text-justify
+    }
+    article a {
+        @apply text-wissen-orange underline hover:text-wissen-blue
+    }
+</style>
