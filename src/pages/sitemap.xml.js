@@ -31,7 +31,7 @@
 
 // const sitemap = urlset.map(url => `<url><loc>${url.loc}</loc><lastmod>${url.lastmod}</lastmod><priority>${url.priority}</priority></url>`);
 
-export function get({ params, request }) {
+export async function get({ params, request }) {
     return {
         body: `<?xml version="1.0" encoding="UTF-8"?><urlset></urlset>`,
         // body: `<?xml version="1.0" encoding="UTF-8"?><urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">${sitemap}</urlset>`,
