@@ -1,16 +1,11 @@
 ---
-draft: false
 date: 2023-01-01
 title: New Year, New Website
-
-category: random
-tags:
-    - ''
-
+categories:
+    - Random Thoughts
 description: >
     It was about time I started doing something with my personal website again.
 ---
-
 Call it a new year's resolution, or whatever you want.. It's just something that had to be done.
 
 ## The Year 2022

@@ -1,13 +1,10 @@
 ---
-draft: false
 date: 2023-02-19
 title: Website layout updates
-
-category: tech
-tags:
-- javascript
-- astro.build
-
+categories:
+    - Tech
+    - JavaScript
+    - Astro.build
 description: >
     Decided to redo the website a bit, wasn't too happy with the previous black/white theme. Also simplified things a bit and started working with the Astro.build Content Collection feature.
 ---

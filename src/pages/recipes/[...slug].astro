@@ -1,12 +1,14 @@
 ---
 import { getEntryBySlug } from 'astro:content';
 import Layout from '../../components/Layout.astro';
+import { generateCategories } from '../../utils/helpers';
 
 const { slug } = Astro.params;
 const post = await getEntryBySlug('recipes', slug);
+if (!post) return Astro.redirect("/404");
 const { Content } = await post.render();
 ---
-<Layout title={post.data.title}>
+<Layout title="Recipes">
     <div class="bg-gray-900 shadow-lg rounded-b mx-auto">
         <article class="px-2 py-2">
             <div class="p-2">
@@ -14,13 +16,19 @@ const { Content } = await post.render();
                     <div class="p-6">
                         <div class="flex items-center justify-between">
                             <span class="text-xs text-neutral-500">{post.data.date.toLocaleString('en-US', {day: 'numeric', month: 'long', year: 'numeric'})}</span>							
-                            <!-- <h3 class="text-xs text-neutral-500">{post.data.type}</h3> -->
+                            <span class="text-xs text-neutral-500">
+                                {generateCategories(post.data.categories).map(category => (
+                                    <>
+                                        &nbsp;<a href={`/category/${category.slug}`} class="hover:text-wissen-orange">{category.name}</a>
+                                    </>
+                                ))}
+                            </span>
                         </div>
                         <h2>{post.data.title}</h2>
                         <p>{post.data.description}</p>
                         <Content />
                         <p>
-                            <a href="/blog">&larr; back to all posts</a>
+                            <a href="/recipes">&larr; back to all recipes</a>
                         </p>
                     </div>
             </div>

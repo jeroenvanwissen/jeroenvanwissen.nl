@@ -6,8 +6,7 @@ const blogCollection = defineCollection({
         draft: z.boolean().default(false),
         date: z.date().transform((str) => new Date(str)),
         title: z.string(),
-        category: z.enum(['tech', 'random']),
-        tags: z.array(z.string().optional()),
+        categories: z.array(z.string().optional()),
         description: z.string(),
     })
 });
@@ -16,8 +15,7 @@ const recipesCollection = defineCollection({
         draft: z.boolean().default(false),
         date: z.date().transform((str) => new Date(str)),
         title: z.string(),
-        category: z.string(),
-        tags: z.array(z.string().optional()),
+        categories: z.array(z.string().optional()),
         description: z.string(),
     })
 });
