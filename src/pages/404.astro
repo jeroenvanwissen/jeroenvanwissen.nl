@@ -1,0 +1,31 @@
+---
+import Layout from '../components/Layout.astro';
+
+---
+<Layout title="404 Not Found">
+	<div class="bg-gray-900 shadow-lg rounded-b mx-auto">
+        <article class="px-2 py-2">
+            <div class="p-2">
+                <img src="https://cdn.31f-fotografie.nl/_D011969.jpg" alt="404 Image" class="w-full h-full rounded" />
+                <div class="flex items-center justify-between">
+                    <h1 class="mt-6 text-xl text-neutral-100">404 Not Found</h1>
+                </div>
+                <p>
+                    The page you're trying to load does not exist... go to the <a href="/">homepage</a>
+                </p>
+            </div>
+        </article>
+    </div>
+</Layout>
+
+<style is:global>
+    article h2 {
+        @apply mt-6 text-xl text-neutral-100
+    }
+    article p {
+        @apply mt-3 mb-4 text-neutral-200 text-justify
+    }
+    article a {
+        @apply text-wissen-orange underline hover:text-wissen-blue
+    }
+</style>
