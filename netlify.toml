@@ -38,12 +38,12 @@
   status = 301
   force = true
 [[redirects]]
-  from = "/post/categories-pages-added"
-  to = "/blog/category-pages-added"
+  from = "https://jeroenvanwissen.nl/post/categories-pages-added"
+  to = "https://jeroenvanwissen.nl/blog/category-pages-added"
   status = 301
   force = true
 [[redirects]]
-  from = "/post/*"
-  to = "/blog/:splat"
+  from = "https://jeroenvanwissen.nl/post/*"
+  to = "https://jeroenvanwissen.nl/blog/:splat"
   status = 301
   force = true
