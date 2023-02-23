@@ -16,3 +16,29 @@
   for = "/*"
   [headers.values]
   cache-control = "max-age=0,no-cache,no-store,must-revalidate"
+
+[[redirects]]
+  from = "https://www.jeroenvanwissen.com/*"
+  to = "https://jeroenvanwissen.nl/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://jeroenvanwissen.com/*"
+  to = "https://jeroenvanwissen.nl/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.jeroenvanwissen.com"
+  to = "https://jeroenvanwissen.nl"
+  status = 301
+  force = true
+[[redirects]]
+  from = "https://www.jeroenvanwissen.com"
+  to = "https://jeroenvanwissen.nl"
+  status = 301
+  force = true
+[[redirects]]
+  from = "/post/*"
+  to = "/blog/*"
+  status = 301
+  force = true
