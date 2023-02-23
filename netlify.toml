@@ -23,7 +23,7 @@
   status = 301
   force = true
 [[redirects]]
-  from = "https://www.jeroenvanwissen.com"
+  from = "https://jeroenvanwissen.com"
   to = "https://jeroenvanwissen.nl"
   status = 301
   force = true
@@ -38,12 +38,12 @@
   status = 301
   force = true
 [[redirects]]
-  from = "https://jeroenvanwissen.nl/post/categories-pages-added"
-  to = "https://jeroenvanwissen.nl/blog/category-pages-added"
+  from = "/post/*"
+  to = "/blog/:splat"
   status = 301
   force = true
 [[redirects]]
-  from = "https://jeroenvanwissen.nl/post/*"
-  to = "https://jeroenvanwissen.nl/blog/:splat"
+  from = "*/categories-pages-added"
+  to = "*/category-pages-added"
   status = 301
   force = true
