@@ -4,6 +4,10 @@
   functions = "netlify/functions"
   publish = "dist"
 
+[dev]
+  command = "astro dev"
+  targetPort = 3000
+
 #[functions]
 #  external_node_modules = ["astro"]
 
@@ -18,13 +22,13 @@
   cache-control = "max-age=0,no-cache,no-store,must-revalidate"
 
 [[redirects]]
-  from = "https://www.jeroenvanwissen.com"
-  to = "https://jeroenvanwissen.nl"
+  from = "/post/*"
+  to = "/blog/:splat"
   status = 301
   force = true
 [[redirects]]
-  from = "https://jeroenvanwissen.com"
-  to = "https://jeroenvanwissen.nl"
+  from = "/blog/categories-pages-added"
+  to = "/blog/category-pages-added"
   status = 301
   force = true
 [[redirects]]
@@ -35,10 +39,5 @@
 [[redirects]]
   from = "https://jeroenvanwissen.com/*"
   to = "https://jeroenvanwissen.nl/:splat"
-  status = 301
-  force = true
-[[redirects]]
-  from = "https://jeroenvanwissen.nl/post/*"
-  to = "https://jeroenvanwissen.nl/blog/:splat"
   status = 301
   force = true
