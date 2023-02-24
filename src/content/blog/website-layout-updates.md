@@ -1,5 +1,5 @@
 ---
-date: 2023-02-19
+date: '2023-02-19T00:00:00.000Z'
 title: Website layout updates
 categories:
     - Tech

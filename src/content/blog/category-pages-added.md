@@ -1,5 +1,5 @@
 ---
-date: 2023-01-29
+date: '2023-01-29T00:00:00.000Z'
 title: Category pages added
 categories:
     - Tech

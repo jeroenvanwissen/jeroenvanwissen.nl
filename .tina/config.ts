@@ -20,15 +20,37 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "post",
-        label: "Posts",
-        path: "src/content/posts",
+        name: "blog",
+        label: "Blogs",
+        path: "src/content/blog",
         fields: [
+          {
+            label: "Draft",
+            name: "draft",
+            type: "boolean",            
+          },
+          {
+            label: "Date",
+            name: "date",
+            type: "datetime",
+          },
           {
             type: "string",
             name: "title",
             label: "Title",
             isTitle: true,
+            required: true,
+          },
+          {
+            type: 'string',
+            name: 'categories',
+            label: 'Categories',
+            list: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
             required: true,
           },
           {
