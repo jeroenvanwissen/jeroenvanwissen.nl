@@ -15,4 +15,4 @@ Implemented it to this website and going to give it a try to see if I'm going to
 
 Adding it to an existing [Astro.build](https://astro.build "Link to Astro.build website") website was quite easy. I only had some troubles with getting it to build and deploy correctly in Netlify, but that was mainly because I was editing the build commands in the wrong location.
 
-Basic information on how to implement it on your Astro.build website can be found on the Astro.build docs site: [https://docs.astro.build/en/guides/cms/tina-cms/](https://docs.astro.build/en/guides/cms/tina-cms/)
+Basic information on how to implement it on your [Astro.build](https://astro.build "Link to Astro.build website") website can be found on the [Astro.build docs page about TinaCMS](https://docs.astro.build/en/guides/cms/tina-cms/ "Link to Astro.build docs website guide to implement TinaCMS")
