@@ -7,10 +7,12 @@ categories:
   - Astro.build
   - TinaCMS
 description: >-
-  Was looking for a really simple CMS system that would just publish .md files
-  to GitHub and I found TinaCMS.
+  Was looking for a really simple CMS system that would just publish Markdown
+  (.md) files to GitHub and found that TinaCMS could do the job...
 ---
 
 Implemented it to this website and going to give it a try to see if I'm going to keep it.
 
-Adding it to an existing Astro.build website was quite easy. I only had some troubles with getting it to build and deploy correctly in Netlify, but that was mainly because I was editing the build commands in the wrong location.
+Adding it to an existing [Astro.build](https://astro.build "Link to Astro.build website") website was quite easy. I only had some troubles with getting it to build and deploy correctly in Netlify, but that was mainly because I was editing the build commands in the wrong location.
+
+Basic information on how to implement it on your Astro.build website can be found on the Astro.build docs site: [https://docs.astro.build/en/guides/cms/tina-cms/](https://docs.astro.build/en/guides/cms/tina-cms/)
