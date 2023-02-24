@@ -20,4 +20,4 @@ Basic information on how to implement it on your [Astro.build](https://astro.bui
 
 Duplicated the blog post Content Collection in the TinaCMS schema.collections array and we were good to go.
 
-For [Netlify](https://www.netlify.com "Link to Netlify website") deployment I only had to change the netlify.toml file, by replacing the astro build command with tinacms build && astro build
+For [Netlify](https://www.netlify.com "Link to Netlify website") deployment I only had to change the netlify.toml file, by replacing the build command "astro build" with "tinacms build && astro build"
