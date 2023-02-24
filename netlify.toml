@@ -1,6 +1,6 @@
 # example netlify.toml
 [build]
-  command = "tinacms && astro build"
+  command = "tinacms build && astro build"
   functions = "netlify/functions"
   publish = "dist"
 
