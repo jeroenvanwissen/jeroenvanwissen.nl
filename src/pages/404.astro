@@ -1,8 +1,11 @@
 ---
 import Layout from '../components/Layout.astro';
-
+const meta = {
+    title: "",
+    description: ""
+}
 ---
-<Layout title="404 Not Found">
+<Layout title="404 Not Found" meta={meta}>
 	<div class="bg-gray-900 shadow-lg rounded-b mx-auto">
         <article class="px-2 py-2">
             <div class="p-2">

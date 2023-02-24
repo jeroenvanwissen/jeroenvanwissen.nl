@@ -5,8 +5,12 @@ import Layout from '../components/Layout.astro';
 const blogs = await getCollection('blog').then(entries => entries.filter(entry => !entry.data.draft).map((entry) => ({...entry.data, type: 'blog', url: `/blog/${entry.slug}`})));
 const recipes = await getCollection('recipes').then(entries => entries.filter(entry => !entry.data.draft).map((entry) => ({...entry.data, type: 'recipes', url: `/recipes/${entry.slug}`})));
 const posts = [...blogs, ...recipes].sort((a: any, b: any) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+const meta = {
+    title: "",
+    description: ""
+}
 ---
-<Layout title="">
+<Layout title="" meta={meta}>
 	<div class="bg-gray-900 shadow-lg rounded-b mx-auto">
 		<div class="flex">
 		<div class="md:flex items-start px-4 py-6">

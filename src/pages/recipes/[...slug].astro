@@ -7,8 +7,12 @@ const { slug } = Astro.params;
 const post = await getEntryBySlug('recipes', slug);
 if (!post) return Astro.redirect("/404");
 const { Content } = await post.render();
+const meta = {
+    title: `Jeroen van Wissen - ${post.data.title}`,
+    description: post.data.description
+}
 ---
-<Layout title="Recipes">
+<Layout title="Recipes" meta={meta}>
     <div class="bg-gray-900 shadow-lg rounded-b mx-auto">
         <article class="px-2 py-2">
             <div class="p-2">

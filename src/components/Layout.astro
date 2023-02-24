@@ -5,9 +5,11 @@ import '../style/main.css'
 
 export interface Props {
 	title: string;
+	meta: any;
 }
 
-const { title } = Astro.props as Props;
+const { title, meta } = Astro.props as Props;
+const pageTitle = title? `Jeroen van Wissen - ${title}`: 'Jeroen van Wissen';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -15,9 +17,16 @@ const { title } = Astro.props as Props;
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-	<title>{title? `Jeroen van Wissen - ${title}`: 'Jeroen van Wissen'}</title>
-	<meta name="description" content="Jeroen van Wissen - Over 20 years of experience as a developer, with over 5 years of experience as a Tech Lead / Engineering Manager." />
+	<title>{pageTitle}</title>
 	<script defer data-domain="jeroenvanwissen.nl" src="https://plausible.public-void.nl/js/plausible.js"></script>
+
+	<meta content="@jvwissen" name="twitter:creator">
+	<meta content="summary_large_image" name="twitter:card">
+	<meta content={meta.title? meta.title : pageTitle} property="og:title">
+	<meta content={meta.description ? meta.description : 'Jeroen van Wissen - Over 20 years of experience as a developer, with over 5 years of experience as a Tech Lead / Engineering Manager.'} name="description">
+	<meta content={meta.description ? meta.description : 'Jeroen van Wissen - Over 20 years of experience as a developer, with over 5 years of experience as a Tech Lead / Engineering Manager.'} property="og:description">
+	<meta property="og:image" content="https://jeroenvanwissen.nl/images/og-image.webp">
+	<meta property="twitter:image:src" content="https://jeroenvanwissen.nl/images/og-image.webp">
 </head>
 <body class="bg-gradient-to-bl from-indigo-900 via-wissen-blue to-indigo-900">
 	<div class="w-full antialiased px-4">
@@ -48,7 +57,7 @@ const { title } = Astro.props as Props;
 				<div class="ml-2 border-yellow-900 bg-yellow-500 shadow-inner rounded-full w-3 h-3"></div>
 				<div class="ml-2 border-green-900 bg-green-500 shadow-inner rounded-full w-3 h-3"></div>
 				<div class="mx-auto pr-16" id="terminaltitle">
-					<p class="text-center text-sm text-neutral-900">{title? `Jeroen van Wissen - ${title}`: 'Jeroen van Wissen'}</p>
+					<p class="text-center text-sm text-neutral-900">{pageTitle}</p>
 				</div>
 			</div>
 			<slot />
