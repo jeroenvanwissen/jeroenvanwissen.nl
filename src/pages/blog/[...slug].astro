@@ -14,19 +14,19 @@ const meta = {
 ---
 <Layout title="Blog" meta={meta}>
     <div class="bg-gray-900 shadow-lg rounded-b mx-auto">
-        <article class="px-2 py-2">
-            <div class="p-2">
+        <article class="md:px-2 py-2">
+            <div class="md:p-2">
                     {/*<img class="lg:h-48 md:h-36 w-full bg-wissen-blue object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src="" alt="">*/}
-                    <div class="p-6">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-neutral-500">{post.data.date.toLocaleString('en-US', {day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam'})}</span>							
-                            <span class="text-xs text-neutral-500">
+                    <div class="p-4 md:p-6">
+                        <div class="md:flex items-center justify-between">
+                            <div class="text-xs text-neutral-500 flex">{post.data.date.toLocaleString('en-US', {day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam'})}</div>							
+                            <div class="text-xs text-neutral-500 flex pt-2 md:pt-0">
                                 {generateCategories(post.data.categories).map(category => (
                                     <>
-                                        &nbsp;<a href={`/category/${category.slug}`} class="hover:text-wissen-orange">{category.name}</a>
+                                        <a href={`/category/${category.slug}`} class="hover:text-wissen-orange">{category.name}</a>&nbsp;
                                     </>
                                 ))}
-                            </span>
+                            </div>
                         </div>
                         <h2>{post.data.title}</h2>
                         <p>{post.data.description}</p>
@@ -42,7 +42,7 @@ const meta = {
 
 <style is:global>
     article h2 {
-        @apply mt-6 text-xl text-neutral-100
+        @apply mt-4 md:mt-6 text-base md:text-xl text-neutral-100 font-bold
     }
     article p {
         @apply mt-3 mb-4 text-neutral-200 text-justify
@@ -51,6 +51,6 @@ const meta = {
         @apply text-wissen-orange underline hover:text-wissen-blue
     }
     article .astro-code {
-        @apply p-4 rounded-lg shadow border-neutral-600 border
+        @apply p-2 md:p-4 rounded-lg shadow border-neutral-600 border text-xs md:text-base
     }
 </style>
