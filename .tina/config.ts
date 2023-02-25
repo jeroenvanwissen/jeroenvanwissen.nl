@@ -33,6 +33,9 @@ export default defineConfig({
             label: "Date",
             name: "date",
             type: "datetime",
+            ui: {
+              timeFormat: "HH:mm",
+            }
           },
           {
             type: "string",

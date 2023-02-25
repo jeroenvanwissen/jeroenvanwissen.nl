@@ -12,7 +12,7 @@ export function generateSlug(string) {
 
 export function generateCategories(categories) {
     let categoriesData = [];
-    categories.forEach((category) => {
+    categories && categories.forEach((category) => {
         categoriesData.push({
             name: category,
             slug: `${generateSlug(category)}`,
