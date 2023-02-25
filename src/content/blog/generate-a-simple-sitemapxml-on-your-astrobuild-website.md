@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 date: '2023-02-25T19:00:00.000Z'
 title: Generate a simple sitemap.xml on your Astro.build website
 description: >-
