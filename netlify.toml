@@ -12,20 +12,20 @@
 #  external_node_modules = ["astro"]
 
 [[redirects]]
-  from = "/post/categories-pages-added"
-  to = "/blog/category-pages-added"
-[[redirects]]
-  from = "/blog/categories-pages-added"
-  to = "/blog/category-pages-added"
-[[redirects]]
-  from = "/post/*"
-  to = "/blog/:splat"
-[[redirects]]
   from = "https://www.jeroenvanwissen.com/*"
   to = "https://jeroenvanwissen.nl/:splat"
+  status = 301
+  force = true
+  [redirects.headers]
+    X-From = "Netlify"
+
 [[redirects]]
   from = "https://jeroenvanwissen.com/*"
   to = "https://jeroenvanwissen.nl/:splat"
+  status = 301
+  force = true
+  [redirects.headers]
+    X-From = "Netlify"
 
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
