@@ -22,13 +22,13 @@
   cache-control = "max-age=0,no-cache,no-store,must-revalidate"
 
 [[redirects]]
-  from = "/post/*"
-  to = "/blog/:splat"
+  from = "/blog/categories-pages-added"
+  to = "/blog/category-pages-added"
   status = 301
   force = true
 [[redirects]]
-  from = "/blog/categories-pages-added"
-  to = "/blog/category-pages-added"
+  from = "/post/*"
+  to = "/blog/:splat"
   status = 301
   force = true
 [[redirects]]
