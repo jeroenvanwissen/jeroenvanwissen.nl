@@ -12,16 +12,16 @@
 #  external_node_modules = ["astro"]
 
 [[redirects]]
-  from = "https://www.jeroenvanwissen.com/*"
-  to = "https://jeroenvanwissen.nl/:splat"
+  from = "/post/categories-pages-added"
+  to = "/blog/category-pages-added"
   status = 301
   force = true
   [redirects.headers]
     X-From = "Netlify"
 
 [[redirects]]
-  from = "https://jeroenvanwissen.com/*"
-  to = "https://jeroenvanwissen.nl/:splat"
+  from = "/post/:splat"
+  to = "/blog/:splat"
   status = 301
   force = true
   [redirects.headers]
