@@ -11,16 +11,6 @@
 #[functions]
 #  external_node_modules = ["astro"]
 
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
-  [[plugins.inputs.audits]]
-    url = "https://jeroenvanwissen.nl/"
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-  cache-control = "max-age=0,no-cache,no-store,must-revalidate"
-
 [[redirects]]
   from = "/post/categories-pages-added"
   to = "/blog/category-pages-added"
@@ -36,3 +26,13 @@
 [[redirects]]
   from = "https://jeroenvanwissen.com/*"
   to = "https://jeroenvanwissen.nl/:splat"
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  [[plugins.inputs.audits]]
+    url = "https://jeroenvanwissen.nl/"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+  cache-control = "max-age=0,no-cache,no-store,must-revalidate"
