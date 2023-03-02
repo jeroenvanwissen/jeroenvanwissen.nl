@@ -17,7 +17,7 @@ const pageTitle = title? `Jeroen van Wissen - ${title}`: 'Jeroen van Wissen';
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-	<title>{pageTitle}</title>
+	<title>{meta.title? meta.title : pageTitle}</title>
 	<script defer data-domain="jeroenvanwissen.nl" src="https://plausible.public-void.nl/js/plausible.js"></script>
 
 	<meta content="@jvwissen" name="twitter:creator">
