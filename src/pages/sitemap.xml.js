@@ -1,16 +1,8 @@
-import { getCollection } from 'astro:content';
-import { generateCategories } from '../utils/helpers';
-
-async function getSortedPostsFromCollections(collections) {
-    return new Promise(async (resolve) => {
-        let posts = await Promise.all(collections.map(async (collection) => await getCollection(collection).then(entries => entries.filter(entry => !entry.data.draft))));
-        posts = posts.flat(1).sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
-        resolve(posts);
-    });
-}
+import { generateCategories } from '@lib/categories';
+import { getAllSortedEntries } from '@lib/util';
 
 export async function get({ params, request }) {
-    const posts = await getSortedPostsFromCollections(['blog', 'recipes']);
+    const posts = await getAllSortedEntries();
 
     const urlset = [];
     const collections = [];
