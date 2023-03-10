@@ -1,5 +1,4 @@
-import { generateCategories } from '@lib/categories';
-import { getAllSortedEntries } from '@lib/util';
+import { getAllSortedEntries, generateCategories } from '@lib/util';
 
 export async function get({ params, request }) {
     const posts = await getAllSortedEntries();
