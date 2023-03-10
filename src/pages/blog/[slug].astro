@@ -1,12 +1,21 @@
 ---
 import { getEntryBySlug } from 'astro:content';
-import { generateCategories } from '@lib/util';
+import { generateCategories, getSortedEntriesFromCollection } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	return (await getSortedEntriesFromCollection('blog')).map((entry) => {
+		return {
+			params: { slug: entry.slug },
+			props: { entry },
+		};
+	});
+}
 
 const { slug } = Astro.params;
 if (slug === undefined) return Astro.redirect('/404');
 
-const entry = await getEntryBySlug('recipes', slug);
+const entry = await getEntryBySlug('blog', slug);
 if (entry === undefined) return Astro.redirect('/404');
 
 const { Content } = await entry.render();
@@ -19,11 +28,12 @@ const { Content } = await entry.render();
         <meta content={`${entry.data.title} - Jeroen van Wissen`} property="og:title" />
         <meta content={entry.data.description} name="description" />
         <meta content={entry.data.description} property="og:description" />
-        <meta content={`${import.meta.env.SITE}/recipes/${entry.slug}`} property="og:url" />
+        <meta content={`${import.meta.env.SITE}/blog/${entry.slug}`} property="og:url" />
         <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="og:image" />
         <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="twitter:image:src" />
-        <link href={`${import.meta.env.SITE}/recipes/${entry.slug}`} rel="canonical" />
+        <link href={`${import.meta.env.SITE}/blog/${entry.slug}`} rel="canonical" />
     </Fragment>
+    <Fragment slot="title">Blog - Jeroen van Wissen</Fragment>
     <div class="mx-auto rounded-b bg-gray-900 shadow-lg">
         <article class="py-2 md:px-2">
             <div class="md:p-2">
@@ -48,7 +58,7 @@ const { Content } = await entry.render();
                     <p>{entry.data.description}</p>
                     <Content />
                     <p>
-                        <a href="/recipes">&larr; back to all recipes</a>
+                        <a href="/blog">&larr; back to all posts</a>
                     </p>
                 </div>
             </div>

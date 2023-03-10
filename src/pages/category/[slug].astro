@@ -1,11 +1,21 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import { getEntriesByCategorySlug } from '@lib/util';
+import { getAllCategories, getEntriesByCategorySlug } from '@lib/util';
+
+export async function getStaticPaths() {
+	return (await getAllCategories()).map((category) => {
+		return {
+			params: { slug: category.slug },
+			props: { category },
+		};
+	});
+}
 
 const { slug } = Astro.params;
+const { category } = Astro.props;
 if (slug === undefined) return Astro.redirect('/404');
 
-const {category, entries} = await getEntriesByCategorySlug(slug);
+const { entries } = await getEntriesByCategorySlug(slug);
 if (!entries || entries.length === 0) return Astro.redirect("/404");
 ---
 <Layout>
