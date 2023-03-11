@@ -13,7 +13,7 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "",
+      mediaRoot: "media",
       publicFolder: "public",
     },
   },
@@ -23,6 +23,51 @@ export default defineConfig({
         name: "blog",
         label: "Blogs",
         path: "src/content/blog",
+        fields: [
+          {
+            label: "Draft",
+            name: "draft",
+            type: "boolean",            
+          },
+          {
+            label: "Date",
+            name: "date",
+            type: "datetime",
+            ui: {
+              timeFormat: "HH:mm",
+            }
+          },
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: 'string',
+            name: 'categories',
+            label: 'Categories',
+            list: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+        ],
+      },
+      {
+        name: "recipes",
+        label: "Recipes",
+        path: "src/content/recipes",
         fields: [
           {
             label: "Draft",
