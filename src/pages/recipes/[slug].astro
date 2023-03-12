@@ -1,5 +1,4 @@
 ---
-import { getEntryBySlug } from 'astro:content';
 import { generateCategories, getSortedEntriesFromCollection } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
 
@@ -12,12 +11,7 @@ export async function getStaticPaths() {
 	});
 }
 
-const { slug } = Astro.params;
-if (slug === undefined) return Astro.redirect('/404');
-
-const entry = await getEntryBySlug('recipes', slug);
-if (entry === undefined) return Astro.redirect('/404');
-
+const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
