@@ -1,7 +1,9 @@
 ---
 draft: false
 date: '2023-03-22T10:38:00.000Z'
-title: Moved back to simple static self hosting in a Docker container from Netlify
+title: >-
+  Moved back to simple static self hosting in a Docker container from having
+  this site hosted at Netlify 
 categories:
   - Tech
 description: >-
