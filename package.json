@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "astro": "^2.1.5",
-    "prettier": "^2.8.6",
+    "prettier": "^2.8.7",
     "prettier-plugin-astro": "^0.8.0",
     "prettier-plugin-tailwindcss": "^0.2.5"
   },
