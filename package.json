@@ -9,15 +9,15 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^2.1.8",
+    "astro": "^2.1.9",
     "prettier": "^2.8.7",
     "prettier-plugin-astro": "^0.8.0",
-    "prettier-plugin-tailwindcss": "^0.2.5"
+    "prettier-plugin-tailwindcss": "^0.2.6"
   },
   "dependencies": {
     "@astrojs/tailwind": "^3.1.1",
-    "@tinacms/cli": "^1.4.1",
-    "tailwindcss": "^3.2.7",
-    "tinacms": "^1.4.0"
+    "@tinacms/cli": "^1.5.3",
+    "tailwindcss": "^3.3.1",
+    "tinacms": "^1.4.3"
   }
 }
