@@ -12,7 +12,7 @@
     "astro": "^2.1.8",
     "prettier": "^2.8.7",
     "prettier-plugin-astro": "^0.8.0",
-    "prettier-plugin-tailwindcss": "^0.2.5"
+    "prettier-plugin-tailwindcss": "^0.2.6"
   },
   "dependencies": {
     "@astrojs/tailwind": "^3.1.1",
