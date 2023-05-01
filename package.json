@@ -19,6 +19,6 @@
     "@tinacms/cli": "^1.5.6",
     "npm-check-updates": "^16.10.8",
     "tailwindcss": "^3.3.1",
-    "tinacms": "^1.4.6"
+    "tinacms": "^1.5.2"
   }
 }
