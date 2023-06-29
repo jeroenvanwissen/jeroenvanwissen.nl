@@ -1,6 +1,9 @@
 ---
-date: 2023-06-29T12:20:00.000Z
+date: '2023-06-29T12:20:00.000Z'
 title: Coding without a purpose...
+categories:
+  - Tech
+  - Random Thoughts
 description: >-
   Why does everything need to have a purpose. Often when I read about some
   interesting tech thing on the internet I start thinking about where could I
