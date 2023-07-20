@@ -9,7 +9,6 @@ description: >-
   As part of my 'Coding without a purpose...' brainfart, I finally started a
   project that has been on my mind for ages. Building a simple blockchain
   network application in Javascript.
-draft: true
 date: '2023-07-20T15:28:00.000Z'
 ---
 
