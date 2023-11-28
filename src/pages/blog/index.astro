@@ -18,39 +18,34 @@ const entries = await getSortedEntriesFromCollection('blog');
         <link href={`${import.meta.env.SITE}/blog`} rel="canonical" />
     </Fragment>
     <Fragment slot="title">Blog - Jeroen van Wissen</Fragment>
-    <div class="mx-auto rounded-b bg-gray-900 shadow-lg">
-        <section class="px-2 py-2">
-            <div class="p-2">
-                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                    {
-                        entries.map(entry => (
-                            <div class="h-full overflow-hidden rounded-xl bg-neutral-200">
-                                {/*<img class="lg:h-48 md:h-36 w-full bg-wissen-blue object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src="" alt="">*/}
-                                <div class="relative h-full p-4">
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-xs text-neutral-500">
-                                            {entry.data.date.toLocaleString('en-US', {
-                                                day: 'numeric',
-                                                month: 'long',
-                                                year: 'numeric',
-                                                timeZone: 'Europe/Amsterdam',
-                                            })}
-                                        </span>
-                                    </div>
-                                    <h2 class="mt-2 mb-3 text-lg text-neutral-600">{entry.data.title}</h2>
-                                    <p class="mb-10 text-sm">{entry.data.description}</p>
-                                    <div class="absolute bottom-4 right-4 flex items-center">
-                                        <a href={`/${entry.collection}/${entry.slug}`} class="rounded-lg bg-wissen-blue px-4 py-1 shadow hover:scale-105">
-                                            read more..
-                                        </a>
-                                    </div>
-                                </div>
+    <div class="mx-auto">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+            {
+                entries.map((entry: any) => (
+                    <div class="flex flex-col overflow-hidden rounded-lg shadow-lg h-full">
+                        <div class="flex flex-col grow justify-between bg-secondary-800 p-4">
+                            <div class="flex-1">
+                                <p class="pb-2 text-xs text-primary-50">
+                                    {entry.data.date.toLocaleString('en-US', {
+                                        day: 'numeric',
+                                        month: 'long',
+                                        year: 'numeric',
+                                        timeZone: 'Europe/Amsterdam'
+                                    })}
+                                </p>
+                                <p class="py-2 text-lg font-bold text-primary-50">{entry.data.title}</p>
+                                <p class="py-2 text-base text-primary-50">{entry.data.description}</p>
                             </div>
-                        ))
-                    }
-                </div>
-            </div>
-        </section>
+                            <div class="flex flex-row-reverse place-self-end">
+                                <a href={`/${entry.collection}/${entry.slug}`} class="text-md font-bold text-primary-800 rounded-lg bg-primary-50 px-4 pt-1.5 pb-2 shadow hover:bg-primary-300">
+                                    read more..
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
     </div>
 </Layout>
 

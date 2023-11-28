@@ -2,54 +2,66 @@
 import Socials from '@components/Socials.astro';
 import FotografieLogo from '@components/FotografieLogo.astro';
 import WissenLogo from '@components/WissenLogo.astro';
-import '@style/main.css'
+import '@style/main.css';
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width">
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<script defer data-domain={import.meta.env.SITE.replace('https://', '')} src="https://plausible.public-void.nl/js/plausible.js"></script>
-		<meta content="@jvwissen" name="twitter:creator">
-		<meta content="summary_large_image" name="twitter:card">
-		<slot name="head" />
-	</head>
-<body class="bg-gradient-to-bl from-indigo-900 via-wissen-blue to-indigo-900">
-	<div class="w-full antialiased px-4">
-		<nav class="max-w-6xl mx-auto">
-			<div class="md:flex md:flex-wrap items-center md:justify-between">
-				<div class="flex justify-center">
-					<a href="/" class="py-4 no-underline inline-block mx-auto" aria-label="Jeroen van Wissen"><WissenLogo /></a>
-				</div>
-				<ul class="flex justify-center list-reset w-full md:w-auto py-4 md:py-0">
-					<li><a href="/" class="px-2 no-underline text-white hover:text-wissen-orange text-2xl md:text-base">home</a></li>
-					<!-- <li><a href="/" class="px-2 no-underline text-white hover:text-wissen-orange text-2xl md:text-base">about</a></li> -->
-					<li><a href="/blog" class="px-2 no-underline text-white hover:text-wissen-orange text-2xl md:text-base">blog</a></li>
-					<li><a href="https://31f-fotografie.nl" class="px-2 no-underline text-white hover:text-wissen-orange text-2xl md:text-base">photography</a></li>
-					<!-- <li><a href="/recipes" class="px-2 no-underline text-white hover:text-wissen-orange text-2xl md:text-base">recipes</a></li> -->
-				</ul>
-			</div>
-		</nav>
-		<div class="mb-6 max-w-6xl mx-auto">
-			<div class="flex items-center h-6 rounded-t bg-gray-100 border-b border-gray-500 text-center text-black">
-				<div class="flex ml-2 items-center text-center border-red-900 bg-red-500 shadow-inner rounded-full w-3 h-3"></div>
-				<div class="ml-2 border-yellow-900 bg-yellow-500 shadow-inner rounded-full w-3 h-3"></div>
-				<div class="ml-2 border-green-900 bg-green-500 shadow-inner rounded-full w-3 h-3"></div>
-				<div class="mx-auto pr-16" id="terminaltitle">
-					<p class="text-center text-sm text-neutral-900"><slot name="title" /></p>
-				</div>
-			</div>
-			<slot />
-		</div>
-		<footer class="max-w-6xl mx-auto mb-4">
-			<div class="flex justify-center">
-				<div class="bg-neutral-900/50 p-2 mb-2 rounded shadow-lg text-center md:flex md:gap-x-4">
-					<Socials className="fill-gray-200 hover:fill-wissen-orange hover:scale-110 h-12 pb-2 md:h-8 md:pb-0" />
-					<a href="https://31f-fotografie.nl" title="31F Fotografie"><FotografieLogo className="fill-gray-200 hover:fill-wissen-orange hover:scale-110 h-12 pb-2 md:h-8 md:pb-0" /></a>
-				</div>
-			</div>
-		</footer>
-	</div>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <script defer data-domain={import.meta.env.SITE.replace('https://', '')} src="https://plausible.public-void.nl/js/plausible.js"></script>
+        <meta content="@jvwissen" name="twitter:creator" />
+        <meta content="summary_large_image" name="twitter:card" />
+        <slot name="head" />
+    </head>
+    <body class="bg-secondary-900">
+        <div class="w-full px-4">
+            <nav class="max-w-6xl mx-auto">
+                <div class="flex flex-wrap items-center justify-between">
+                    <div class="flex justify-center">
+                        <a href="/" class="my-2 lg:my-4 xl:my-6 inline-block" aria-label="Jeroen van Wissen"><WissenLogo /></a>
+                    </div>
+
+                    <!--// Replace this with a nav component that has some actual routing in there to handle active states etc.. -->
+                    <label class="md:hidden flex relative z-40 cursor-pointer px-0 py-6" for="mobile-menu">
+                        <input class="peer hidden" type="checkbox" id="mobile-menu" />
+                        <div class="relative z-50 block h-[1px] w-7 bg-primary-50 bg-transparent content-[''] before:absolute before:top-[-0.35rem] before:z-50 before:block before:h-full before:w-full before:bg-primary-50 before:transition-all before:duration-200 before:ease-out before:content-[''] after:absolute after:right-0 after:bottom-[-0.35rem] after:block after:h-full after:w-full after:bg-primary-50 after:transition-all after:duration-200 after:ease-out after:content-[''] peer-checked:bg-transparent before:peer-checked:top-0 before:peer-checked:w-full before:peer-checked:rotate-45 before:peer-checked:transform after:peer-checked:bottom-0 after:peer-checked:w-full after:peer-checked:-rotate-45 after:peer-checked:transform"></div>
+                        <div class="fixed inset-0 z-40 hidden h-full w-full bg-secondary-900/50 backdrop-blur-sm peer-checked:block">&nbsp;</div>
+                        <div class="fixed top-0 right-0 z-40 h-full w-full translate-x-full overflow-y-auto overscroll-y-none transition duration-500 peer-checked:translate-x-0">
+                            <div class="float-right min-h-full w-[85%] bg-secondary-800 text-primary-50 px-6 pt-12 shadow-2xl">
+                                <menu>
+                                    <li class="py-2"><a href="/" class="hover:text-primary-300">home</a></li>
+                                    <!-- <li class="py-2"><a href="/about" class="hover:text-primary-300">about me</a></li> -->
+                                    <li class="py-2"><a href="/blog" class="hover:text-primary-300">blog</a></li>
+                                    <!-- <li class="py-2"><a href="/projects" class="hover:text-primary-300">projects</a></li> -->
+                                    <li class="py-2"><a href="https://31f-fotografie.nl" class="hover:text-primary-300">photography</a></li>
+                                </menu>
+                            </div>
+                        </div>
+                    </label>
+
+                    <ul class="hidden md:flex justify-center list-reset w-full md:w-auto py-4 md:py-0 text-primary-50 font-bold text-md xl:text-lg whitespace-nowrap">
+                        <li class="pr-4 xl:pr-5"><a href="/" class="hover:text-primary-300">home</a></li>
+                        <!-- <li class="px-4 xl:px-5"><a href="/about" class="hover:text-primary-300">about me</a></li> -->
+                        <li class="px-4 xl:px-5"><a href="/blog" class="hover:text-primary-300">blog</a></li>
+                        <!-- <li class="px-4 xl:px-5"><a href="/projects" class="hover:text-primary-300">projects</a></li> -->
+                        <li class="pl-4 xl:pl-5"><a href="https://31f-fotografie.nl" class="hover:text-primary-300">photography</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="my-2 xl:my-6 max-w-6xl mx-auto">
+                <slot />
+            </div>
+            <footer class="max-w-6xl mx-auto mb-4">
+                <div class="flex justify-center">
+                    <div class="bg-secondary-800 mt-2 xl:mt-10 p-2 md:p-4 pb-4 rounded-lg shadow-lg md:flex md:gap-x-4 text-center">
+                        <Socials className="fill-primary-50 hover:fill-primary-300 hover:scale-110 h-14 py-2 md:h-8 md:py-0" />
+                        <a href="https://31f-fotografie.nl" class="inline-block" title="31F Fotografie"><FotografieLogo className="fill-primary-50 hover:fill-primary-300 hover:scale-110 h-10 pt-2 md:h-8 md:pt-0" /></a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
 </html>

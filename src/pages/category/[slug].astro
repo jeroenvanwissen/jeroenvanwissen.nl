@@ -31,30 +31,35 @@ if (!entries || entries.length === 0) return Astro.redirect("/404");
         <link href={`${import.meta.env.SITE}/category/${slug}`} rel="canonical" />
     </Fragment>
     <Fragment slot="title">{category.name} - Jeroen van Wissen</Fragment>
-	<div class="bg-gray-900 shadow-lg rounded-b mx-auto">
-		<section class="px-2 py-2">
-			<div class="p-2">
-				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-					{entries.map((entry) => (
-						<div class="h-full rounded-xl bg-neutral-200 overflow-hidden">
-						{/*<img class="lg:h-48 md:h-36 w-full bg-wissen-blue object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src="" alt="">*/}
-							<div class="p-4 h-full relative">
-								<div class="flex items-center justify-between">
-									<span class="text-xs text-neutral-500">{entry.data.date.toLocaleString('en-US', {day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam'})}</span>							
-									<h3 class="text-xs text-neutral-600">{entry.collection}</h3>
-								</div>
-								<h2 class="text-lg text-neutral-600 mt-2 mb-3">{entry.data.title}</h2>
-								<p class="mb-10 text-sm">{entry.data.description}</p>
-								<div class="flex items-center absolute bottom-4 right-4">
-									<a href={`/${entry.collection}/${entry.slug}`} class="bg-wissen-blue hover:scale-105 shadow px-4 py-1 rounded-lg">read more..</a>
-								</div>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
-	</div>
+    <div class="mx-auto">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+            {
+                entries.map((entry: any) => (
+                    <div class="flex flex-col overflow-hidden rounded-lg shadow-lg h-full">
+                        <div class="flex flex-col grow justify-between bg-secondary-800 p-4">
+                            <div class="flex-1">
+                                <p class="pb-2 text-xs text-primary-50">
+                                    {entry.data.date.toLocaleString('en-US', {
+                                        day: 'numeric',
+                                        month: 'long',
+                                        year: 'numeric',
+                                        timeZone: 'Europe/Amsterdam'
+                                    })}
+                                </p>
+                                <p class="py-2 text-lg font-bold text-primary-50">{entry.data.title}</p>
+                                <p class="py-2 text-base text-primary-50">{entry.data.description}</p>
+                            </div>
+                            <div class="flex flex-row-reverse place-self-end">
+                                <a href={`/${entry.collection}/${entry.slug}`} class="text-md font-bold text-primary-800 rounded-lg bg-primary-50 px-4 pt-1.5 pb-2 shadow hover:bg-primary-300">
+                                    read more..
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
 </Layout>
 
 <style is:global>

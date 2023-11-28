@@ -18,22 +18,58 @@ const entries = await getAllSortedEntries();
         <link href={import.meta.env.SITE} rel="canonical" />
     </Fragment>
     <Fragment slot="title">Jeroen van Wissen</Fragment>
-    <div class="mx-auto rounded-b bg-gray-900 shadow-lg">
+    <div class="mx-auto rounded-lg xl:rounded-br-xl bg-secondary-800 shadow-lg relative">
+        <img src="/images/jeroen.webp" class="hidden xl:object-cover xl:object-left xl:inline-block xl:h-[650px] xl:max-w-[650px] xl:absolute xl:right-0 xl:bottom-0 xl:rounded-none xl:rounded-br-lg" />
+        <div class="flex flex-col justify-start items-start gap-3 xl:gap-5 px-4 pt-2.5 pb-5 relative xl:pr-0 xl:pl-5 xl:w-4/5">
+            <div class="md:flex justify-center">
+                <img src="/images/jeroen.webp" class="mb-2 w-full max-w-[310px] h-52 md:h-[225px] mx-auto rounded object-cover object-top xl:hidden" />
+                <p class="md:text-2xl lg:text-3xl xl:text-4xl md:ml-2 xl:ml-0 font-bold text-left text-primary-50">
+                    Hey!<br />I’m <span class="text-primary-500">Jeroen</span>, a Front-end Developer from the Netherlands.</span>
+                </p>
+                </div>
+            <p class="text-sm text-left text-primary-50 md:text-base">With more than two decades of experience in development, including over five years as a Tech Lead/Engineering Manager, I have refined my skills and expertise. While I began my journey with PHP, my focus has now shifted entirely to JavaScript, specifically ReactJS and NodeJS. I am a versatile and passionate professional, dedicated to finding solutions and constantly seeking opportunities for growth. Additionally, I possess hands-on experience with AWS DevOps and GitLab CI/CD, enhancing my proficiency in delivering efficient and streamlined development processes.</p>
+            <!-- <div class="px-5 py-2 rounded-lg bg-primary-50 hover:bg-primary-300">
+                <p class="text-base font-bold text-primary-800">More about me</p>
+            </div> -->
+            <p class="text-sm text-left text-primary-50 md:text-base">Connect with Jeroen van Wissen on <a href="https://linkedin.com/in/jeroenvanwissen" rel="me" title="Connect with me on LinkedIn" class="inline-block align-bottom pb-[2px]"><img src="/images/linkedin.png" class="h-5"/></a></p>
+        </div>
+    </div>
+
+    <!-- 
+    <div class="mx-auto rounded-lg bg-secondary-800 shadow-lg">
         <div class="flex">
+            <div class="text-primary-50 px-4">
+                <div class="text-4xl font-bold">
+                    Hey!
+                    I’m <span class="text-primary-500">Jeroen</span>, a Front-end Developer from the Netherlands.
+                </div>
+                <p class="text-base">
+                    With more than two decades of experience in development, including over five years as a Tech Lead/Engineering Manager, my passion lies with JavaScript and ...
+                </p>
+            </div>
+            <div class="relative h-[560px]">
+                <div class="absolute bottom-0">
+                    <img class="h-[560px]" src="/images/jeroen.png" alt="Jeroen van Wissen" />
+                </div>
+            </div>
+        </div>
+    </div> -->
+</Layout>
+
+<!-- <div class="flex">
             <div class="items-start px-4 py-6 md:flex">
                 <img class="mr-4 h-40 w-40 rounded-full object-cover shadow" src="/images/jeroen.webp" alt="Jeroen van Wisen Photo" />
                 <div class="">
                     <div class="flex items-center justify-between">
                         <h2 class="text-lg font-bold text-neutral-200">Jeroen van Wissen</h2>
-                        <!-- <small class="text-sm text-gray-700">43y ago</small> -->
                     </div>
                     <p class="text-neutral-300">Engineering Manager | Tech Lead | Senior JavaScript Developer</p>
                     <p class="mt-3 text-sm text-neutral-200">With more than two decades of experience in development, including over five years as a Tech Lead/Engineering Manager, I have refined my skills and expertise. While I began my journey with PHP, my focus has now shifted entirely to JavaScript, specifically ReactJS and NodeJS. I am a versatile and passionate professional, dedicated to finding solutions and constantly seeking opportunities for growth. Additionally, I possess hands-on experience with AWS DevOps and GitLab CI/CD, enhancing my proficiency in delivering efficient and streamlined development processes.</p>
                     <div class="mt-3 flex text-sm text-neutral-200">find me on<a href="https://linkedin.com/in/jeroenvanwissen" title="LinkedIn Profile"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 241.6 61.3" class="ml-2 h-5 fill-neutral-200"><path d="M26.896 43.398v8.704H0V9.043h9.433v34.355zM31.062 22.9h9.066v29.2h-9.066zm4.534-14.505a5.26 5.26 0 0 1 5.259 5.257c0 2.906-2.356 5.255-5.26 5.255s-5.256-2.35-5.256-5.255a5.26 5.26 0 0 1 5.256-5.257m61.76 14.502h11.1l-11.9 13.5L108.207 52.1H96.825l-9.62-14.425h-.117V52.1h-9.063V9.04h9.063v25.735zm-52.212.017h8.702v4h.12c1.208-2.297 4.17-4.713 8.58-4.713 9.188 0 10.88 6.043 10.88 13.898v16H64.36V37.903c0-3.386-.062-7.735-4.716-7.735-4.713 0-5.436 3.687-5.436 7.493v14.43h-9.066V22.914zm82.407 11.194c.06-3.022-2.298-5.56-5.564-5.56-3.987 0-6.164 2.72-6.403 5.56zm7.674 12.93c-2.9 3.687-7.673 5.804-12.4 5.804-9.064 0-16.317-6.047-16.317-15.414s7.253-15.4 16.317-15.4c8.468 0 13.78 6.043 13.78 15.4v2.84h-21.032c.72 3.445 3.323 5.68 6.83 5.68 2.962 0 4.955-1.5 6.467-3.567zm20.27-17.072c-4.53 0-7.248 3.024-7.248 7.432 0 4.416 2.72 7.434 7.248 7.434 4.536 0 7.257-3.018 7.257-7.434-.001-4.408-2.72-7.432-7.257-7.432m15.6 22.12h-8.342v-3.87h-.118c-1.395 2.115-4.897 4.594-9.008 4.594-8.706 0-14.446-6.283-14.446-15.17 0-8.16 5.076-15.654 13.416-15.654 3.75 0 7.255 1.027 9.3 3.867h.118V9.04h9.07z"></path><path d="M236.78 0h-52.107c-2.5 0-4.513 1.974-4.513 4.406v52.327c0 2.435 2.023 4.41 4.513 4.41h52.107c2.494 0 4.526-1.976 4.526-4.41V4.406C241.307 1.974 239.275 0 236.78 0z" fill="#0177b5"></path><path d="M189.226 22.923h9.07v29.18h-9.07zm4.537-14.505a5.26 5.26 0 0 1 5.255 5.257 5.26 5.26 0 0 1-5.255 5.259 5.26 5.26 0 0 1-5.26-5.259 5.26 5.26 0 0 1 5.26-5.257m10.22 14.505h8.698V26.9h.12c1.2-2.294 4.17-4.713 8.58-4.713 9.184 0 10.88 6.044 10.88 13.9v16.005H223.2v-14.2c0-3.384-.062-7.737-4.713-7.737-4.72 0-5.443 3.686-5.443 7.492v14.435h-9.06v-29.18z" fill="#fff"></path></svg></a></div>
                 </div>
             </div>
-        </div>
-        <section class="px-2 py-2">
+        </div> -->
+<!-- <section class="px-2 py-2">
             <div class="p-2">
                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {
@@ -58,6 +94,6 @@ const entries = await getAllSortedEntries();
                     }
                 </div>
             </div>
-        </section>
-    </div>
-</Layout>
+        </section> -->
+<!-- </div> -->
+<!-- </Layout> -->

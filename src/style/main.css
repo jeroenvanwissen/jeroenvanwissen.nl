@@ -7,8 +7,6 @@
 html {
     font-family: var(--main-family);
     min-height: 100%;
+    font-size: 1.25rem;
 }
 
-h1 {
-  font-weight: 100;
-}
