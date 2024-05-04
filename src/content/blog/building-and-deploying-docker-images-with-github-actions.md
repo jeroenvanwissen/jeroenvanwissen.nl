@@ -108,11 +108,21 @@ jobs:
 
 ```
 
-This GitHub Actions workflow file defines a workflow that is triggered when a new tag is pushed to the repository. It uses the `docker/build-push-action` action to build and push the Docker image to the GitHub Container Registry. The workflow logs into the registry using the GitHub token, which is automatically provided by GitHub Actions.
+This GitHub Actions workflow file defines a workflow that is triggered when a new tag is pushed to the repository. It uses the `docker/build-push-action` action to build and push the Docker image to the GitHub Container Registry. It tags the image in the registry with the given version tag AND 'latest' tag, so the latest versionned image will always have the 'latest' tag. The workflow logs into the registry using the GitHub token, which is automatically provided by GitHub Actions.
 
 ## Trigger the workflow
 
 Now that you have created the Dockerfile, GitHub Actions workflow, you can trigger the workflow by adding a tag to your repository. Once the workflow is triggered, it will build the Docker image and push it to the GitHub Container Registry.
+
+To use this Docker image in my Docker Compose file, I simply referenced the image:
+
+```yaml
+...
+services:
+  website:
+    image: ghcr.io/jeroenvanwissen/jeroenvanwissen.nl:latest
+...
+```
 
 That's it! You have successfully built and deployed a Docker image to the GitHub Container Registry using GitHub Actions. You can now use this workflow as a template for building and deploying other Docker images in your projects.
 
