@@ -7,10 +7,15 @@ categories:
   - GitHub
   - Tech
 description: >-
+    Slowly moving my projects from a selfhosted GitLab instance to GitHub, while doing so I'm learning how to use GitHub Actions to build and delpoy Docker images to the GitHub Container Registry (ghcr.io).
 date: '2024-05-04T15:29:00.000Z'
 ---
 
-In this blog post I will show you how to build and deploy a Docker image to the GitHub Container Registry (ghcr.io) using GitHub Actions. I'll use the workflow used to build and deploy this website as an example to get you started with GitHub Actions and Docker.
+After having most of my personal projects hosted on a Docker server at home, I decided to move everything out again after a power outage and multiple fiber outages.
+
+One of the steps involved is moving projects from a self hosted GitLab instance to GitHub and using GitHub Actions to build and deploy Docker images to the GitHub Container Registry (ghcr.io).
+
+In this blog post I will show you how to build and deploy a Docker image to the GitHub Container Registry using GitHub Actions. I'll use the workflow used to build and deploy this website as an example to get you started with GitHub Actions and Docker.
 
 ## Create a Dockerfile
 
@@ -46,7 +51,7 @@ This Dockerfile uses a multi-stage build to first build the Astro.build applicat
 
 ## Create a GitHub Actions workflow
 
-Next, create a GitHub Actions workflow file in the `.github/workflows` directory of your repository. This file will define the steps to build and deploy the Docker image. Here is the GitHub Actions workflow file used to build and push the Docker image of this website to the GitHub Container Registry (ghcr.io):
+Next, create a GitHub Actions workflow file in the `.github/workflows` directory of your repository. This file will define the steps to build and deploy the Docker image. Here is the GitHub Actions workflow file used to build and push the Docker image of this website to the GitHub Container Registry:
 
 ```yaml
 name: Build and push Docker image to ghcr.io
@@ -101,13 +106,13 @@ jobs:
 
 ```
 
-This GitHub Actions workflow file defines a workflow that is triggered when a new tag is pushed to the repository. It uses the `docker/build-push-action` action to build and push the Docker image to the GitHub Container Registry (ghcr.io). The workflow logs into the registry using the GitHub token, which is automatically provided by GitHub Actions.
+This GitHub Actions workflow file defines a workflow that is triggered when a new tag is pushed to the repository. It uses the `docker/build-push-action` action to build and push the Docker image to the GitHub Container Registry. The workflow logs into the registry using the GitHub token, which is automatically provided by GitHub Actions.
 
 ## Trigger the workflow
 
-Now that you have created the Dockerfile, GitHub Actions workflow, you can trigger the workflow by adding a tag to your repository. Once the workflow is triggered, it will build the Docker image and push it to the GitHub Container Registry (ghcr.io).
+Now that you have created the Dockerfile, GitHub Actions workflow, you can trigger the workflow by adding a tag to your repository. Once the workflow is triggered, it will build the Docker image and push it to the GitHub Container Registry.
 
-That's it! You have successfully built and deployed a Docker image to the GitHub Container Registry (ghcr.io) using GitHub Actions. You can now use this workflow as a template for building and deploying other Docker images in your projects.
+That's it! You have successfully built and deployed a Docker image to the GitHub Container Registry using GitHub Actions. You can now use this workflow as a template for building and deploying other Docker images in your projects.
 
 I hope this blog post was helpful to you.
-If you have any questions or feedback, feel free to contact me on Twitter/X or Mastodon. I'd love to hear from you!
+If you have any questions or feedback, feel free to contact me on [Twitter/X](https://x.com/jvwissen) or [Mastodon](https://mastodon.social/@jeroenvanwissen). I'd love to hear from you!
