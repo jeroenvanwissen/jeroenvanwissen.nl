@@ -17,6 +17,8 @@ One of the steps involved is moving projects from a self hosted GitLab instance 
 
 In this blog post I will show you how to build and deploy a Docker image to the GitHub Container Registry using GitHub Actions. I'll use the workflow used to build and deploy this website as an example to get you started with GitHub Actions and Docker.
 
+Website repository: [github.com/jeroenvanwissen/jeroenvanwissen.nl](https://github.com/jeroenvanwissen/jeroenvanwissen.nl)
+
 ## Create a Dockerfile
 
 First, create a Dockerfile in the root of your repository. This file will be used to build the Docker image. Here is the Dockerfile used to build the Docker image of this website, which is an Astro.build application deployed using Nginx:
