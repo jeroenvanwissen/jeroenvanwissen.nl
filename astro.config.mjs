@@ -5,7 +5,7 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
 //  site: 'https://jeroenvanwissen.nl',
 //  output: 'static',
-  site: 'httsp://jeroenvanwissen.github.io',
+  site: 'https://jeroenvanwissen.github.io',
   base: 'jeroenvanwissen.nl',
   integrations: [tailwind()]
 });
