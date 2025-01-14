@@ -79,7 +79,7 @@ export async function getEntriesByCategorySlug(slug: string): Promise<{
 }
 
 export async function generateSitemapXml(entries: BlogEntry[] = [], site: ISite): Promise<string> {
-    const lastMod = entries[0]?.data?.date?.toISOString() || new Date().toISOString();
+    const lastMod = new Date().toISOString();
     return `
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
