@@ -1,23 +1,24 @@
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
 interface ICategory {
     name: string;
     slug: string;
 }
 
-interface IEntry {
-    id: string;
-    slug: string;
-    body: string;
-    collection: string;
+interface ISite {
+    url: string;
+}
+
+type BlogEntry = CollectionEntry<'post'> & {
     data: {
         draft: boolean;
         date: Date;
         title: string;
-        categories: Array<[]>;
+        categories: string[];
         description: string;
+        type: string;
     }
-    render: Function;
 }
 
 export function generateSlug(category: string): string {
@@ -31,7 +32,7 @@ export function generateSlug(category: string): string {
         .replace(/-+$/, '');
 }
 
-export function generateCategories(categories: Array<string> = []): Array<ICategory> {
+export function generateCategories(categories: string[] = []): ICategory[] {
     const categoriesData: ICategory[] = [];
     categories && categories.forEach((category) => {
         categoriesData.push({
@@ -42,32 +43,42 @@ export function generateCategories(categories: Array<string> = []): Array<ICateg
     return categoriesData;
 }
 
-export async function getEntriesFromCollection(collection: string) {
-    return await getCollection(collection as any).then(entries => entries.filter(entry => !entry.data.draft));
+export async function getEntriesFromCollection(collection: 'post', type: string): Promise<BlogEntry[]> {
+    const entries = await getCollection(collection);
+    return entries.filter(entry => !entry.data.draft && entry.data.type === type) as BlogEntry[];
 }
 
-export async function getSortedEntriesFromCollection(collection: string) {
-    return (await getEntriesFromCollection(collection)).sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+export async function getSortedEntriesFromCollection(collection: 'post', type: string): Promise<BlogEntry[]> {
+    return (await getEntriesFromCollection(collection, type))
+        .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 }
 
-export async function getAllSortedEntries() {
-    return [...(await getEntriesFromCollection('blog')), ...(await getEntriesFromCollection('recipes'))].sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+export async function getAllSortedEntries(): Promise<BlogEntry[]> {
+    return [...(await getEntriesFromCollection('post', 'blog'))]
+        .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 }
 
-export async function getAllCategories(): Promise<Array<ICategory>> {
-    return generateCategories([...new Set((await getAllSortedEntries()).map(entry => entry.data.categories).flat())]);
+export async function getAllCategories(): Promise<ICategory[]> {
+    return generateCategories([
+        ...new Set((await getAllSortedEntries())
+            .map(entry => entry.data.categories)
+            .flat())
+    ]);
 }
 
-export async function getEntriesByCategorySlug(slug: string) {
+export async function getEntriesByCategorySlug(slug: string): Promise<{
+    category: ICategory;
+    entries: BlogEntry[];
+}> {
     const category = (await getAllCategories()).filter(category => category.slug === slug)[0];
     const entries = (await getAllSortedEntries()).filter(entry => entry.data.categories.includes(category.name));
     return {
         category,
         entries
-    }    
+    };
 }
 
-export async function generateSitemapXml(entries: Array<IEntry> = [], site: {url: string}) {
+export async function generateSitemapXml(entries: BlogEntry[] = [], site: ISite): Promise<string> {
     const lastMod = entries[0]?.data?.date?.toISOString() || new Date().toISOString();
     return `
     <?xml version="1.0" encoding="UTF-8"?>
@@ -86,7 +97,7 @@ export async function generateSitemapXml(entries: Array<IEntry> = [], site: {url
             </url>
         `.trim();
     }).join("")}
-    ${(await getAllCategories()).map(category => {
+    ${/**(await getAllCategories()).map(category => {
         return `
             <url>
                 <loc>${site.url}/category/${category.slug}</loc>
@@ -94,7 +105,7 @@ export async function generateSitemapXml(entries: Array<IEntry> = [], site: {url
                 <priority>0.64</priority>
             </url>
         `.trim();
-    }).join("")}
+    }).join("")**/''}
     </urlset>
     `.trim();
 }

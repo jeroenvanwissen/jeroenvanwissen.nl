@@ -7,5 +7,6 @@ categories:
     - Astro.build
 description: >
     Categories are now clickable and link to post per category pages..
+type: blog
 ---
 Finally implemented the category pages to have an overview of posts in a specific category. \o/

@@ -9,6 +9,7 @@ categories:
 description: >-
     Slowly moving my projects from a selfhosted GitLab instance to GitHub, while doing so I'm learning how to use GitHub Actions to build and delpoy Docker images to the GitHub Container Registry (ghcr.io).
 date: '2024-05-04T15:29:00.000Z'
+type: blog
 ---
 
 After having most of my personal projects hosted on a Docker server at home, I decided to move everything out again after a power outage and multiple fiber outages.

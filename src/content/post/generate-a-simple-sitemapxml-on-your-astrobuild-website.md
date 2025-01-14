@@ -10,6 +10,7 @@ categories:
   - Astro.build
   - Tech
   - JavaScript
+type: blog
 ---
 
 It might not be perfect code, I'm well aware of that. And it might not work for your setup, but with some modifications it might :)

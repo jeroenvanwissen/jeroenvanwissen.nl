@@ -8,6 +8,7 @@ categories:
 description: >-
   The older I get, the more experienced I get, the harder it gets to keep up
   with changes in tech.
+type: blog
 ---
 
 This is something I've been incrementally struggling with the last couple of years.

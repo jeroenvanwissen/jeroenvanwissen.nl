@@ -3,7 +3,7 @@ import { generateCategories, getSortedEntriesFromCollection } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
 
 export async function getStaticPaths() {
-    return (await getSortedEntriesFromCollection('blog')).map((entry: any) => {
+    return (await getSortedEntriesFromCollection('post', 'blog')).map((entry: any) => {
         return {
             params: { slug: entry.slug },
             props: { entry }
@@ -22,19 +22,17 @@ const { Content } = await entry.render();
         <meta content={`${entry.data.title} - Jeroen van Wissen`} property="og:title" />
         <meta content={entry.data.description} name="description" />
         <meta content={entry.data.description} property="og:description" />
-        <meta content={`${import.meta.env.SITE}/blog/${entry.slug}`} property="og:url" />
+        <meta content={`${import.meta.env.SITE}/post/${entry.slug}`} property="og:url" />
         <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="og:image" />
         <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="twitter:image:src" />
-        <link href={`${import.meta.env.SITE}/blog/${entry.slug}`} rel="canonical" />
+        <link href={`${import.meta.env.SITE}/post/${entry.slug}`} rel="canonical" />
     </Fragment>
-    <Fragment slot="title">Blog - Jeroen van Wissen</Fragment>
     <div class="mx-auto rounded-lg bg-secondary-800 shadow-lg">
         <article>
-            {/*<img class="lg:h-48 md:h-36 w-full bg-wissen-blue object-cover object-center scale-110 transition-all duration-400 hover:scale-100" src="" alt="">*/}
             <div class="p-4 md:p-6">
                 <div class="items-center justify-between md:flex">
                     <div class="flex text-xs text-primary-50">{entry.data.date.toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' })}</div>
-                    <div class="flex pt-2 text-xs text-primary-500 md:pt-0">
+                    <!-- <div class="flex pt-2 text-xs text-primary-500 md:pt-0">
                         {
                             generateCategories(entry.data.categories).map((category) => (
                                 <>
@@ -45,13 +43,13 @@ const { Content } = await entry.render();
                                 </>
                             ))
                         }
-                    </div>
+                    </div> -->
                 </div>
                 <h2>{entry.data.title}</h2>
                 <p>{entry.data.description}</p>
                 <Content />
                 <p>
-                    <a href="/blog">&larr; back to all posts</a>
+                    <a href="/posts">&larr; back to all posts</a>
                 </p>
             </div>
         </article>

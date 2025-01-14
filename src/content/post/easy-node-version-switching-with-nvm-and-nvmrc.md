@@ -8,6 +8,7 @@ categories:
   - NodeJS
   - Tech
   - JavaScript
+type: blog
 ---
 
 Add some more text here about what we're trying to achieve.

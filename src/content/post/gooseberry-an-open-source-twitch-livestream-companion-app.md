@@ -9,6 +9,7 @@ description: >-
   GooseBerry is an open source Twitch livestream companion app. It's a
   cross-platform desktop application built with Electron and React.
 date: '2024-01-18T13:22:00.000Z'
+type: blog
 ---
 
 It's still in an really early prototyping phase, but I've started yet another new personal coding project :)

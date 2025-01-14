@@ -10,6 +10,7 @@ description: >-
   Since I started working with Astro.build I was looking for a really simple CMS
   system that could publish Markdown (.md) files to GitHub and found that
   TinaCMS could do the job...
+type: blog
 ---
 
 Implemented it to this website and going to give it a try to see if I'm going to keep it.

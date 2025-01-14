@@ -9,6 +9,7 @@ categories:
 description: >-
   After switching to static builds from SSR and having some other issues with
   Netlify, I decided to go back to self hosting in a Docker container.
+type: blog
 ---
 
 Also, my website doesn't really generates that much traffic ... if there's one visitor a day I'm already lucky \:D

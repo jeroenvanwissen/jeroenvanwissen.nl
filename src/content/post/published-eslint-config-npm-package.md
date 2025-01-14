@@ -9,6 +9,7 @@ categories:
     - npm
 description: >
     In my journey to learn more about TypeScript and locking in a personal development stack I decided to publish my own ESLint config package, to be used in all my projects.
+type: blog
 ---
 As I'm finally getting more and more into TypeScript and working out a development stack based on MongoDB, Express, React and Node.js I decided to publish my own ESLint config package, to be used in all my projects.
 So that I don't have to keep copy/pasting the same config over and over again for each project.

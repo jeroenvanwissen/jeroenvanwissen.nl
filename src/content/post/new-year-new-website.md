@@ -5,6 +5,7 @@ categories:
     - Random Thoughts
 description: >
     It was about time I started doing something with my personal website again.
+type: blog
 ---
 Call it a new year's resolution, or whatever you want.. It's just something that had to be done.
 

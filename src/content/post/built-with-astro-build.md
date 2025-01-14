@@ -8,6 +8,7 @@ categories:
 description: >
   I started to build simple websites like this one with Astro.build, a static
   html generator framework.
+type: blog
 ---
 
 In a search of a simple static html page generator framework I stumbled up on [Astro.build](https://astro.build "Link to Astro.build website")
