@@ -1,0 +1,20 @@
+---
+import { getSortedEntriesFromCollection } from '@lib/util';
+export async function getStaticPaths() {
+    const entries = await getSortedEntriesFromCollection('post', 'blog');
+  return entries.map((entry) => {
+    return {
+      params: { slug: entry.slug },
+      props: { destination: `/post/${entry.slug}` }
+    };
+  });
+}
+
+const { destination } = Astro.props;
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content={`0;url=${destination}`}>
+  </head>
+</html>
