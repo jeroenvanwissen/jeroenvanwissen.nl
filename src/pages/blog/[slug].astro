@@ -1,13 +1,13 @@
 ---
 import { getSortedEntriesFromCollection } from '@lib/util';
+
 export async function getStaticPaths() {
-    const entries = await getSortedEntriesFromCollection('post', 'blog');
-  return entries.map((entry) => {
-    return {
-      params: { slug: entry.slug },
-      props: { destination: `/post/${entry.slug}` }
-    };
-  });
+    return (await getSortedEntriesFromCollection('post', 'blog')).map((entry: any) => {
+        return {
+            params: { slug: entry.slug },
+            props: { destination: `/post/${entry.slug}` }
+        };
+    });
 }
 
 const { destination } = Astro.props;

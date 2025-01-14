@@ -6,7 +6,7 @@ export default defineConfig({
   site: 'https://jeroenvanwissen.nl',
   integrations: [tailwind()],
   redirects: {
-    '/blog/[...slug]': '/post/[...slug]',
+    '/blog/[slug]': '/post/[slug]',
     '/blog/categories-pages-added': '/post/category-pages-added',
     '/blog/adding-mdx-and-image-integration': '/',
     '/contact': '/',
