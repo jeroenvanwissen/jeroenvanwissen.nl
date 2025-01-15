@@ -37,7 +37,7 @@ jobs:
                   release-count: '5'
                   version-file: './package.json'
                   version-path: 'version'
-                  skip-on-empty: 'true'
+                  skip-on-empty: 'false'
                   skip-version-file: 'false'
                   skip-commit: 'false'
                   fallback-version: '0.1.0'
