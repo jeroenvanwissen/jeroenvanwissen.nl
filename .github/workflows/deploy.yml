@@ -14,76 +14,80 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: Install SSH Client
-              uses: webfactory/ssh-agent@v0.9.0
-              with:
-                ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
             - name: Checkout your repository using git
               uses: actions/checkout@v4
               with:
-                fetch-depth: 0
+                  fetch-depth: 0
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
-                node-version: '20'
+                  node-version: '20'
+
+            - name: Setup SSH Keys and known_hosts
+              env:
+                  SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+              run: |
+                  ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+                  ssh-add - <<< "${{ secrets.DEPLOY_KEY }}"
 
             - name: Check version and create release
               run: |
-                # Configure git
-                git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                git config --global user.name "github-actions[bot]"
-                
-                # Get current version from package.json
-                CURRENT_VERSION=$(node -p "require('./package.json').version")
-                echo "Current version: $CURRENT_VERSION"
+                  # Configure git
+                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                  git config --global user.name "github-actions[bot]"
 
-                # Check if tag exists
-                if git rev-parse "v$CURRENT_VERSION" >/dev/null 2>&1; then
-                  echo "Version $CURRENT_VERSION already exists, incrementing patch version"
-                  # Split version into parts
-                  IFS='.' read -r -a VERSION_PARTS <<< "$CURRENT_VERSION"
-                  MAJOR="${VERSION_PARTS[0]}"
-                  MINOR="${VERSION_PARTS[1]}"
-                  PATCH="${VERSION_PARTS[2]}"
-                  
-                  # Increment patch version
-                  NEW_PATCH=$((PATCH + 1))
-                  NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
-                  
-                  # Update package.json and package-lock.json with new version
-                  npm version $NEW_VERSION --no-git-tag-version
-                  
-                  # Install dependencies to update package-lock.json
-                  npm install
-                  
-                  # Commit and push changes
-                  git add package.json package-lock.json
-                  git commit -m "chore: bump version to $NEW_VERSION [skip ci]"
-                  git push
-                  
-                  # Create and push new tag
-                  git tag "v$NEW_VERSION"
-                  git push origin "v$NEW_VERSION"
-                  
-                  # Create GitHub release
-                  gh release create "v$NEW_VERSION" \
-                    --title "v$NEW_VERSION" \
-                    --notes "Release v$NEW_VERSION" \
-                    --generate-notes
-                else
-                  echo "Creating release for version $CURRENT_VERSION"
-                  # Create and push new tag
-                  git tag "v$CURRENT_VERSION"
-                  git push origin "v$CURRENT_VERSION"
-                  
-                  # Create GitHub release
-                  gh release create "v$CURRENT_VERSION" \
-                    --title "v$CURRENT_VERSION" \
-                    --notes "Release v$CURRENT_VERSION" \
-                    --generate-notes
-                fi
+                  # Get current version from package.json
+                  CURRENT_VERSION=$(node -p "require('./package.json').version")
+                  echo "Current version: $CURRENT_VERSION"
+
+                  # Check if tag exists
+                  if git rev-parse "v$CURRENT_VERSION" >/dev/null 2>&1; then
+                    echo "Version $CURRENT_VERSION already exists, incrementing patch version"
+                    # Split version into parts
+                    IFS='.' read -r -a VERSION_PARTS <<< "$CURRENT_VERSION"
+                    MAJOR="${VERSION_PARTS[0]}"
+                    MINOR="${VERSION_PARTS[1]}"
+                    PATCH="${VERSION_PARTS[2]}"
+                    
+                    # Increment patch version
+                    NEW_PATCH=$((PATCH + 1))
+                    NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
+                    
+                    # Update package.json and package-lock.json with new version
+                    npm version $NEW_VERSION --no-git-tag-version
+                    
+                    # Install dependencies to update package-lock.json
+                    npm install
+                    
+                    # Commit and push changes
+                    git add package.json package-lock.json
+                    git commit -m "chore: bump version to $NEW_VERSION [skip ci]"
+                    git push
+                    
+                    # Create and push new tag
+                    git tag "v$NEW_VERSION"
+                    git push origin "v$NEW_VERSION"
+                    
+                    # Create GitHub release
+                    gh release create "v$NEW_VERSION" \
+                      --title "v$NEW_VERSION" \
+                      --notes "Release v$NEW_VERSION" \
+                      --generate-notes
+                  else
+                    echo "Creating release for version $CURRENT_VERSION"
+                    # Create and push new tag
+                    git tag "v$CURRENT_VERSION"
+                    git push origin "v$CURRENT_VERSION"
+                    
+                    # Create GitHub release
+                    gh release create "v$CURRENT_VERSION" \
+                      --title "v$CURRENT_VERSION" \
+                      --notes "Release v$CURRENT_VERSION" \
+                      --generate-notes
+                  fi
+              env:
+                  SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
             - name: Install, build and upload your site
               uses: withastro/action@v3
