@@ -20,12 +20,12 @@ jobs:
                   fetch-depth: 0
                   fetch-tags: true
                   persist-credentials: false
-                  token: ${{ secrets.GITHUB_TOKEN }}
+                  token: ${{ secrets.GH_TOKEN_ACTION }}
 
             - name: Bump version and push tag
               uses: TriPSs/conventional-changelog-action@v6
               with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  github-token: ${{ secrets.GH_TOKEN_ACTION }}
                   git-message: 'chore(release): {version}'
                   preset: 'angular'
                   tag-prefix: 'v'
