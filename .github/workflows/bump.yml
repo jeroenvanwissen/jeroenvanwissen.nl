@@ -1,4 +1,5 @@
 name: Bump version
+
 on:
     push:
         branches:
@@ -6,19 +7,35 @@ on:
         paths-ignore:
             - 'package.json'
             - 'CHANGELOG.md'
+
 jobs:
     build:
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
 
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v4
               with:
+                  fetch-depth: 0
                   token: ${{ secrets.GH_TOKEN_ACTION }}
+
             - name: Bump version and push tag
-              uses: TriPSs/conventional-changelog-action@master
+              uses: TriPSs/conventional-changelog-action@v6
               with:
                   github-token: ${{ secrets.GH_TOKEN_ACTION }}
                   git-message: 'chore(release): {version}'
                   preset: 'angular'
                   tag-prefix: ''
                   output-file: 'CHANGELOG.md'
+                  git-user-name: 'Conventional Changelog Action'
+                  git-user-email: 'conventional.changelog.action@github.com'
+                  git-pull-method: '--ff-only'
+                  git-push: 'true'
+                  release-count: '5'
+                  version-file: './package.json'
+                  version-path: 'version'
+                  skip-on-empty: 'true'
+                  skip-version-file: 'false'
+                  skip-commit: 'false'
+                  fallback-version: '0.1.0'
