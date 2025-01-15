@@ -26,7 +26,7 @@ jobs:
                   github-token: ${{ secrets.GH_TOKEN_ACTION }}
                   git-message: 'chore(release): {version}'
                   preset: 'angular'
-                  tag-prefix: ''
+                  tag-prefix: 'v'
                   output-file: 'CHANGELOG.md'
                   git-user-name: 'Conventional Changelog Action'
                   git-user-email: 'conventional.changelog.action@github.com'
