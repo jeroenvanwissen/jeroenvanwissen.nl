@@ -60,10 +60,13 @@ jobs:
                     # Install dependencies to update package-lock.json
                     npm install
                     
+                    # Set origin to use SSH
+                    git remote set-url origin git@github.com:${GITHUB_REPOSITORY}.git
+                    
                     # Commit and push changes
                     git add package.json package-lock.json
                     git commit -m "chore: bump version to $NEW_VERSION [skip ci]"
-                    git push
+                    git push origin HEAD:main
                     
                     # Create and push new tag
                     git tag "v$NEW_VERSION"
@@ -76,6 +79,9 @@ jobs:
                       --generate-notes
                   else
                     echo "Creating release for version $CURRENT_VERSION"
+                    # Set origin to use SSH
+                    git remote set-url origin git@github.com:${GITHUB_REPOSITORY}.git
+                    
                     # Create and push new tag
                     git tag "v$CURRENT_VERSION"
                     git push origin "v$CURRENT_VERSION"
