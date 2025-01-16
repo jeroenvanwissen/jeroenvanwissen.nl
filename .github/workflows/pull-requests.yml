@@ -1,35 +1,35 @@
 name: PR Deploy to GitHub Pages
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+    pull_request:
+        types: [opened, reopened, synchronize]
 
 jobs:
-  build-and-deploy:
-    # Only run if the PR author is the repository owner
-    if: ${{ github.event.pull_request.user.login == github.repository_owner }}
-    runs-on: ubuntu-latest
+    build-and-deploy:
+        # Only run if the PR author is the repository owner
+        if: ${{ github.event.pull_request.user.login == github.repository_owner }}
+        runs-on: ubuntu-latest
 
-    steps:
-     - name: Checkout your repository using git
-        uses: actions/checkout@v4
+        steps:
+            - name: Checkout your repository using git
+              uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
+            - name: Set up Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '22'
 
-      - name: Install dependencies
-        run: npm ci
+            - name: Install dependencies
+              run: npm ci
 
-      - name: Build
-        run: npm run build
+            - name: Build
+              run: npm run build
 
-      # Deploy to gh-pages under `-pr/<branch_name>`
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist   # Adjust this if your build output is elsewhere
-          publish_branch: gh-pages
-          destination_dir: -pr/${{ github.head_ref }}
+            # Deploy to gh-pages under `-pr/<branch_name>`
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  personal_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./dist # Adjust this if your build output is elsewhere
+                  publish_branch: gh-pages
+                  destination_dir: -pr/${{ github.head_ref }}
