@@ -6,7 +6,7 @@ const entityCollection = defineCollection({
         date: z.string().transform((str) => new Date(str)),
         title: z.string(),
         categories: z.array(z.string()).default([]),
-        type: z.enum(['blog', 'recipe', 'photo']),
+        type: z.enum(['blog', 'recipe', 'photo', 'project']),
         description: z.string(),
         image: z.object({
             url: image(),

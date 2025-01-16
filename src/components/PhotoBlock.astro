@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+	post: object;
+}
+
+const { post } = Astro.props;
+---
+
+<div class="bg-primary-200--2 shadow-md p-6 diagonal-corners">
+	{ post.data.image && (
+		<Image
+			src={post.data.image.url}
+			alt={post.data.image.alt}
+			width={380}
+			class=""
+			/>
+	)}
+<!--	<h2 class="text-xl font-bold mb-2 text-primary-400">
+		<a href={`/post/${post.slug}`}>
+			{post.data.title}
+		</a>
+	</h2>
+-->
+</div>

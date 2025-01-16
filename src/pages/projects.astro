@@ -1,18 +1,18 @@
 ---
 import { getSortedEntriesFromCollection } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
-import PhotoBlock from '@components/PhotoBlock.astro';
+import PostBlock from '@components/PostBlock.astro';
 
-const posts = await getSortedEntriesFromCollection('post', 'photo');
+const posts = await getSortedEntriesFromCollection('post', 'project');
 ---
 
 <Layout>
     <Fragment slot="head">
-        <title>Photography by Jeroen van Wissen - 31F Fotografie</title>
+        <title>Projects by Jeroen van Wissen</title>
         <meta content="website" property="og:type" />
-        <meta content="Photography by Jeroen van Wissen - 31F Fotografie" property="og:title" />
-        <meta content="An overview of pictures taken by Jeroen van Wissen - 31F Fotografie" name="description" />
-        <meta content="An overview of pictures taken by Jeroen van Wissen - 31F Fotografie" property="og:description" />
+        <meta content="Projects by Jeroen van Wissen" property="og:title" />
+        <meta content="An overview of the projects Jeroen has worked on" name="description" />
+        <meta content="An overview of the projects Jeroen has worked on" property="og:description" />
         <meta content={`${import.meta.env.SITE}/photography`} property="og:url" />
         <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="og:image" />
         <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="twitter:image:src" />
@@ -23,7 +23,7 @@ const posts = await getSortedEntriesFromCollection('post', 'photo');
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3">
             {
                 posts.map((post: any) => (
-                    <PhotoBlock post={post} />
+                    <PostBlock post={post} />
                 ))
             }
             </div>

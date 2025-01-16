@@ -8,17 +8,16 @@ const posts = await getSortedEntriesFromCollection('post', 'blog');
 
 <Layout>
     <Fragment slot="head">
-        <title>Posts - Jeroen van Wissen</title>
+        <title>Blog posts by Jeroen van Wissen</title>
         <meta content="website" property="og:type" />
-        <meta content="Posts - Jeroen van Wissen" property="og:title" />
-        <meta content="Overview of all posts by Jeroen van Wissen" name="description" />
-        <meta content="Overview of all posts by Jeroen van Wissen" property="og:description" />
+        <meta content="Blog posts by Jeroen van wissen" property="og:title" />
+        <meta content="Overview of all blog posts by Jeroen van Wissen" name="description" />
+        <meta content="Overview of all blog posts by Jeroen van Wissen" property="og:description" />
         <meta content={`${import.meta.env.SITE}/posts`} property="og:url" />
         <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="og:image" />
         <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="twitter:image:src" />
         <link href={`${import.meta.env.SITE}/posts`} rel="canonical" />
     </Fragment>
-    <Fragment slot="title">Posts - Jeroen van Wissen</Fragment>
     <div class="w-full">
       <div class="mx-auto max-w-6xl px-8 py-4">
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3">
@@ -32,14 +31,3 @@ const posts = await getSortedEntriesFromCollection('post', 'blog');
     </div>
 </Layout>
 
-<style is:global>
-    article h2 {
-        @apply mt-6 text-xl text-neutral-100;
-    }
-    article p {
-        @apply mt-3 mb-4 text-justify text-neutral-200;
-    }
-    article a {
-        @apply text-primary-400 underline hover:text-primary-400;
-    }
-</style>
