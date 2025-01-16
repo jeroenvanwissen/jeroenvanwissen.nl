@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,800&display=swap');
 
 :root {
-  --main-family: 'Roboto', sans-serif;
+  --main-family: 'Roboto Mono', sans-serif;
+  --logo-font-family: 'Roboto', sans-serif;
 }
 
 html {
-    font-family: var(--main-family);
-    min-height: 100%;
-    font-size: 1.25rem;
+  font-family: var(--main-family);
+  min-height: 100%;
+  font-size: 1.25rem;
+}
+
+.logo {
+  font-family: var(--logo-font-family);
 }
 
 article a {
@@ -22,6 +28,7 @@ article a {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
