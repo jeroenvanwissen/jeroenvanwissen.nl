@@ -35,12 +35,14 @@ const { Content } = await entry.render();
                     <div class="items-center justify-between md:flex">
                         <!-- <div class="flex text-xs text-primary-50">{entry.data.date.toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' })}</div> -->
 
-                        <Image
-                            src={entry.data.image.url}
-                            alt={entry.data.image.alt}
-                            width={1320}
-                            class=""
-                            />
+                        { entry.data.image && (
+                            <Image
+                                src={entry.data.image.url}
+                                alt={entry.data.image.alt}
+                                width={1320}
+                                class=""
+                                />
+                        )}
 
                         <!-- <div class="flex pt-2 text-xs text-primary-500 md:pt-0">
                         {
