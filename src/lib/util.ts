@@ -18,6 +18,10 @@ type BlogEntry = CollectionEntry<'post'> & {
         categories: string[];
         description: string;
         type: string;
+        image?: {
+            url: string;
+            alt: string;
+        };
     }
 }
 
@@ -45,7 +49,7 @@ export function generateCategories(categories: string[] = []): ICategory[] {
 
 export async function getEntriesFromCollection(collection: 'post', type: string): Promise<BlogEntry[]> {
     const entries = await getCollection(collection);
-    return entries.filter(entry => !entry.data.draft && entry.data.type === type) as BlogEntry[];
+    return entries.filter(entry => !entry.data.draft && (type === 'all' || entry.data.type === type)) as BlogEntry[];
 }
 
 export async function getSortedEntriesFromCollection(collection: 'post', type: string): Promise<BlogEntry[]> {
@@ -56,6 +60,13 @@ export async function getSortedEntriesFromCollection(collection: 'post', type: s
 export async function getAllSortedEntries(): Promise<BlogEntry[]> {
     return [...(await getEntriesFromCollection('post', 'blog'))]
         .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
+}
+
+export async function getLatestPhotoEntries(): Promise<BlogEntry[]> {
+    return [...(await getEntriesFromCollection('post', 'photo'))]
+        .filter(entry => entry.data.image?.url)
+        .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf())
+        .slice(0, 10);
 }
 
 export async function getAllCategories(): Promise<ICategory[]> {

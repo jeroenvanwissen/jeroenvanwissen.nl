@@ -1,9 +1,10 @@
 ---
 import { generateCategories, getSortedEntriesFromCollection } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
-    return (await getSortedEntriesFromCollection('post', 'blog')).map((entry: any) => {
+    return (await getSortedEntriesFromCollection('post', 'all')).map((entry: any) => {
         return {
             params: { slug: entry.slug },
             props: { entry }
@@ -27,12 +28,21 @@ const { Content } = await entry.render();
         <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="twitter:image:src" />
         <link href={`${import.meta.env.SITE}/post/${entry.slug}`} rel="canonical" />
     </Fragment>
-    <div class="mx-auto rounded-lg bg-secondary-800 shadow-lg">
-        <article>
-            <div class="p-4 md:p-6">
-                <div class="items-center justify-between md:flex">
-                    <div class="flex text-xs text-primary-50">{entry.data.date.toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' })}</div>
-                    <!-- <div class="flex pt-2 text-xs text-primary-500 md:pt-0">
+    <div class="w-full bg-primary-950">
+        <div class="max-w-6xl mx-auto px-6">
+            <article>
+                <div class="p-4 md:p-6">
+                    <div class="items-center justify-between md:flex">
+                        <!-- <div class="flex text-xs text-primary-50">{entry.data.date.toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Amsterdam' })}</div> -->
+
+                        <Image
+                            src={entry.data.image.url}
+                            alt={entry.data.image.alt}
+                            width={1320}
+                            class=""
+                            />
+
+                        <!-- <div class="flex pt-2 text-xs text-primary-500 md:pt-0">
                         {
                             generateCategories(entry.data.categories).map((category) => (
                                 <>
@@ -44,15 +54,16 @@ const { Content } = await entry.render();
                             ))
                         }
                     </div> -->
+                    </div>
+                    <h2>{entry.data.title}</h2>
+                    <p>{entry.data.description}</p>
+                    <Content />
+                    <p>
+                        <a href="/posts">&larr; back to all posts</a>
+                    </p>
                 </div>
-                <h2>{entry.data.title}</h2>
-                <p>{entry.data.description}</p>
-                <Content />
-                <p>
-                    <a href="/posts">&larr; back to all posts</a>
-                </p>
-            </div>
-        </article>
+            </article>
+        </div>
     </div>
 </Layout>
 

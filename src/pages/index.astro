@@ -1,8 +1,12 @@
 ---
-import { getAllSortedEntries } from '@lib/util';
+import { getAllSortedEntries, getLatestPhotoEntries } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 
 const entries = await getAllSortedEntries();
+const photos = await getLatestPhotoEntries();
+
 ---
 
 <Layout>
@@ -18,20 +22,88 @@ const entries = await getAllSortedEntries();
         <link href={import.meta.env.SITE} rel="canonical" />
     </Fragment>
     <Fragment slot="title">Jeroen van Wissen</Fragment>
-    <div class="mx-auto rounded-lg xl:rounded-br-xl bg-secondary-800 shadow-lg relative">
-        <img alt="Image of Jeroen van Wissen" src="/images/jeroen.webp" class="hidden xl:object-cover xl:object-left xl:inline-block xl:h-[650px] xl:max-w-[650px] xl:absolute xl:right-0 xl:bottom-0 xl:rounded-none xl:rounded-br-lg" />
-        <div class="flex flex-col justify-start items-start gap-3 xl:gap-5 px-4 pt-2.5 pb-5 relative xl:pr-0 xl:pl-5 xl:w-4/5">
-            <div class="md:flex justify-center">
-                <img alt="Image of Jeroen van Wissen" src="/images/jeroen.webp" class="mb-2 w-full max-w-[310px] h-52 md:h-[225px] mx-auto rounded object-cover object-top xl:hidden" />
-                <p class="md:text-2xl lg:text-3xl xl:text-4xl md:ml-2 xl:ml-0 font-bold text-left text-primary-50">
-                    Hey!<br />I’m <span class="text-primary-500">Jeroen</span>, a Full Stack JavaScript/TypeScript Developer from the Netherlands.</span>
-                </p>
+    <div class="w-full bg-primary-950">
+        <div class="max-w-6xl mx-auto px-20 py-14 pb-8">
+            <div class="flex gap-8 px-4">
+                <Image 
+                    src="/images/jeroenvanwissen.png" 
+                    alt="Jeroen van Wissen" 
+                    width={400}
+                    height={400}
+                    class="w-1/3"
+                />
+                <div class="w-2/3">
+                    <div class="md:flex justify-center pt-10">
+                        <p class="text-3xl font-bold text-left text-primary-400">
+                            Hi!<br /><br />I’m <span class="text-primary-50">Jeroen</span>, Full Stack JavaScript/TypeScript Developer from the Netherlands.
+                        </p>
+                    </div>
+                    <p class="text-sm text-left text-primary-50 md:text-base">Connect with me on <a href="https://linkedin.com/in/jeroenvanwissen" rel="me" title="Connect with me on LinkedIn" class="inline-block align-bottom pb-[2px]"><img src="/images/linkedin.png" alt="LinkedIn logo" class="h-5" /></a></p>
                 </div>
-            <p class="text-sm text-left text-primary-50 md:text-base">With more than two decades of experience in development, including over five years as a Tech Lead/Engineering Manager, I have refined my skills and expertise. While I began my journey with PHP, my focus has now shifted entirely to JavaScript/TypeScript, specifically ReactJS and NodeJS. I am a versatile and passionate professional, dedicated to finding solutions and constantly seeking opportunities for growth. Additionally, I possess hands-on experience with AWS DevOps and GitLab CI/CD, enhancing my proficiency in delivering efficient and streamlined development processes.</p>
-            <!-- <div class="px-5 py-2 rounded-lg bg-primary-50 hover:bg-primary-300">
-                <p class="text-base font-bold text-primary-800">More about me</p>
-            </div> -->
-            <p class="text-sm text-left text-primary-50 md:text-base">Connect with Jeroen van Wissen on <a href="https://linkedin.com/in/jeroenvanwissen" rel="me" title="Connect with me on LinkedIn" class="inline-block align-bottom pb-[2px]"><img src="/images/linkedin.png" alt="LinkedIn logo" class="h-5"/></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="w-full bg-primary-900">
+        <div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 py-8">
+                {
+                    entries.slice(0, 2).map((entry) => (
+                        <article class="bg-primary-200--2 shadow-md p-6 diagonal-corners">
+                            <h2 class="text-xl font-bold mb-2 text-primary-400">
+                                <a href={`/post/${entry.slug}/`} class="hover:text-primary-500">
+                                    {entry.data.title}
+                                </a>
+                            </h2>
+                            <p class="text-primary-50 mb-4">
+                                {entry.data.description}
+                            </p>
+                            <div class="text-sm text-primary-500">
+                                {new Date(entry.data.date).toLocaleDateString()}
+                            </div>
+                        </article>
+                    ))
+                }
+                <article class="bg-primary-200--2 shadow-md p-6 diagonal-corners">
+                    <h2 class="text-xl font-bold mb-4 text-primary-400">Older Posts</h2>
+                    <ul class="space-y-3">
+                        {entries.slice(2, 7).map((entry) => (
+                            <li>
+                                <a href={`/post/${entry.slug}/`} class="text-primary-50 hover:text-primary-500">
+                                    {entry.data.title}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </div>
+    <div class="w-full bg-primary-950">
+        <div class="photo-ribbon py-8">
+            <div class="photo-ribbon-content">
+                {photos.map((photo) => (
+                    <a href={`/post/${photo.slug}/`} title={photo.data.title}>
+                        <Image 
+                            src={photo.data.image.url} 
+                            alt={photo.data.title}
+                            width={300}
+                            height={200}
+                            class="rounded-lg shadow-lg"
+                        />
+                    </a>
+                ))}
+                {photos.map((photo) => (
+                    <a href={`/post/${photo.slug}/`} title={photo.data.title}>
+                        <Image 
+                            src={photo.data.image.url} 
+                            alt={photo.data.title}
+                            width={300}
+                            height={200}
+                            class="rounded-lg shadow-lg"
+                        />
+                    </a>
+                ))}
+            </div>
         </div>
     </div>
 </Layout>

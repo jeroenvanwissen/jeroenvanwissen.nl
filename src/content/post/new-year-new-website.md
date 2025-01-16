@@ -2,10 +2,13 @@
 date: '2023-01-01T00:00:00.000Z'
 title: New Year, New Website
 categories:
-    - Random Thoughts
-description: >
-    It was about time I started doing something with my personal website again.
+- Random Thoughts
+description: 'It was about time I started doing something with my personal website
+  again.
+
+  '
 type: blog
+draft: false
 ---
 Call it a new year's resolution, or whatever you want.. It's just something that had to be done.
 

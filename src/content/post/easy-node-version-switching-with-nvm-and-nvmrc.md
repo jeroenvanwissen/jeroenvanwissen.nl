@@ -2,15 +2,15 @@
 draft: true
 date: '2023-09-11T19:00:00.000Z'
 title: Automatically switching NodeJS version per project with nvm and a .nvmrc file
-description: >-
-  I've been running multiple NodeJS projects locked in older versions for a while and if there's one small frustration then it must be forgetting to load the right NodeJS version before you start working on a project.
+description: I've been running multiple NodeJS projects locked in older versions for
+  a while and if there's one small frustration then it must be forgetting to load
+  the right NodeJS version before you start working on a project.
 categories:
-  - NodeJS
-  - Tech
-  - JavaScript
+- NodeJS
+- Tech
+- JavaScript
 type: blog
 ---
-
 Add some more text here about what we're trying to achieve.
 
 Then describe where to find and how to install nvm, add short explanation of the useage.

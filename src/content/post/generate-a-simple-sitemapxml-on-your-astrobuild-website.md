@@ -2,17 +2,15 @@
 draft: false
 date: '2023-02-25T19:00:00.000Z'
 title: Generate a simple sitemap.xml on your Astro.build website
-description: >-
-  Without adding an external dependency to your project, I worked out a simple
-  solution to generate a sitemap.xml on your Server-Side-Rendered Astro.build
+description: Without adding an external dependency to your project, I worked out a
+  simple solution to generate a sitemap.xml on your Server-Side-Rendered Astro.build
   website. I'm using this on my websites hosted on Netlify
 categories:
-  - Astro.build
-  - Tech
-  - JavaScript
+- Astro.build
+- Tech
+- JavaScript
 type: blog
 ---
-
 It might not be perfect code, I'm well aware of that. And it might not work for your setup, but with some modifications it might :)
 
 In this post I'll explain the solution I've implemented on my photography portfolio site [31f-fotografie.nl](https://31f-fotografie.nl "Link to 31f-fotografie.nl website")

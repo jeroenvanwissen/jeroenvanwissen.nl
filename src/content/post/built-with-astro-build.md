@@ -2,15 +2,16 @@
 date: '2023-01-02T00:00:00.000Z'
 title: Built with Astro.build
 categories:
-  - Tech
-  - JavaScript
-  - Astro.build
-description: >
-  I started to build simple websites like this one with Astro.build, a static
-  html generator framework.
-type: blog
----
+- Tech
+- JavaScript
+- Astro.build
+description: 'I started to build simple websites like this one with Astro.build, a
+  static html generator framework.
 
+  '
+type: blog
+draft: false
+---
 In a search of a simple static html page generator framework I stumbled up on [Astro.build](https://astro.build "Link to Astro.build website")
 
 Immediately I liked the simplicity and ease of use. And mostly to be able to extend it with other JavaScript frameworks like React and Svelte (and more..)

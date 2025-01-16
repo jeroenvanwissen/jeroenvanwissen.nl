@@ -1,6 +1,6 @@
 # My personal website 
 
-[jeroenvanwissen.nl](httsp://jeroenvanwissen.nl)
+[jeroenvanwissen.nl](https://jeroenvanwissen.nl)
 
 
 This repository contains the source code for my personal website. The website is built using [Astro.build](https://astro.build).

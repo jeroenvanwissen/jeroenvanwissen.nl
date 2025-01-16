@@ -1,15 +1,17 @@
 ---
 title: Building and deploying Docker images with GitHub Actions
 categories:
-  - Docker
-  - GitHub Actions
-  - CI/CD
-  - GitHub
-  - Tech
-description: >-
-    Slowly moving my projects from a selfhosted GitLab instance to GitHub, while doing so I'm learning how to use GitHub Actions to build and delpoy Docker images to the GitHub Container Registry (ghcr.io).
+    - Docker
+    - GitHub Actions
+    - CI/CD
+    - GitHub
+    - Tech
+description: Slowly moving my projects from a selfhosted GitLab instance to GitHub,
+    while doing so I'm learning how to use GitHub Actions to build and delpoy Docker
+    images to the GitHub Container Registry (ghcr.io).
 date: '2024-05-04T15:29:00.000Z'
 type: blog
+draft: false
 ---
 
 After having most of my personal projects hosted on a Docker server at home, I decided to move everything out again after a power outage and multiple fiber outages.
@@ -60,53 +62,52 @@ Next, create a GitHub Actions workflow file in the `.github/workflows` directory
 name: Build and push Docker image to ghcr.io
 
 on:
-  push:
-    tags: [ 'v*.*.*' ]
+    push:
+        tags: ['v*.*.*']
 
 env:
-  REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+    REGISTRY: ghcr.io
+    # github.repository as <account>/<repo>
+    IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4.1.4
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4.1.4
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.3.0
- 
-      - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v3.1.0
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v3.3.0
 
-      - name: Extract Docker metadata
-        id: meta
-        uses: docker/metadata-action@v5.5.1
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            - name: Log into registry ${{ env.REGISTRY }}
+              if: github.event_name != 'pull_request'
+              uses: docker/login-action@v3.1.0
+              with:
+                  registry: ${{ env.REGISTRY }}
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
-        id: build-and-push
-        uses: docker/build-push-action@v5.3.0
-        with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: |
-            ${{ steps.meta.outputs.tags }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          labels: ${{ steps.meta.outputs.labels }}
+            - name: Extract Docker metadata
+              id: meta
+              uses: docker/metadata-action@v5.5.1
+              with:
+                  images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
+            - name: Build and push Docker image
+              id: build-and-push
+              uses: docker/build-push-action@v5.3.0
+              with:
+                  context: .
+                  push: ${{ github.event_name != 'pull_request' }}
+                  tags: |
+                      ${{ steps.meta.outputs.tags }}
+                      ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+                  labels: ${{ steps.meta.outputs.labels }}
 ```
 
 This GitHub Actions workflow file defines a workflow that is triggered when a new tag is pushed to the repository. It uses the `docker/build-push-action` action to build and push the Docker image to the GitHub Container Registry. It tags the image in the registry with the given version tag AND 'latest' tag, so the latest versionned image will always have the 'latest' tag. The workflow logs into the registry using the GitHub token, which is automatically provided by GitHub Actions.
@@ -118,11 +119,11 @@ Now that you have created the Dockerfile, GitHub Actions workflow, you can trigg
 To use this Docker image in my Docker Compose file, I simply referenced the image:
 
 ```yaml
-...
+
+---
 services:
-  website:
-    image: ghcr.io/jeroenvanwissen/jeroenvanwissen.nl:latest
-...
+    website:
+        image: ghcr.io/jeroenvanwissen/jeroenvanwissen.nl:latest
 ```
 
 That's it! You have successfully built and deployed a Docker image to the GitHub Container Registry using GitHub Actions. You can now use this workflow as a template for building and deploying other Docker images in your projects.
