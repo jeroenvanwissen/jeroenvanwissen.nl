@@ -1,0 +1,20 @@
+---
+export interface Props {
+	post: object;
+}
+
+const { post } = Astro.props;
+
+console.log(post);
+---
+
+<div class="bg-primary-200--2 shadow-md p-6 diagonal-corners">
+  <h2 class="text-xl font-bold mb-2 text-primary-400">
+    <a href={`/post/${post.slug}`}>
+      {post.data.title}
+    </a>
+  </h2>
+  <p>
+    {post.data.description}
+  </p>
+</div>
