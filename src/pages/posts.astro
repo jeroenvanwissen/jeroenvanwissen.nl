@@ -1,9 +1,9 @@
 ---
-import { getSortedEntriesFromCollection } from '@lib/util';
+import { getSortedPostsByType } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
 import PostBlock from '@components/PostBlock.astro';
 
-const posts = await getSortedEntriesFromCollection('post', 'blog');
+const posts = await getSortedPostsByType('post', 'blog');
 ---
 
 <Layout>

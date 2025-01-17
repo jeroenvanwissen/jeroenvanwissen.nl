@@ -1,10 +1,10 @@
 ---
-import { generateCategories, getSortedEntriesFromCollection } from '@lib/util';
+import { getSortedPostsByType } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
-    return (await getSortedEntriesFromCollection('post', 'all')).map((entry: any) => {
+    return (await getSortedPostsByType('post', 'all')).map((entry: any) => {
         return {
             params: { slug: entry.slug },
             props: { entry }
@@ -43,19 +43,6 @@ const { Content } = await entry.render();
                                 class=""
                                 />
                         )}
-
-                        <!-- <div class="flex pt-2 text-xs text-primary-500 md:pt-0">
-                        {
-                            generateCategories(entry.data.categories).map((category) => (
-                                <>
-                                    <a href={`/category/${category.slug}`} class="hover:text-primary-300 underline">
-                                        {category.name}
-                                    </a>
-                                    &nbsp;
-                                </>
-                            ))
-                        }
-                    </div> -->
                     </div>
                     <h2>{entry.data.title}</h2>
                     <p>{entry.data.description}</p>

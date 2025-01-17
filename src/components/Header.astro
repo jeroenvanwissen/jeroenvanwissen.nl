@@ -1,0 +1,26 @@
+---
+export interface Props {
+    label: string;
+}
+
+//TODO: We should figure out how to get color rbg values from the tailwind config, so that we can pass on this component as param
+
+const { label } = Astro.props;
+const color = '#FF2BB9';
+const gradientId = `header_${label.toLowerCase().replace(/\s/g, '_')}`;
+---
+
+<div class="leading-6">
+    <h2 class="text-lg font-bold text-left text-quaternary-400 pb-8">
+        <svg width="24" height="30" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="inline mr-1">
+            <path d="M1.52228 0.208984C0.454777 0.208984 -0.262864 1.30317 0.162478 2.28228L7.38106 18.899C7.6163 19.4405 8.15044 19.7908 8.74086 19.7908H11.044C12.112 19.7908 12.8297 18.6957 12.4034 17.7164L5.16943 1.09978C4.93393 0.558818 4.40008 0.208984 3.81009 0.208984H1.52228Z" fill=`url(#${gradientId})` fill-opacity="0.5" style=""></path>
+            <path d="M14.1475 0.208984C15.0672 0.208984 15.765 1.03774 15.6084 1.94404L12.7366 18.5607C12.6137 19.2716 11.997 19.7908 11.2757 19.7908H8.74844C7.82816 19.7908 7.13021 18.9611 7.28775 18.0544L10.1749 1.43776C10.2983 0.727519 10.9147 0.208984 11.6356 0.208984H14.1475Z" fill={color} style="fill:{color};fill-opacity:1;"></path>
+            <defs>
+                <linearGradient id={gradientId} x1="12.5854" y1="0.208984" x2="3.64701" y2="20.5175" gradientUnits="userSpaceOnUse">
+                    <stop offset="0.185" stop-color={color} stop-opacity="0" style="stop-color:none;stop-opacity:0;"></stop>
+                    <stop offset="1" stop-color={color} style="stop-color:{color};stop-opacity:1;"></stop>
+                </linearGradient>
+            </defs>
+        </svg><span class="leading-10 inline-block">{label}</span>
+    </h2>
+</div>

@@ -1,8 +1,8 @@
 ---
-import { getSortedEntriesFromCollection } from '@lib/util';
+import { getSortedPostsByType } from '@lib/util';
 
 export async function getStaticPaths() {
-    return (await getSortedEntriesFromCollection('post', 'blog')).map((entry: any) => {
+    return (await getSortedPostsByType('post', 'blog')).map((entry: any) => {
         return {
             params: { slug: entry.slug },
             props: { destination: `/post/${entry.slug}` }
