@@ -6,8 +6,8 @@ categories:
     - CI/CD
     - GitHub
     - Tech
-description: Slowly moving my projects from a selfhosted GitLab instance to GitHub,
-    while doing so I'm learning how to use GitHub Actions to build and delpoy Docker
+description: Slowly moving my projects from a self-hosted GitLab instance to GitHub,
+    while doing so I'm learning how to use GitHub Actions to build and deploy Docker
     images to the GitHub Container Registry (ghcr.io).
 date: '2024-05-04T15:29:00.000Z'
 type: blog
@@ -110,7 +110,7 @@ jobs:
                   labels: ${{ steps.meta.outputs.labels }}
 ```
 
-This GitHub Actions workflow file defines a workflow that is triggered when a new tag is pushed to the repository. It uses the `docker/build-push-action` action to build and push the Docker image to the GitHub Container Registry. It tags the image in the registry with the given version tag AND 'latest' tag, so the latest versionned image will always have the 'latest' tag. The workflow logs into the registry using the GitHub token, which is automatically provided by GitHub Actions.
+This GitHub Actions workflow file defines a workflow that is triggered when a new tag is pushed to the repository. It uses the `docker/build-push-action` action to build and push the Docker image to the GitHub Container Registry. It tags the image in the registry with the given version tag AND 'latest' tag, so the latest versioned image will always have the 'latest' tag. The workflow logs into the registry using the GitHub token, which is automatically provided by GitHub Actions.
 
 ## Trigger the workflow
 

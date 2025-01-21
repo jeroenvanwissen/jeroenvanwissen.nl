@@ -19,4 +19,4 @@ Bruno Senna, racing for Räikkönen Robertson Racing in a Dallara F306
 
 An old one from the archives... back in the day when I was around race cars every now and then...
 
-August 2006, Brunno Senna, BP Ultimate Masters 2006 Circuit Zandvoort
+August 2006, Bruno Senna, BP Ultimate Masters 2006 Circuit Zandvoort

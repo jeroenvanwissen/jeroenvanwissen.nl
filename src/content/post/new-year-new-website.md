@@ -20,7 +20,7 @@ Meanwhile at work we had a smooth Winter Olympic Games operation running for the
 
 Moved in the new home in April and since then every day feels like a mini vacation..
 
-Lots of work has been done, mainly around the house, to make it more and more 'our' place. Getting loads of concrete and other rubble removed from the old farm terrain together with our neighbours. Since then slowly creating a garden plan and the concrete foundation was laid for a shed.
+Lots of work has been done, mainly around the house, to make it more and more 'our' place. Getting loads of concrete and other rubble removed from the old farm terrain together with our neighbors. Since then slowly creating a garden plan and the concrete foundation was laid for a shed.
 
 Also took some steps to focus more on my mental and physical health, living outside the city helps a lot with that. Taking almost-daily walks outside, having a small park nearby is a big plus. Also started doing weekly personal training sessions at my CrossFit box, which I joined a couple of years ago.
 
@@ -41,4 +41,4 @@ Take more photography workshops
 Overall less focus on work, more focus on life, mental and physical health.
 But also, work on some personal coding projects again. Will be updating this site every now and then with new things.
 
-Have a good & healty 2023. Be more nice to each other!
+Have a good & healthy 2023. Be more nice to each other!

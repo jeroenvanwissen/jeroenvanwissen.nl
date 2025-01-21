@@ -12,7 +12,7 @@ date: '2023-07-20T15:28:00.000Z'
 type: blog
 draft: false
 ---
-You'll probably think, this guy is crazy.. yeap I probably am. No way that this is going to be an useful application. Or anything near to a real operating blockchain with any value. Just taking on the challenge and triggering my brains a bit, maybe I'll finally learn a bit more about the underlaying technology of blockchains. Or it will be just a complete waste of time, at least I hope I had fun.
+You'll probably think, this guy is crazy.. yep I probably am. No way that this is going to be an useful application. Or anything near to a real operating blockchain with any value. Just taking on the challenge and triggering my brains a bit, maybe I'll finally learn a bit more about the underlying technology of blockchains. Or it will be just a complete waste of time, at least I hope I had fun.
 
 Of course I will put the progress, once I have any, on [GitHub](https://github.com/jeroenvanwissen/blockchain-js "GitHub")
 

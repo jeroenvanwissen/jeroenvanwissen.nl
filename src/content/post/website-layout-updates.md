@@ -14,4 +14,4 @@ draft: false
 
 I'm no designer, my design skills aren't that good... but I managed to get this together. So far I'm happy with how things look now, I know on mobile it doesn't look perfect yet.
 
-Soon I'll add a recipes section, food and beer. I'm going to open-soure my home brewery recipes and going to share some food recipes I like to make and eat.
+Soon I'll add a recipes section, food and beer. I'm going to open-source my home brewery recipes and going to share some food recipes I like to make and eat.

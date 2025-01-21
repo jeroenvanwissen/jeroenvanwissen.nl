@@ -18,7 +18,7 @@ draft: false
 As I'm finally getting more and more into TypeScript and working out a development stack based on MongoDB, Express, React and Node.js I decided to publish my own ESLint config package, to be used in all my projects.
 So that I don't have to keep copy/pasting the same config over and over again for each project.
 
-It's a very simple config, based on the Airbnb TypeScript Style Guide, and probably during the useage of it I'll add more rules to it.
+It's a very simple config, based on the Airbnb TypeScript Style Guide, and probably during the usage of it I'll add more rules to it.
 
 Feel free to check it out and use it in your own projects, or even contribute to it.
 

@@ -13,10 +13,10 @@ type: blog
 ---
 Add some more text here about what we're trying to achieve.
 
-Then describe where to find and how to install nvm, add short explanation of the useage.
+Then describe where to find and how to install nvm, add short explanation of the usage.
 Create a .nvmrc file in project.
 
-For automatically switching version per project when you cd into the projet folder, add some script in your shell to be executed when a .nvmrc file is found in a folder... and it will also switch back to previously active version when you go out of the directory again.
+For automatically switching version per project when you cd into the project folder, add some script in your shell to be executed when a .nvmrc file is found in a folder... and it will also switch back to previously active version when you go out of the directory again.
 
 Add this to your `.bashrc`
 ```bash
