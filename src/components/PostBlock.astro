@@ -1,18 +1,24 @@
 ---
 export interface Props {
-	post: object;
+	post: {
+    slug: string;
+    data: {
+      title: string;
+      description: string;
+    };
+  };
 }
 
 const { post } = Astro.props;
 ---
 
-<div class="bg-primary-200--5 shadow-md p-6 diagonal-corners">
-  <h2 class="text-lg font-bold mb-2 text-primary-400">
+<div class="bg-primary-200--5 shadow-md p-4 sm:p-6 diagonal-corners">
+  <h2 class="text-sm sm:text-md lg:text-lg font-bold mb-2 text-primary-400">
     <a href={`/post/${post.slug}`}>
       {post.data.title}
     </a>
   </h2>
-  <p class="text-md text-primary-50 opacity-60">
+  <p class="text-xs sm:text-sm lg:text-md text-primary-50 opacity-60">
     {post.data.description}
   </p>
 </div>

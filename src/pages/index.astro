@@ -24,12 +24,12 @@ const photoPosts = await getSortedPostsByType('post', 'photo');
         <link href={import.meta.env.SITE} rel="canonical" />
     </Fragment>
     <div class="w-full bg-primary-950">
-        <div class="max-w-6xl mx-auto px-4 py-6 lg:px-20 lg:py-14 lg:pb-0">
+        <div class="max-w-6xl mx-auto px-2 pt-4 lg:px-20 lg:pt-8">
             <div class="flex gap-4 lg:gap-8 lg:px-4">
-                <Image src="/images/jeroenvanwissen.png" alt="Jeroen van Wissen" width={400} height={400} class="w-20 w-1/3" />
+                <Image src="/images/jeroenvanwissen.png" alt="Jeroen van Wissen" width={400} height={400} class="w-1/3" />
                 <div class="w-2/3">
-                    <div class="pt-4 lg:pt-20">
-                        <p class="text-md lg:text-3xl font-bold text-left text-primary-400">
+                    <div class="pt-6 lg:pt-20">
+                        <p class="text-sm lg:text-3xl font-bold text-left text-primary-400">
                             I’m <span class="text-primary-50">Jeroen</span>,<br />Full Stack Developer<br />from the Netherlands
                         </p>
                     </div>
@@ -38,9 +38,9 @@ const photoPosts = await getSortedPostsByType('post', 'photo');
         </div>
     </div>
     <div class="w-full bg-black">
-        <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="max-w-6xl mx-auto px-2">
             <Header label="blog posts" />
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6">
                 {
                     blogPosts.slice(0, 3).map((post) => (
                         <PostBlock post={post} />
@@ -50,14 +50,18 @@ const photoPosts = await getSortedPostsByType('post', 'photo');
         </div>
     </div>
     <div class="w-full bg-tertiary-950">
-        <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="max-w-6xl mx-auto px-2">
             <Header label="projects" />
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <span class="text-md text-primary-50 opacity-80">project blocks come here</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6">
+                {
+                    blogPosts.slice(0, 3).map((post) => (
+                        <PostBlock post={post} />
+                    ))
+                }
             </div>
         </div>
     </div>
-    <div class="w-full bg-primary-950">
+    <div class="hidden w-full bg-primary-950">
         <div class="photo-ribbon py-8">
             <div class="photo-ribbon-content">
                 {

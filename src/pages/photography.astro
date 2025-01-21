@@ -1,7 +1,6 @@
 ---
 import { getSortedPostsByType } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
-import PhotoBlock from '@components/PhotoBlock.astro';
 import { Image } from 'astro:assets';
 
 const posts = await getSortedPostsByType('post', 'photo');
@@ -24,28 +23,19 @@ const posts = await getSortedPostsByType('post', 'photo');
             <div class="mx-auto container my-8 sm:columns-2 md:columns-3 lg:columns-4">
                 {
                     posts.map((post) => (
-                        <Image
-                            src={post.data.image.url}
-                            alt={post.data.image.alt}
-                            format="avif"
-                            quality={50}
-                            class="rounded mb-4 border border-transparent hover:border-gray-300 transition-all duration-300 ease-in-out hover:shadow-lg grayscale hover:filter-none"
-                            loading="lazy"
-                        />
+                        <a href={`/post/${post.slug}`} class="block">
+                            <Image
+                                src={post.data.image.url}
+                                alt={post.data.image.alt}
+                                format="avif"
+                                quality={50}
+                                class="rounded mb-4 border border-transparent hover:border-gray-300 transition-all duration-300 ease-in-out hover:shadow-lg grayscale hover:filter-none"
+                                loading="lazy"
+                            />
+                        </a>
                     ))
                 }
             </div>
-
-<!--
-        
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3">
-            {
-                posts.map((post: any) => (
-                    <PhotoBlock post={post} />
-                ))
-            }
-            </div>
-//-->
         </div>
     </div>
 </Layout>

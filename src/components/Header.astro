@@ -3,15 +3,11 @@ export interface Props {
     label: string;
 }
 
-//TODO: We should figure out how to get color rbg values from the tailwind config, so that we can pass on this component as param
-
 const { label } = Astro.props;
-const color = '#FF2BB9';
-const gradientId = `header_${label.toLowerCase().replace(/\s/g, '_')}`;
 ---
 
 <div class="leading-6">
-    <h2 class="text-lg font-bold text-left text-quaternary-400 pb-8">
+    <h2 class="text-sm md:text-lg font-bold text-left text-quaternary-400 md:py-4">
         <span class="leading-10 inline-block">.{label}</span>
     </h2>
 </div>
