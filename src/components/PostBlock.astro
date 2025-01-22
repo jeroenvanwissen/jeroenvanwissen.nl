@@ -1,24 +1,68 @@
 ---
 export interface Props {
-	post: {
+  post: {
     slug: string;
     data: {
+      categories: string[];
+      date: Date;
       title: string;
       description: string;
     };
   };
+  color?: string;
 }
 
-const { post } = Astro.props;
+let { post, color } = Astro.props;
+
+if (color === undefined) {
+  color = "primary";
+}
 ---
 
-<div class="bg-primary-200--5 shadow-md p-4 sm:p-6 diagonal-corners">
-  <h2 class="text-sm sm:text-md lg:text-lg font-bold mb-2 text-primary-400">
+<div
+  class={`bg-${color}-200--5 shadow-md p-4 sm:p-6 diagonal-corners border border-r-primary-400 border-t-primary-400 border-b-primary-800 border-l-primary-800`}
+>
+  <div class={`text-xs text-${color}-50 opacity-40`}>
+    {
+      post.data.date.toLocaleString("en-US", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        timeZone: "Europe/Amsterdam",
+      })
+    }
+  </div>
+  <div class="my-1">
+    {
+      post.data.categories.map((category: string) => (
+        <span class={`pill inline-block text-${color}-400 bg-${color}-400`}>
+          {category}
+        </span>
+      ))
+    }
+  </div>
+
+  <h2 class={`text-sm sm:text-md lg:text-lg font-bold mb-2 text-${color}-400`}>
     <a href={`/post/${post.slug}`}>
       {post.data.title}
     </a>
   </h2>
-  <p class="text-xs sm:text-sm lg:text-md text-primary-50 opacity-60">
+  <p class={`text-xs sm:text-sm lg:text-md text-${color}-50 opacity-60`}>
     {post.data.description}
   </p>
 </div>
+
+<!-- aaoa said that we should do bg at 24% and font full color ... and a tad more padding.. :/ -->
+<style>
+  /*
+    bg-primary-200--5 bg-secondary-200--5 bg-tertiary-200-5 bg-quaternary-200--5
+    text-primary-900 text-secondary-900 text-tertiary-900 text-quaternary-900
+    bg-primary-400 bg-secondary-400 bg-tertiary-400 bg-quaternary-400
+    text-primary-400 text-secondary-400 bg-tertiary-400 text-quaternary-400
+    text-primary-50 text-secondary-50 text-tertiary-50 text-quaternary-50
+  */
+
+  .pill {
+    @apply text-xs rounded-full px-3 py-1 mr-1 whitespace-nowrap bg-opacity-25;
+  }
+</style>

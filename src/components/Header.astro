@@ -1,13 +1,23 @@
 ---
 export interface Props {
-    label: string;
+  label: string;
+  color?: string;
 }
 
-const { label } = Astro.props;
+let { label, color } = Astro.props;
+
+if (color === undefined) {
+  color = "primary";
+}
+
+// Sadly we need to mention these classnames as a comment so that tailwindcss understands they should be included
+// text-primary-400 text-secondary-400 text-tertiary-400 text-quaternary-400
 ---
 
 <div class="leading-6">
-    <h2 class="text-sm md:text-lg font-bold text-left text-quaternary-400 md:py-4">
-        <span class="leading-10 inline-block">.{label}</span>
-    </h2>
+  <h2
+    class={`text-sm md:text-lg font-bold text-left text-${color}-400 md:py-4`}
+  >
+    <span class="leading-10 inline-block">.{label}</span>
+  </h2>
 </div>
