@@ -9,9 +9,6 @@ let { label, color } = Astro.props;
 if (color === undefined) {
   color = "primary";
 }
-
-// Sadly we need to mention these classnames as a comment so that tailwindcss understands they should be included
-// text-primary-400 text-secondary-400 text-tertiary-400 text-quaternary-400
 ---
 
 <div class="leading-6">
