@@ -1,85 +1,75 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-    theme: {
-        extend: {
-            fontSize: {
-                xs: ['0.65rem', { lineHeight: '130%' }],
-                sm: ['0.8rem', { lineHeight: '140%' }],
-                md: ['1rem', { lineHeight: '130%' }],
-                base: ['1rem', { lineHeight: '130%' }],
-                lg: ['1.25rem', { lineHeight: '120%' }],
-                xl: ['1.55rem', { lineHeight: '120%' }],
-                '2xl': ['1.95rem', { lineHeight: '120%' }],
-                '3xl': ['2.45rem', { lineHeight: '120%' }],
-                '4xl': ['3.05rem', { lineHeight: '120%' }],
-                '5xl': ['3.8rem', { lineHeight: '120%' }]
-            },
-            colors: {
-                primary: {
-                    50: '#f1e5ff',
-                    100: '#e2ccff',
-                    200: '#c599ff',
-                    300: '#a966ff',
-                    400: '#8c33ff',
-                    500: '#6f00ff',
-                    600: '#5900cc',
-                    700: '#430099',
-                    800: '#2c0066',
-                    900: '#160033',
-                    950: '#0b001a',
-                    '50--80': 'rgba(241, 229, 255, 0.8)',
-                    '200--2': 'rgba(197, 153, 255, 0.02)',
-                    '200--5': 'rgba(197, 153, 255, 0.1)'
-                },
-                secondary: {
-                    50: '#f6fde8',
-                    100: '#ecfad1',
-                    200: '#d9f5a3',
-                    300: '#c6f075',
-                    400: '#b3eb47',
-                    500: '#a0e619',
-                    600: '#80b814',
-                    700: '#608a0f',
-                    800: '#405c0a',
-                    900: '#202e05',
-                    950: '#101702',
-                    '50--80': 'rgba(246, 253, 232, 0.8)',
-                    '200--2': 'rgba(217, 245, 163, 0.02)'
-                },
-                tertiary: {
-                    50: '#ffebcc',
-                    100: '#ffe0b2',
-                    200: '#ffcc80',
-                    300: '#ffb84c',
-                    400: '#ffa31a',
-                    500: '#e58a00',
-                    600: '#b26b00',
-                    700: '#804c00',
-                    800: '#4c2e00',
-                    900: '#190f00',
-                    950: '#050300',
-                    '50--80': 'rgba(255, 235, 204, 0.8)',
-                    '200--2': 'rgba(255, 204, 128, 0.02)'
-                },
-                quaternary: {
-                    50: '#ffdbf3',
-                    100: '#ffc2eb',
-                    200: '#ff8fda',
-                    300: '#ff5cc9',
-                    400: '#ff2bb9',
-                    500: '#f500a4',
-                    600: '#c20082',
-                    700: '#8f0060',
-                    800: '#5c003d',
-                    900: '#29001b',
-                    950: '#0f000a',
-                    '50--80': 'rgba(255, 219, 243, 0.8)',
-                    '200--2': 'rgba(255, 143, 218, 0.02)',
-                    '200--5': 'rgba(255, 143, 218, 0.05)'
-                }
-            }
-        }
-    },
-    plugins: []
-};
+	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	theme: {
+		extend: {
+			fontSize: {
+				xs: ['0.65rem', { 'lineHeight': '130%' }],
+				sm: ['0.8rem', { 'lineHeight': '140%' }],
+				md: ['1rem', { 'lineHeight': '130%' }],
+				base: ['1rem', { 'lineHeight': '130%' }],
+				lg: ['1.25rem', { 'lineHeight': '120%' }],
+				xl: ['1.55rem', { 'lineHeight': '120%' }],
+				'2xl': ['1.95rem', { 'lineHeight': '120%' }],
+				'3xl': ['2.45rem', { 'lineHeight': '120%' }],
+				'4xl': ['3.05rem', { 'lineHeight': '120%' }],
+				'5xl': ['3.8rem', { 'lineHeight': '120%' }],
+			},
+			colors: {
+				primary: {
+					50: 'hsl(from var(--color-primary-50) h s l / <alpha-value>)',
+					100: 'hsl(from var(--color-primary-100) h s l / <alpha-value>)',
+					200: 'hsl(from var(--color-primary-200) h s l / <alpha-value>)',
+					300: 'hsl(from var(--color-primary-300) h s l / <alpha-value>)',
+					400: 'hsl(from var(--color-primary-400) h s l / <alpha-value>)',
+					500: 'hsl(from var(--color-primary-500) h s l / <alpha-value>)',
+					600: 'hsl(from var(--color-primary-600) h s l / <alpha-value>)',
+					700: 'hsl(from var(--color-primary-700) h s l / <alpha-value>)',
+					800: 'hsl(from var(--color-primary-800) h s l / <alpha-value>)',
+					900: 'hsl(from var(--color-primary-900) h s l / <alpha-value>)',
+					950: 'hsl(from var(--color-primary-950) h s l / <alpha-value>)',
+				},
+				secondary: {
+					50: 'hsl(from var(--color-secondary-50) h s l / <alpha-value>)',
+					100: 'hsl(from var(--color-secondary-100) h s l / <alpha-value>)',
+					200: 'hsl(from var(--color-secondary-200) h s l / <alpha-value>)',
+					300: 'hsl(from var(--color-secondary-300) h s l / <alpha-value>)',
+					400: 'hsl(from var(--color-secondary-400) h s l / <alpha-value>)',
+					500: 'hsl(from var(--color-secondary-500) h s l / <alpha-value>)',
+					600: 'hsl(from var(--color-secondary-600) h s l / <alpha-value>)',
+					700: 'hsl(from var(--color-secondary-700) h s l / <alpha-value>)',
+					800: 'hsl(from var(--color-secondary-800) h s l / <alpha-value>)',
+					900: 'hsl(from var(--color-secondary-900) h s l / <alpha-value>)',
+					950: 'hsl(from var(--color-secondary-950) h s l / <alpha-value>)',
+				},
+				tertiary: {
+					50: 'hsl(from var(--color-tertiary-50) h s l / <alpha-value>)',
+					100: 'hsl(from var(--color-tertiary-100) h s l / <alpha-value>)',
+					200: 'hsl(from var(--color-tertiary-200) h s l / <alpha-value>)',
+					300: 'hsl(from var(--color-tertiary-300) h s l / <alpha-value>)',
+					400: 'hsl(from var(--color-tertiary-400) h s l / <alpha-value>)',
+					500: 'hsl(from var(--color-tertiary-500) h s l / <alpha-value>)',
+					600: 'hsl(from var(--color-tertiary-600) h s l / <alpha-value>)',
+					700: 'hsl(from var(--color-tertiary-700) h s l / <alpha-value>)',
+					800: 'hsl(from var(--color-tertiary-800) h s l / <alpha-value>)',
+					900: 'hsl(from var(--color-tertiary-900) h s l / <alpha-value>)',
+					950: 'hsl(from var(--color-tertiary-950) h s l / <alpha-value>)',
+				},
+				quaternary: {
+					50: 'hsl(from var(--color-quaternary-50) h s l / <alpha-value>)',
+					100: 'hsl(from var(--color-quaternary-100) h s l / <alpha-value>)',
+					200: 'hsl(from var(--color-quaternary-200) h s l / <alpha-value>)',
+					300: 'hsl(from var(--color-quaternary-300) h s l / <alpha-value>)',
+					400: 'hsl(from var(--color-quaternary-400) h s l / <alpha-value>)',
+					500: 'hsl(from var(--color-quaternary-500) h s l / <alpha-value>)',
+					600: 'hsl(from var(--color-quaternary-600) h s l / <alpha-value>)',
+					700: 'hsl(from var(--color-quaternary-700) h s l / <alpha-value>)',
+					800: 'hsl(from var(--color-quaternary-800) h s l / <alpha-value>)',
+					900: 'hsl(from var(--color-quaternary-900) h s l / <alpha-value>)',
+					950: 'hsl(from var(--color-quaternary-950) h s l / <alpha-value>)',
+				}
+			}
+		},
+	},
+	plugins: [],
+}
