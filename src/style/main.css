@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,800&display=swap");
 
 @tailwind base;
 
@@ -21,7 +21,7 @@
     --color-primary-800: hsl(var(--primary-base), 20%);
     --color-primary-900: hsl(var(--primary-base), 10%);
     --color-primary-950: hsl(var(--primary-base), 5%);
-  
+
     --color-secondary-50: hsl(var(--secondary-base), 95%);
     --color-secondary-100: hsl(var(--secondary-base), 90%);
     --color-secondary-200: hsl(var(--secondary-base), 80%);
@@ -76,8 +76,8 @@
 }
 
 :root {
-  --main-family: 'Roboto Mono', sans-serif;
-  --logo-font-family: 'Roboto', sans-serif;
+  --main-family: "Roboto Mono", sans-serif;
+  --logo-font-family: "Roboto", sans-serif;
 }
 
 html {
@@ -94,8 +94,26 @@ article a {
   word-wrap: break-word;
 }
 
-.diagonal-corners {
-  clip-path: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
+.cutoff-tl-br {
+  clip-path: polygon(
+    24px 0,
+    100% 0,
+    100% calc(100% - 24px),
+    calc(100% - 24px) 100%,
+    0 100%,
+    0 24px
+  );
+}
+
+.cutoff-bl-tr {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 24px) 0,
+    100% 24px,
+    100% 100%,
+    24px 100%,
+    0 calc(100% - 24px)
+  );
 }
 
 @keyframes scroll {

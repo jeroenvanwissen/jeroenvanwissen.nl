@@ -2,12 +2,12 @@
 import { getSortedPostsByType } from "@lib/util";
 import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
-import { getImage } from "astro:assets";
 import Header from "@components/Header.astro";
 import PostBlock from "@components/PostBlock.astro";
 
-const blogPosts = await getSortedPostsByType("post", "blog");
-const photoPosts = await getSortedPostsByType("post", "photo");
+const blogposts = (await getSortedPostsByType("post", "blog")).slice(0, 3);
+const photos = (await getSortedPostsByType("post", "photo")).slice(0, 3);
+const projects = (await getSortedPostsByType("post", "project")).slice(0, 3);
 ---
 
 <Layout>
@@ -34,7 +34,7 @@ const photoPosts = await getSortedPostsByType("post", "photo");
     />
     <link href={import.meta.env.SITE} rel="canonical" />
   </Fragment>
-  <div class="w-full bg-primary-950">
+  <div class="w-full bg-primary-950 border-b border-primary-900">
     <div class="max-w-6xl mx-auto px-2 pt-4 lg:px-20 lg:pt-8">
       <div class="flex gap-4 lg:gap-8 lg:px-4">
         <Image
@@ -57,61 +57,58 @@ const photoPosts = await getSortedPostsByType("post", "photo");
       </div>
     </div>
   </div>
-  <div class="w-full bg-black">
+  <div class="w-full bg-quaternary-950 border-b border-quaternary-900">
     <div class="max-w-6xl mx-auto px-2 pb-6">
       <Header label="blog posts" color="quaternary" />
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6"
       >
         {
-          blogPosts
-            .slice(0, 3)
-            .map((post) => <PostBlock post={post} color="quaternary" />)
+          blogposts.map((blogpost) => (
+            <PostBlock
+              post={blogpost}
+              color="quaternary"
+              direction="left"
+              type="blog"
+            />
+          ))
         }
       </div>
     </div>
   </div>
-  <div class="w-full bg-tertiary-950">
+  <div class="w-full bg-tertiary-950 border-b border-tertiary-900">
     <div class="max-w-6xl mx-auto px-2 pb-6">
       <Header label="projects" color="tertiary" />
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6"
       >
         {
-          blogPosts
-            .slice(0, 3)
-            .map((post) => <PostBlock post={post} color="tertiary" />)
+          projects.map((project) => (
+            <PostBlock
+              post={project}
+              color="tertiary"
+              direction="right"
+              type="project"
+            />
+          ))
         }
       </div>
     </div>
   </div>
-  <div class="w-full bg-primary-950">
-    <div class="photo-ribbon py-8">
-      <div class="photo-ribbon-content">
+  <div class="w-full bg-secondary-950 border-b border-secondary-900">
+    <div class="max-w-6xl mx-auto px-2 pb-6">
+      <Header label="photography" color="secondary" />
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6"
+      >
         {
-          photoPosts.slice(0, 20).map((post) => (
-            <a href={`/post/${post.slug}/`} title={post.data.title}>
-              <Image
-                src={post.data.image.url}
-                alt={post.data.title}
-                width={300}
-                height={200}
-                class="rounded-lg shadow-lg"
-              />
-            </a>
-          ))
-        }
-        {
-          photoPosts.slice(0, 20).map((post) => (
-            <a href={`/post/${post.slug}/`} title={post.data.title}>
-              <Image
-                src={post.data.image.url}
-                alt={post.data.title}
-                width={300}
-                height={200}
-                class="rounded-lg shadow-lg"
-              />
-            </a>
+          photos.map((photo) => (
+            <PostBlock
+              post={photo}
+              color="secondary"
+              direction="left"
+              type="photo"
+            />
           ))
         }
       </div>

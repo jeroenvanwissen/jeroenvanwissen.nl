@@ -1,41 +1,58 @@
 ---
-import { getSortedPostsByType } from '@lib/util';
-import Layout from '@layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import { getSortedPostsByType } from "@lib/util";
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
 
-const posts = await getSortedPostsByType('post', 'photo');
+const posts = await getSortedPostsByType("post", "photo");
 ---
 
 <Layout>
-    <Fragment slot="head">
-        <title>Photography by Jeroen van Wissen - 31F Fotografie</title>
-        <meta content="website" property="og:type" />
-        <meta content="Photography by Jeroen van Wissen - 31F Fotografie" property="og:title" />
-        <meta content="An overview of pictures taken by Jeroen van Wissen - 31F Fotografie" name="description" />
-        <meta content="An overview of pictures taken by Jeroen van Wissen - 31F Fotografie" property="og:description" />
-        <meta content={`${import.meta.env.SITE}/photography`} property="og:url" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="og:image" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="twitter:image:src" />
-        <link href={`${import.meta.env.SITE}/photography`} rel="canonical" />
-    </Fragment>
-    <div class="w-full">
-        <div class="mx-auto max-w-6xl px-8 py-4">
-            <div class="mx-auto container my-8 sm:columns-2 md:columns-3 lg:columns-4">
-                {
-                    posts.map((post) => (
-                        <a href={`/post/${post.slug}`} class="block">
-                            <Image
-                                src={post.data.image.url}
-                                alt={post.data.image.alt}
-                                format="avif"
-                                quality={50}
-                                class="rounded mb-4 border border-transparent hover:border-gray-300 transition-all duration-300 ease-in-out hover:shadow-lg grayscale hover:filter-none"
-                                loading="lazy"
-                            />
-                        </a>
-                    ))
-                }
-            </div>
-        </div>
+  <Fragment slot="head">
+    <title>Photography by Jeroen van Wissen - 31F Fotografie</title>
+    <meta content="website" property="og:type" />
+    <meta
+      content="Photography by Jeroen van Wissen - 31F Fotografie"
+      property="og:title"
+    />
+    <meta
+      content="An overview of pictures taken by Jeroen van Wissen - 31F Fotografie"
+      name="description"
+    />
+    <meta
+      content="An overview of pictures taken by Jeroen van Wissen - 31F Fotografie"
+      property="og:description"
+    />
+    <meta content={`${import.meta.env.SITE}/photography`} property="og:url" />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="og:image"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="twitter:image:src"
+    />
+    <link href={`${import.meta.env.SITE}/photography`} rel="canonical" />
+  </Fragment>
+  <div class="w-full">
+    <div class="mx-auto max-w-6xl px-8 py-4">
+      <div
+        class="mx-auto container my-8 sm:columns-2 md:columns-3 lg:columns-4"
+      >
+        {
+          posts.map((post) => (
+            <a href={`/post/${post.slug}`} class="block cutoff-tl-br">
+              <Image
+                src={post.data.image.url}
+                alt={post.data.image.alt}
+                format="webp"
+                quality={50}
+                class="mb-4 border border-transparent hover:border-secondary-400 transition-all duration-300 ease-in-out hover:shadow-lg grayscale hover:filter-none"
+                loading="lazy"
+              />
+            </a>
+          ))
+        }
+      </div>
     </div>
+  </div>
 </Layout>

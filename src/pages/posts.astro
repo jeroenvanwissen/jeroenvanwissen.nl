@@ -1,33 +1,54 @@
 ---
-import { getSortedPostsByType } from '@lib/util';
-import Layout from '@layouts/Layout.astro';
-import PostBlock from '@components/PostBlock.astro';
+import { getSortedPostsByType } from "@lib/util";
+import Layout from "@layouts/Layout.astro";
+import PostBlock from "@components/PostBlock.astro";
 
-const posts = await getSortedPostsByType('post', 'blog');
+const posts = await getSortedPostsByType("post", "blog");
+
+const colors = ["primary", "secondary", "tertiary", "quaternary"];
+const directions = ["left", "right"];
 ---
 
 <Layout>
-    <Fragment slot="head">
-        <title>Blog posts by Jeroen van Wissen</title>
-        <meta content="website" property="og:type" />
-        <meta content="Blog posts by Jeroen van wissen" property="og:title" />
-        <meta content="Overview of all blog posts by Jeroen van Wissen" name="description" />
-        <meta content="Overview of all blog posts by Jeroen van Wissen" property="og:description" />
-        <meta content={`${import.meta.env.SITE}/posts`} property="og:url" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="og:image" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="twitter:image:src" />
-        <link href={`${import.meta.env.SITE}/posts`} rel="canonical" />
-    </Fragment>
-    <div class="w-full">
-      <div class="mx-auto max-w-6xl px-8 py-4">
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3">
-            {
-                posts.map((post: any) => (
-                  <PostBlock post={post} />
-                ))
-            }
-        </div>
+  <Fragment slot="head">
+    <title>Blog posts by Jeroen van Wissen</title>
+    <meta content="website" property="og:type" />
+    <meta content="Blog posts by Jeroen van wissen" property="og:title" />
+    <meta
+      content="Overview of all blog posts by Jeroen van Wissen"
+      name="description"
+    />
+    <meta
+      content="Overview of all blog posts by Jeroen van Wissen"
+      property="og:description"
+    />
+    <meta content={`${import.meta.env.SITE}/posts`} property="og:url" />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="og:image"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="twitter:image:src"
+    />
+    <link href={`${import.meta.env.SITE}/posts`} rel="canonical" />
+  </Fragment>
+  <div class="w-full">
+    <div class="mx-auto max-w-6xl px-8 py-4">
+      <div
+        class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3"
+      >
+        {
+          posts.map((post: any) => {
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const direction =
+              directions[Math.floor(Math.random() * directions.length)];
+            return (
+              <PostBlock post={post} color={color} direction={direction} />
+            );
+          })
+        }
       </div>
     </div>
+  </div>
 </Layout>
-

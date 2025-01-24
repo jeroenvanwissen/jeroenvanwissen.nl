@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 export interface Props {
   post: {
     slug: string;
@@ -7,53 +9,81 @@ export interface Props {
       date: Date;
       title: string;
       description: string;
+      image: {
+        url: string;
+        alt: string;
+      };
     };
   };
   color?: string;
+  direction?: string;
+  type?: string;
 }
 
-let { post, color } = Astro.props;
+const { post, color = "primary", direction, type = "post" } = Astro.props;
 
-if (color === undefined) {
-  color = "primary";
+let border = `border border-${color}-600`;
+
+if (direction === "left") {
+  border = `cutoff-tl-br border border-r-${color}-400 border-t-${color}-400 border-b-${color}-800 border-l-${color}-800`;
+} else if (direction === "right") {
+  border = `cutoff-bl-tr border border-l-${color}-400 border-t-${color}-400 border-b-${color}-800 border-r-${color}-800`;
 }
 ---
 
-<div
-  class={`bg-${color}-200/5 shadow-md p-4 sm:p-6 diagonal-corners border border-r-primary-400 border-t-primary-400 border-b-primary-800 border-l-primary-800`}
->
-  <div class={`text-xs text-${color}-50 opacity-40`}>
+<div class={`bg-${color}-700/5 hover:bg-${color}-400/5 shadow-md ${border}`}>
+  {
+    post.data.image && (
+      <Image
+        src={post.data.image.url}
+        alt={post.data.image.alt}
+        format="webp"
+        quality={50}
+        class=""
+        loading="lazy"
+      />
+    )
+  }
+  <div class="p-2 sm:p-4">
     {
-      post.data.date.toLocaleString("en-US", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-        timeZone: "Europe/Amsterdam",
-      })
+      type !== "project" && (
+        <div class={`text-xs text-${color}-50 opacity-40`}>
+          {post.data.date.toLocaleString("en-US", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            timeZone: "Europe/Amsterdam",
+          })}
+        </div>
+      )
     }
-  </div>
-  <div class="my-1">
-    {
-      post.data.categories.map((category: string) => (
-        <span class={`pill inline-block text-${color}-400 bg-${color}-400`}>
-          {category}
-        </span>
-      ))
-    }
-  </div>
+    <div class="my-1">
+      {
+        post.data.categories.map((category: string) => (
+          <span
+            class={`pill inline-block text-${color}-200 bg-${color}-400/25`}
+          >
+            {category}
+          </span>
+        ))
+      }
+    </div>
 
-  <h2 class={`text-sm sm:text-md lg:text-lg font-bold mb-2 text-${color}-400`}>
-    <a href={`/post/${post.slug}`}>
-      {post.data.title}
-    </a>
-  </h2>
-  <p class={`text-xs sm:text-sm lg:text-md text-${color}-50 opacity-60`}>
-    {post.data.description}
-  </p>
+    <h2
+      class={`text-sm sm:text-md lg:text-lg font-bold mb-2 text-${color}-400`}
+    >
+      <a href={`/post/${post.slug}`}>
+        {post.data.title}
+      </a>
+    </h2>
+    <p class={`text-xs sm:text-sm lg:text-md text-${color}-50 opacity-60`}>
+      {post.data.description}
+    </p>
+  </div>
 </div>
 
 <style>
   .pill {
-    @apply text-xs rounded-full px-3 py-1 mr-1 whitespace-nowrap bg-opacity-25;
+    @apply text-xs rounded-full px-3 py-1 mr-1 whitespace-nowrap;
   }
 </style>

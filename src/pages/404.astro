@@ -1,42 +1,58 @@
 ---
-import Layout from '@layouts/Layout.astro';
+import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout>
-    <Fragment slot="head">
-        <title>404 Not Found - Jeroen van Wissen</title>
-        <meta content="noindex, nofollow" name="robots" />
-        <meta content="website" property="og:type" />
-        <meta content="404 Not Found - Jeroen van Wissen" property="og:title" />
-        <meta content="404 Not Found - Jeroen van Wissen" name="description" />
-        <meta content="404 Not Found - Jeroen van Wissen" property="og:description" />
-        <meta content={`${import.meta.env.SITE}/404`} property="og:url" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="og:image" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="twitter:image:src" />
-        <link href={`${import.meta.env.SITE}/404`} rel="canonical" />
-    </Fragment>
-    <Fragment slot="title">404 Not Found - Jeroen van Wissen</Fragment>
-    <div class="mx-auto rounded-lg bg-secondary-800 shadow-lg">
-        <article>
-            <img src="/images/404.webp" alt="404 Image" class="h-[400px] w-full rounded-t-lg object-cover object-bottom" />
-            <div class="p-4">
-                <h1 class="text-2xl text-primary-50">404 Not Found</h1>
-                <p>
-                    The page you're trying to load does not exist... go to the <a href="/">homepage</a>
-                </p>
-            </div>
-        </article>
+  <Fragment slot="head">
+    <title>404 Not Found - Jeroen van Wissen</title>
+    <meta content="noindex, nofollow" name="robots" />
+    <meta content="website" property="og:type" />
+    <meta content="404 Not Found - Jeroen van Wissen" property="og:title" />
+    <meta content="404 Not Found - Jeroen van Wissen" name="description" />
+    <meta
+      content="404 Not Found - Jeroen van Wissen"
+      property="og:description"
+    />
+    <meta content={`${import.meta.env.SITE}/404`} property="og:url" />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="og:image"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="twitter:image:src"
+    />
+    <link href={`${import.meta.env.SITE}/404`} rel="canonical" />
+  </Fragment>
+  <div class="w-full">
+    <div class="mx-auto max-w-6xl px-8 py-4">
+      <div class="cutoff-tl-br">
+        <img
+          src="/images/404.webp"
+          alt="404 Image"
+          class="h-96 w-full object-cover object-bottom"
+        />
+      </div>
+      <div class="p-4">
+        <h1 class="text-2xl text-primary-400">404 Not Found</h1>
+        <p class="text-primary-400/60">
+          The page you're trying to load does not exist... go to the <a href="/"
+            >homepage</a
+          >
+        </p>
+      </div>
     </div>
+  </div>
 </Layout>
 
 <style is:global>
-    article h2 {
-        @apply mt-4 text-base font-bold text-primary-50 md:mt-6 md:text-xl;
-    }
-    article p {
-        @apply mt-3 mb-4 text-primary-50;
-    }
-    article a {
-        @apply text-primary-500 underline hover:text-primary-300;
-    }
+  article h2 {
+    @apply mt-4 text-base font-bold text-primary-50 md:mt-6 md:text-xl;
+  }
+  article p {
+    @apply mt-3 mb-4 text-primary-50;
+  }
+  article a {
+    @apply text-primary-500 underline hover:text-primary-300;
+  }
 </style>

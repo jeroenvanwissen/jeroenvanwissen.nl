@@ -1,0 +1,26 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>Resume - Jeroen van Wissen</title>
+    <meta content="website" property="og:type" />
+    <meta content="Resume - Jeroen van Wissen" property="og:title" />
+    <meta content="Resume - Jeroen van Wissen" name="description" />
+    <meta content="Resume - Jeroen van Wissen" property="og:description" />
+    <meta content={`${import.meta.env.SITE}/resume`} property="og:url" />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="og:image"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="twitter:image:src"
+    />
+    <link href={`${import.meta.env.SITE}/resume`} rel="canonical" />
+  </Fragment>
+  <div class="w-full">
+    <div class="mx-auto max-w-6xl px-8 py-4">RESUME COMES HERE!!</div>
+  </div>
+</Layout>
