@@ -21,6 +21,140 @@ import Layout from "@layouts/Layout.astro";
     <link href={`${import.meta.env.SITE}/resume`} rel="canonical" />
   </Fragment>
   <div class="w-full">
-    <div class="mx-auto max-w-6xl px-8 py-4">RESUME COMES HERE!!</div>
+    <div class="mx-auto max-w-6xl px-8 py-4">
+      <!-- Intro block //-->
+      <div class="my-6">
+        <h1 class="text-xl text-secondary-400">Jeroen van Wissen</h1>
+        <h2 class="text-lg text-secondary-400/80">
+          Senior Full Stack Developer
+        </h2>
+        <div class="text-md text-secondary-300">
+          <p class="py-2">
+            With more than two decades of experience in development, including
+            over five years as a Tech Lead/Engineering Manager, I have refined
+            my skills and expertise. While I began my journey with PHP, my focus
+            has now shifted entirely to JavaScript / TypeScript, specifically
+            ReactJS and NodeJS. I am a versatile and passionate professional,
+            dedicated to finding solutions and constantly seeking opportunities
+            for growth. Additionally, I possess hands-on experience with AWS
+            DevOps and GitLab CI/CD, enhancing my skills in delivering efficient
+            and streamlined development processes.
+          </p>
+        </div>
+        <div class="mb-2">
+          <span class="langpill">Dutch</span>
+          <span class="langpill">French</span>
+          <span class="langpill">English</span>
+        </div>
+        <div class="mb-2">
+          <span class="skillpill">Technical Leadership</span>
+          <span class="skillpill">Team Management</span>
+          <span class="skillpill">Coaching &amp; Mentoring</span>
+          <span class="skillpill">Agile Development</span>
+          <span class="skillpill">Full Stack Development</span>
+          <span class="skillpill">Unit Testing</span>
+          <span class="skillpill">Test Automation</span>
+          <span class="skillpill">DevOps</span>
+          <span class="skillpill">CI/CD</span>
+          <span class="skillpill">MongoDB</span>
+          <span class="skillpill">AWS</span>
+          <span class="skillpill">JavaScript / TypeScript</span>
+          <span class="skillpill">Playwright</span>
+          <span class="skillpill">Cucumber</span>
+          <span class="skillpill">Cypress</span>
+          <span class="skillpill">Postman</span>
+          <span class="skillpill">React</span>
+          <span class="skillpill">Node.js</span>
+          <span class="skillpill">NestJS</span>
+          <span class="skillpill">Python</span>
+        </div>
+      </div>
+
+      <!-- Employment History Block //-->
+      <div class="mb-6 border-b border-b-primary-800">
+        <h2 class="text-lg text-secondary-400">Sogeti, part of Capgemini</h2>
+        <span class="text-sm text-secondary-400/60">January 2024 - Present</span
+        >
+        <div class="pl-6 mt-4">
+          <h2 class="text-lg text-secondary-400">
+            Test Automation Engineer at Dutch Ministry of Foreign Affairs
+          </h2>
+          <span class="text-sm text-secondary-400/60"
+            >January 2024 - Present</span
+          >
+          <div class="text-md text-secondary-300">
+            <p class="py-2">
+              Short description of the work and project and responsibilities
+              etc...
+            </p>
+            <p class="py-2">Maybe add some bullet point things ...</p>
+            <p class="py-2">List of skills .. soft and hard</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6 border-b border-b-primary-800">
+        <h2 class="text-lg text-secondary-400">Gracenote, a Nielsen company</h2>
+        <span class="text-sm text-secondary-400/60"
+          >August 2016 - November 2023</span
+        >
+        <div class="text-md text-secondary-300">
+          <p class="py-2">Worked in different roles here...</p>
+        </div>
+        <div class="pl-6 mt-4">
+          <h2 class="text-lg text-secondary-400">
+            Manager Engineering, Gracenote Sports
+          </h2>
+          <span class="text-sm text-secondary-400/60"
+            >July 2021 - November 2023</span
+          >
+          <div class="text-md text-secondary-300">
+            <p class="py-2">
+              Working with and on the frontend team at Gracenote Sports, I lead
+              a small team of passionate frontend developers. We build and
+              deliver live sports scores and stats packaged in web widgets our
+              clients can implement on their websites, smart tv's, set top
+              boxes, etc.
+            </p>
+          </div>
+        </div>
+        <div class="pl-6 mt-4">
+          <h2 class="text-lg text-secondary-400">
+            Associate Manager Engineering, Gracenote Sports
+          </h2>
+          <span class="text-sm text-secondary-400/60">May 2018 - July 2021</span
+          >
+          <div></div>
+        </div>
+        <div class="pl-6 mt-4">
+          <h2 class="text-lg text-secondary-400">
+            Tech Lead, Gracenote Sports
+          </h2>
+          <span class="text-sm text-secondary-400/60"
+            >December 2017 - April 2018</span
+          >
+          <div></div>
+        </div>
+        <div class="pl-6 mt-4">
+          <h2 class="text-lg text-secondary-400">
+            Web Developer, Gracenote Sports
+          </h2>
+          <span class="text-sm text-secondary-400/60"
+            >August 2016 - November 2017</span
+          >
+          <div></div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <style>
+    .skillpill {
+      @apply inline-block text-primary-200 bg-primary-400/25 text-xs rounded-full px-3 py-1 mr-1 whitespace-nowrap;
+    }
+
+    .langpill {
+      @apply inline-block text-tertiary-200 bg-tertiary-400/25 text-xs rounded-full px-3 py-1 mr-1 whitespace-nowrap;
+    }
+  </style>
 </Layout>
