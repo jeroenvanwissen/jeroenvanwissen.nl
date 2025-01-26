@@ -24,21 +24,19 @@ import Layout from "@layouts/Layout.astro";
     <div class="mx-auto max-w-6xl px-8 py-4">
       <!-- Intro block //-->
       <div class="my-6">
-        <h1 class="text-xl text-secondary-400">Jeroen van Wissen</h1>
-        <h2 class="text-lg text-secondary-400/80">
-          Senior Full Stack Developer
-        </h2>
-        <div class="text-md text-secondary-300">
-          <p class="py-2">
+        <h1 class="text-2xl text-secondary-400">Jeroen van Wissen</h1>
+        <h2 class="jobtitle">Senior Full Stack Developer</h2>
+        <div class="description">
+          <p>
             With more than two decades of experience in development, including
             over five years as a Tech Lead/Engineering Manager, I have refined
-            my skills and expertise. While I began my journey with PHP, my focus
-            has now shifted entirely to JavaScript / TypeScript, specifically
-            ReactJS and NodeJS. I am a versatile and passionate professional,
-            dedicated to finding solutions and constantly seeking opportunities
-            for growth. Additionally, I possess hands-on experience with AWS
-            DevOps and GitLab CI/CD, enhancing my skills in delivering efficient
-            and streamlined development processes.
+            my skills and expertise. While I began my journey with PHP , my
+            focus has now shifted entirely to JavaScript/TypeScript,
+            specifically React and NodeJS. I am a versatile and passionate
+            professional, dedicated to finding solutions and constantly seeking
+            opportunities for growth. Additionally, I possess hands-on
+            experience with AWS DevOps and GitLab CI/CD, enhancing my skills in
+            delivering efficient and streamlined development processes.
           </p>
         </div>
         <div class="mb-2">
@@ -54,6 +52,7 @@ import Layout from "@layouts/Layout.astro";
           <span class="skillpill">Full Stack Development</span>
           <span class="skillpill">Unit Testing</span>
           <span class="skillpill">Test Automation</span>
+          <span class="skillpill">Behavior-Driven Development (BDD)</span>
           <span class="skillpill">DevOps</span>
           <span class="skillpill">CI/CD</span>
           <span class="skillpill">MongoDB</span>
@@ -71,84 +70,325 @@ import Layout from "@layouts/Layout.astro";
       </div>
 
       <!-- Employment History Block //-->
-      <div class="mb-6 border-b border-b-primary-800">
-        <h2 class="text-lg text-secondary-400">Sogeti, part of Capgemini</h2>
-        <span class="text-sm text-secondary-400/60">January 2024 - Present</span
-        >
+      <div class="py-3 border-b border-b-primary-800">
+        <h2 class="company">Sogeti, part of Capgemini</h2>
+        <span class="date">January 2024 - Present</span>
+        <div class="description">
+          <p>
+            While working on a project via Sogeti at the Dutch Ministry of
+            Foreign Affairs, I’ve obtained my 'TMAP® Quality for
+            Cross-Functional Teams' certification.
+          </p>
+        </div>
         <div class="pl-6 mt-4">
-          <h2 class="text-lg text-secondary-400">
+          <h2 class="jobtitle">
             Test Automation Engineer at Dutch Ministry of Foreign Affairs
           </h2>
-          <span class="text-sm text-secondary-400/60"
-            >January 2024 - Present</span
-          >
-          <div class="text-md text-secondary-300">
-            <p class="py-2">
-              Short description of the work and project and responsibilities
-              etc...
+          <span class="date">January 2024 - Present</span>
+          <div class="description">
+            <p>
+              As a member of one of the portal teams within this project, I am
+              responsible for:
             </p>
-            <p class="py-2">Maybe add some bullet point things ...</p>
-            <p class="py-2">List of skills .. soft and hard</p>
+            <ul class="list-disc pl-6">
+              <li>
+                Manual Testing
+                <ul class="list-disc pl-6">
+                  <li>Conducting thorough manual tests for new features</li>
+                  <li>
+                    Identifying and verifying bug fixes to ensure product
+                    quality
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Test Automation
+                <ul class="list-disc pl-6">
+                  <li>
+                    Developing and maintaining automated tests using Playwright
+                  </li>
+                  <li>Creating and maintaining test scenarios in Cucumber</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="my-2">
+              <span class="skillpill">Test Automation</span>
+              <span class="skillpill">Behavior-Driven Development (BDD)</span>
+              <span class="skillpill">Playwright</span>
+              <span class="skillpill">Cucumber</span>
+              <span class="skillpill">Postman</span>
+              <span class="skillpill">Python</span>
+              <span class="skillpill">JavaScript / TypeScript</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="mb-6 border-b border-b-primary-800">
-        <h2 class="text-lg text-secondary-400">Gracenote, a Nielsen company</h2>
-        <span class="text-sm text-secondary-400/60"
-          >August 2016 - November 2023</span
-        >
-        <div class="text-md text-secondary-300">
-          <p class="py-2">Worked in different roles here...</p>
+      <!-- Employment History Block //-->
+      <div class="py-3 border-b border-b-primary-800">
+        <h2 class="company">Gracenote, a Nielsen company</h2>
+        <span class="date">August 2016 - November 2023</span>
+        <div class="description">
+          <p>
+            While I was at Gracenote, I took on multiple roles that allowed me
+            to develop a broad skill set. This experience helped me grow
+            professionally and advance within the company.
+          </p>
+          <p>
+            To prepare for my role as Engineering Manager, I participated in
+            management training. This experience helped me develop essential
+            leadership skills and a deeper understanding of team dynamics.
+          </p>
         </div>
         <div class="pl-6 mt-4">
-          <h2 class="text-lg text-secondary-400">
-            Manager Engineering, Gracenote Sports
-          </h2>
-          <span class="text-sm text-secondary-400/60"
-            >July 2021 - November 2023</span
-          >
-          <div class="text-md text-secondary-300">
-            <p class="py-2">
-              Working with and on the frontend team at Gracenote Sports, I lead
-              a small team of passionate frontend developers. We build and
-              deliver live sports scores and stats packaged in web widgets our
-              clients can implement on their websites, smart tv's, set top
-              boxes, etc.
-            </p>
+          <h2 class="jobtitle">Manager Engineering at Gracenote Sports</h2>
+          <span class="date">July 2021 - November 2023</span>
+          <div class="description">
+            <p></p>
+            <ul class="list-disc pl-6">
+              <li>
+                Led a frontend team of five developers, fostering a
+                collaborative and high-performance environment.
+              </li>
+              <li>
+                Mentored team members, promoting professional growth and skill
+                development.
+              </li>
+              <li>
+                Defined engineering strategies aligned with company goals to
+                enhance product offerings.
+              </li>
+              <li>
+                Oversaw multiple projects simultaneously, ensuring timely and
+                efficient delivery.
+              </li>
+              <li>
+                Automated unit tests and deployments of Gracenote Global Sports
+                Widgets to AWS S3, ensuring reliability and scalability.
+              </li>
+              <li>
+                Developed and deployed supporting AWS Lambda functions to
+                enhance product functionalities.
+              </li>
+              <li>
+                Ensured seamless integration of Gracenote Global Sports Widgets
+                into diverse digital platforms.
+              </li>
+            </ul>
+          </div>
+          <div class="my-2">
+            <span class="skillpill">Technical Leadership</span>
+            <span class="skillpill">Team Management</span>
+            <span class="skillpill">Coaching &amp; Mentoring</span>
+            <span class="skillpill">Agile Development</span>
+            <span class="skillpill">Full Stack Development</span>
+            <span class="skillpill">Unit Testing</span>
+            <span class="skillpill">Test Automation</span>
+            <span class="skillpill">CI/CD</span>
+            <span class="skillpill">React</span>
+            <span class="skillpill">JavaScript / TypeScript</span>
+            <span class="skillpill">AWS</span>
           </div>
         </div>
         <div class="pl-6 mt-4">
-          <h2 class="text-lg text-secondary-400">
-            Associate Manager Engineering, Gracenote Sports
+          <h2 class="jobtitle">
+            Associate Manager Engineering at Gracenote Sports
           </h2>
-          <span class="text-sm text-secondary-400/60">May 2018 - July 2021</span
-          >
-          <div></div>
+          <span class="date">May 2018 - July 2021</span>
+          <div class="description">
+            <p></p>
+            <ul class="list-disc pl-6">
+              <li>
+                Assisted in managing a team of frontend developers, ensuring
+                high-quality deliverables.
+              </li>
+              <li>
+                Facilitated regular team meetings and code reviews to maintain
+                development standards.
+              </li>
+              <li>
+                Collaborated with stakeholders to define project requirements
+                and deliverables.
+              </li>
+              <li>
+                Played a key role in establishing CI/CD pipelines for new
+                projects, utilizing Jenkins and GitLab.
+              </li>
+              <li>
+                Contributed to the development of Gracenote Global Sports
+                Widgets using React.
+              </li>
+            </ul>
+          </div>
+          <div class="my-2">
+            <span class="skillpill">Technical Leadership</span>
+            <span class="skillpill">Team Management</span>
+            <span class="skillpill">Coaching &amp; Mentoring</span>
+            <span class="skillpill">Agile Development</span>
+            <span class="skillpill">Full Stack Development</span>
+            <span class="skillpill">Unit Testing</span>
+            <span class="skillpill">Test Automation</span>
+            <span class="skillpill">CI/CD</span>
+            <span class="skillpill">React</span>
+            <span class="skillpill">JavaScript / TypeScript</span>
+            <span class="skillpill">AWS</span>
+          </div>
         </div>
         <div class="pl-6 mt-4">
-          <h2 class="text-lg text-secondary-400">
-            Tech Lead, Gracenote Sports
-          </h2>
-          <span class="text-sm text-secondary-400/60"
-            >December 2017 - April 2018</span
-          >
-          <div></div>
+          <h2 class="jobtitle">Tech Lead at Gracenote Sports</h2>
+          <span class="date">December 2017 - April 2018</span>
+          <div class="description">
+            <p></p>
+            <ul class="list-disc pl-6">
+              <li>
+                Conducted code reviews and provided feedback to maintain
+                high-quality codebases.
+              </li>
+              <li>
+                Implemented coding standards and best practices to enhance code
+                maintainability.
+              </li>
+              <li>
+                Implemented automated testing and deployment processes to
+                enhance workflow efficiency.
+              </li>
+              <li>
+                Oversaw the redevelopment of the Gracenote Global Sports Widgets
+                platform from AngularJS to React.
+              </li>
+              <li>
+                Guided the team in adopting React for frontend development,
+                promoting modern development standards.
+              </li>
+            </ul>
+          </div>
+          <div class="my-2">
+            <span class="skillpill">Technical Leadership</span>
+            <span class="skillpill">Unit Testing</span>
+            <span class="skillpill">Test Automation</span>
+            <span class="skillpill">Agile Development</span>
+            <span class="skillpill">AngularJS</span>
+            <span class="skillpill">React</span>
+            <span class="skillpill">AWS</span>
+          </div>
         </div>
         <div class="pl-6 mt-4">
-          <h2 class="text-lg text-secondary-400">
-            Web Developer, Gracenote Sports
-          </h2>
-          <span class="text-sm text-secondary-400/60"
-            >August 2016 - November 2017</span
-          >
-          <div></div>
+          <h2 class="jobtitle">Web Developer at Gracenote Sports</h2>
+          <span class="date">August 2016 - November 2017</span>
+          <div class="description">
+            <p></p>
+            <ul class="list-disc pl-6">
+              <li>
+                Developed and maintained web applications for Gracenote Sports
+              </li>
+              <li>
+                Collaborated with the team to implement new features and
+                functionalities
+              </li>
+              <li>
+                Initiated and lead the rebuild of the Gracenote Global Sports
+                Widgets platform in React
+              </li>
+            </ul>
+          </div>
+          <div class="my-2">
+            <span class="skillpill">AngularJS</span>
+            <span class="skillpill">React</span>
+            <span class="skillpill">AWS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Employment History Block //-->
+      <div class="py-3 border-b border-b-primary-800">
+        <h2 class="company">Emendis BV</h2>
+        <span class="date">February 2015 - July 2016</span>
+        <div class="pl-6 mt-4">
+          <h2 class="jobtitle">Lead Developer at Fysio24</h2>
+          <span class="date">September 2015 - July 2016</span>
+          <div class="description">
+            <p>
+              During my time at Emendis, I was involved in a collaborative
+              project with Fysio24. My key responsibilities included:
+            </p>
+            <ul class="list-disc pl-6">
+              <li>
+                Mobile Application Development
+                <ul class="list-disc pl-6">
+                  <li>
+                    Developing a mobile application for Fysio24 on the Ionic
+                    framework
+                  </li>
+                  <li>
+                    Implementing new features and functionalities to enhance
+                    user experience
+                  </li>
+                  <li>
+                    Collaborated with the team to translate the client's vision
+                    into a functional application
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="my-2">
+            <span class="skillpill">PHP</span>
+            <span class="skillpill">Ionic</span>
+            <span class="skillpill">AngularJS</span>
+            <span class="skillpill">Laravel</span>
+          </div>
+        </div>
+        <div class="pl-6 mt-4">
+          <h2 class="jobtitle">Senior Frontend Developer at Emendis BV</h2>
+          <span class="date">February 2015 - July 2016</span>
+          <div class="description">
+            <p>
+              At Emendis I worked on multiple CRM/ERP like client web
+              applications built with Laravel & AngularJS, for example a web
+              application for a group of tree nurseries to maintain their tree
+              inventory and pricing.
+            </p>
+            <p>
+              Also, I was involved in the development of a mindfulness mobile
+              app built on the Ionic framework
+            </p>
+          </div>
+          <div class="my-2">
+            <span class="skillpill">PHP</span>
+            <span class="skillpill">Ionic</span>
+            <span class="skillpill">AngularJS</span>
+            <span class="skillpill">Laravel</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <style>
+    h2.company {
+      @apply text-lg text-primary-400;
+    }
+
+    h2.jobtitle {
+      @apply text-lg text-primary-400;
+    }
+
+    span.date {
+      @apply text-sm text-tertiary-400/60;
+    }
+
+    div.description {
+      @apply text-md text-secondary-400;
+
+      p {
+        @apply py-2;
+      }
+
+      blockquote {
+        @apply text-md text-tertiary-400/60 border-l-2 border-primary-400/25 pl-2 italic;
+      }
+    }
+
     .skillpill {
       @apply inline-block text-primary-200 bg-primary-400/25 text-xs rounded-full px-3 py-1 mr-1 whitespace-nowrap;
     }
