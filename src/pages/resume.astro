@@ -24,7 +24,7 @@ import Layout from "@layouts/Layout.astro";
     <div class="mx-auto max-w-6xl px-8 py-4">
       <!-- Intro block //-->
       <div class="my-6">
-        <h1 class="text-2xl text-secondary-400">Jeroen van Wissen</h1>
+        <h1>Jeroen van Wissen</h1>
         <h2 class="jobtitle">Senior Full Stack Developer</h2>
         <div class="description">
           <p>
@@ -370,6 +370,10 @@ import Layout from "@layouts/Layout.astro";
   </div>
 
   <style>
+    h1 {
+      @apply text-3xl text-quaternary-400;
+    }
+
     h2.company {
       @apply text-lg text-primary-400;
     }
@@ -383,7 +387,7 @@ import Layout from "@layouts/Layout.astro";
     }
 
     div.description {
-      @apply text-md text-secondary-400;
+      @apply text-md text-secondary-50;
 
       p {
         @apply py-2;
