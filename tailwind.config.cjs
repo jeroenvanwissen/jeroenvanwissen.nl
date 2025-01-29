@@ -33,16 +33,17 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        xs: ["0.65rem", { lineHeight: "130%" }],
-        sm: ["0.8rem", { lineHeight: "140%" }],
-        md: ["1rem", { lineHeight: "130%" }],
-        base: ["1rem", { lineHeight: "130%" }],
-        lg: ["1.25rem", { lineHeight: "120%" }],
-        xl: ["1.55rem", { lineHeight: "120%" }],
-        "2xl": ["1.95rem", { lineHeight: "120%" }],
-        "3xl": ["2.45rem", { lineHeight: "120%" }],
-        "4xl": ["3.05rem", { lineHeight: "120%" }],
-        "5xl": ["3.8rem", { lineHeight: "120%" }],
+        xs: ["0.6rem", { lineHeight: "1rem" }],
+        sm: ["0.8rem", { lineHeight: "1.2rem" }],
+        md: ["1rem", { lineHeight: "1.4rem" }],
+        base: ["1rem", { lineHeight: "1.4rem" }],
+        lg: ["1.2rem", { lineHeight: "1.6rem" }],
+        xl: ["1.4rem", { lineHeight: "1.8rem" }],
+        "2xl": ["1.6rem", { lineHeight: "2rem" }],
+        "3xl": ["1.8rem", { lineHeight: "2.2rem" }],
+        "4xl": ["2rem", { lineHeight: "2.4rem" }],
+        "5xl": ["2.4rem", { lineHeight: "3rem" }],
+        "logo-lg": ["3rem", { lineHeight: "3.4rem" }],
       },
       colors: {
         primary: {
