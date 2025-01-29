@@ -76,14 +76,14 @@
 }
 
 :root {
-  --main-family: "Roboto Mono", sans-serif;
+  --main-family: "Roboto", sans-serif;
   --logo-font-family: "Roboto", sans-serif;
 }
 
 html {
   font-family: var(--main-family);
   min-height: 100%;
-  font-size: 1.25rem;
+  font-size: 1.30rem;
 }
 
 .logo {

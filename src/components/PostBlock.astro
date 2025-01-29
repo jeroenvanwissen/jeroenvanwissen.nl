@@ -31,7 +31,7 @@ if (direction === "left") {
 }
 ---
 
-<div class={`bg-${color}-700/5 hover:bg-${color}-400/5 shadow-md ${border}`}>
+<a href={`/post/${post.slug}`} class={`block bg-${color}-700/5 hover:bg-${color}-400/5 shadow-md ${border}`}>
   {
     post.data.image && (
       <Image
@@ -45,6 +45,25 @@ if (direction === "left") {
     )
   }
   <div class="p-2 sm:p-4">
+    <h2
+      class="text-sm sm:text-md lg:text-lg font-black mb-2 text-white/80"
+    >
+        {post.data.title}
+    </h2>
+    <p class={`text-xs font-extralight sm:text-sm lg:text-md text-white/60`}>
+      {post.data.description}
+    </p>
+    <div class="my-1">
+      {
+        post.data.categories.map((category: string) => (
+          <span
+            class={`pill inline-block text-${color}-100 bg-${color}-400 bg-opacity-[.16]`}
+          >
+            {category}
+          </span>
+        ))
+      }
+    </div>
     {
       type !== "project" && (
         <div class={`text-xs text-${color}-50 opacity-40`}>
@@ -57,30 +76,8 @@ if (direction === "left") {
         </div>
       )
     }
-    <div class="my-1">
-      {
-        post.data.categories.map((category: string) => (
-          <span
-            class={`pill inline-block text-${color}-200 bg-${color}-400/25`}
-          >
-            {category}
-          </span>
-        ))
-      }
-    </div>
-
-    <h2
-      class={`text-sm sm:text-md lg:text-lg font-bold mb-2 text-${color}-400`}
-    >
-      <a href={`/post/${post.slug}`}>
-        {post.data.title}
-      </a>
-    </h2>
-    <p class={`text-xs sm:text-sm lg:text-md text-${color}-50 opacity-60`}>
-      {post.data.description}
-    </p>
   </div>
-</div>
+</a>
 
 <style>
   .pill {
