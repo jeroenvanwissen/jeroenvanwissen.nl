@@ -23,20 +23,30 @@ if (currentPath === href) {
       : 'text-white opacity-60'}
   >
     <svg
-      width="16"
-      height="20"
-      viewBox="0 0 16 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       class="inline mr-1"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M1.52228 0.208984C0.454777 0.208984 -0.262864 1.30317 0.162478 2.28228L7.38106 18.899C7.6163 19.4405 8.15044 19.7908 8.74086 19.7908H11.044C12.112 19.7908 12.8297 18.6957 12.4034 17.7164L5.16943 1.09978C4.93393 0.558818 4.40008 0.208984 3.81009 0.208984H1.52228Z"
+      <rect
+        x="8"
+        y="0"
+        width="5"
+        rx="1.2"
+        ry="1.2"
+        height="20"
         fill=`url(#${id})`
-        fill-opacity="0.5"></path>
-      <path
-        d="M14.1475 0.208984C15.0672 0.208984 15.765 1.03774 15.6084 1.94404L12.7366 18.5607C12.6137 19.2716 11.997 19.7908 11.2757 19.7908H8.74844C7.82816 19.7908 7.13021 18.9611 7.28775 18.0544L10.1749 1.43776C10.2983 0.727519 10.9147 0.208984 11.6356 0.208984H14.1475Z"
-        fill={color}></path>
+        fill-opacity="0.5"
+        style="width:var(--rect-gradient-width)"></rect>
+      <rect
+        x="7.5"
+        y="0"
+        rx="1.2"
+        ry="1.2"
+        width="5.5"
+        height="20"
+        style="width:var(--rect-width)"></rect>
       <defs>
         <linearGradient
           id={id}
@@ -46,8 +56,9 @@ if (currentPath === href) {
           y2="20.5175"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.185" stop-color={color} stop-opacity="0"></stop>
-          <stop offset="1" stop-color={color}></stop>
+          <stop offset="0.185" stop-color="var(--color-stop)" stop-opacity="0"
+          ></stop>
+          <stop offset="1" stop-color="var(--color-stop)"></stop>
         </linearGradient>
       </defs>
     </svg><span>{label}</span>
@@ -55,42 +66,50 @@ if (currentPath === href) {
 </li>
 
 <style>
-  .nav-item {
-    a {
-      transition: 0.4s ease;
-      svg {
-        path:nth-of-type(1) {
-          transform-origin: 100% 90%;
-          transform: rotate(34deg);
-          opacity: 0;
-          transition:
-            transform 0.4s ease,
-            opacity 0.4s ease;
-        }
+  :root {
+    --rect-width: 3.5;
+    --rect-gradient-width: 4;
+  }
 
-        path:nth-of-type(2) {
-          transform: scaleX(0.5);
-          transform-origin: 50% 50%;
-          transition: 0.4s ease;
-        }
-      }
-      span {
+  .nav-item {
+    a svg {
+      rect:nth-of-type(2) {
+        fill: #fff;
+        opacity: 0.8;
+        transform-origin: bottom;
+        transform: skewX(-10deg);
         transition: 0.4s ease;
+        x: 9.5;
+        width: var(--rect-width);
+      }
+      rect:nth-of-type(1) {
+        opacity: 0;
+        transform-origin: bottom;
+        transform: skewX(-10deg);
+        transition: 0.4s ease;
+        x: 9;
+        width: var(--rect-gradient-width);
       }
     }
+
     a.active,
     a:hover {
       opacity: 1;
       svg {
-        path:nth-of-type(1) {
-          transform-origin: 100% 90%;
-          transform: rotate(0deg);
-          opacity: 1;
-        }
-        path:nth-of-type(2) {
-          transform: scaleX(1) rotate(0deg);
+        rect:nth-of-type(2) {
           fill: #ff2bb9;
           opacity: 1;
+          transform-origin: bottom;
+          transform: skewX(-10deg);
+          x: 7.5;
+          --rect-width: 5.5;
+        }
+        rect:nth-of-type(1) {
+          opacity: 1;
+          transform-origin: bottom;
+          transform: skewX(24deg);
+          x: 8;
+          --rect-gradient-width: 5;
         }
         linearGradient stop {
           stop-color: #ff2bb9;
