@@ -38,7 +38,7 @@ if (currentPath === href) {
         height="20"
         fill=`url(#${id})`
         fill-opacity="0.5"
-        style="width:var(--rect-gradient-width)"></rect>
+        style="width:calc(var(--rect-gradient-width) * 1px)"></rect>
       <rect
         x="7.5"
         y="0"
@@ -46,7 +46,7 @@ if (currentPath === href) {
         ry="1.2"
         width="5.5"
         height="20"
-        style="width:var(--rect-width)"></rect>
+        style="width:calc(var(--rect-width) * 1px)"></rect>
       <defs>
         <linearGradient
           id={id}
