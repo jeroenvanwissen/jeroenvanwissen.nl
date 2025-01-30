@@ -1,12 +1,12 @@
 ---
-import { getSortedPostsByType } from "@lib/util";
-import Layout from "@layouts/Layout.astro";
-import PostBlock from "@components/PostBlock.astro";
+import { getSortedPostsByType } from '@lib/util';
+import Layout from '@layouts/Layout.astro';
+import PostBlock from '@components/PostBlock.astro';
 
-const posts = await getSortedPostsByType("post", "blog");
+const posts = await getSortedPostsByType('post', 'blog');
 
-const colors = ["primary", "secondary", "tertiary", "quaternary"];
-const directions = ["left", "right"];
+const colors = ['primary', 'secondary', 'tertiary', 'quaternary'];
+const directions = ['left', 'right'];
 ---
 
 <Layout>
@@ -35,9 +35,7 @@ const directions = ["left", "right"];
   </Fragment>
   <div class="w-full">
     <div class="mx-auto max-w-6xl px-8 py-4">
-      <div
-        class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3"
-      >
+      <div class="columns-2 md:columns-3 gap-4 space-y-4" id="masonry-grid">
         {
           posts.map((post: any) => {
             const color = colors[Math.floor(Math.random() * colors.length)];
@@ -52,3 +50,39 @@ const directions = ["left", "right"];
     </div>
   </div>
 </Layout>
+
+<script is:inline>
+  const masonryGrid = document.getElementById('masonry-grid');
+  const columnWidth = 440;
+  const gap = 20;
+  function createMasonryGrid() {
+    const gridWidth = masonryGrid.offsetWidth;
+    const columns = Math.floor(gridWidth / columnWidth) || 1;
+
+    masonryGrid.style.columnCount = columns.toString();
+    masonryGrid.style.columnGap = `${gap}px`;
+
+    masonryGrid.style.display = 'block';
+    masonryGrid.style.gridTemplateColumns = '';
+    masonryGrid.style.gridTemplateRows = '';
+    const items = Array.from(masonryGrid.children);
+    items.forEach((item) => {
+      item.style.gridRowStart = '';
+      item.style.gridColumnStart = '';
+
+      item.style.breakInside = 'avoid';
+      item.style.marginBottom = `${gap}px`;
+    });
+  }
+
+  createMasonryGrid();
+
+  window.addEventListener('resize', createMasonryGrid);
+  window.addEventListener('load', createMasonryGrid);
+
+  const observer = new MutationObserver(createMasonryGrid);
+  observer.observe(masonryGrid, {
+    childList: true,
+    subtree: true,
+  });
+</script>
