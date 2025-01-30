@@ -22,18 +22,18 @@ export interface Props {
 
 const { post, color = 'primary', direction, type = 'post' } = Astro.props;
 
-let border = `border border-${color}-600`;
-
+// let border = `border border-${color}-600`;
+let border = '';
 if (direction === 'left') {
-  border = `cutoff-tl-br`; //` border border-r-${color}-400 border-t-${color}-400 border-b-${color}-800 border-l-${color}-800`;
+  border = 'rounded-tl-xl rounded-br-xl'; //`cutoff-tl-br`; //` border border-r-${color}-400 border-t-${color}-400 border-b-${color}-800 border-l-${color}-800`;
 } else if (direction === 'right') {
-  border = `cutoff-bl-tr`; //` border border-l-${color}-400 border-t-${color}-400 border-b-${color}-800 border-r-${color}-800`;
+  border = 'rounded-bl-xl rounded-tr-xl'; //`cutoff-bl-tr`; //` border border-l-${color}-400 border-t-${color}-400 border-b-${color}-800 border-r-${color}-800`;
 }
 ---
 
 <a
   href={`/post/${post.slug}`}
-  class={`block text-white/80 hover:text-white bg-white/5 hover:bg-white/10 shadow-md ${border}`}
+  class={`block text-white/80 hover:text-white bg-white/5 hover:bg-white/10 ${border}`}
 >
   {
     post.data.image && (
@@ -84,10 +84,10 @@ if (direction === 'left') {
 
 <style>
   p {
-    overflow: hidden;
+    /* overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: vertical; */
   }
   .pill {
     @apply text-xs rounded-full px-3 py-1 mr-1 whitespace-nowrap;

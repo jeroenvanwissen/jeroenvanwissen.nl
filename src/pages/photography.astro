@@ -1,9 +1,9 @@
 ---
-import { getSortedPostsByType } from "@lib/util";
-import Layout from "@layouts/Layout.astro";
-import { Image } from "astro:assets";
+import { getSortedPostsByType } from '@lib/util';
+import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
 
-const posts = await getSortedPostsByType("post", "photo");
+const posts = await getSortedPostsByType('post', 'photo');
 ---
 
 <Layout>
@@ -40,13 +40,18 @@ const posts = await getSortedPostsByType("post", "photo");
       >
         {
           posts.map((post) => (
-            <a href={`/post/${post.slug}`} class="block cutoff-tl-br">
+            <a
+              href={`/post/${post.slug}`}
+              class="block rounded-tl-xl rounded-br-xl overflow-hidden mb-4"
+            >
               <Image
-                src={post.data.image.url}
-                alt={post.data.image.alt}
+                src={post.data.image!.url}
+                alt={post.data.image!.alt}
+                width={800}
+                height={450}
                 format="webp"
                 quality={50}
-                class="mb-4 border border-transparent hover:border-secondary-400 transition-all duration-300 ease-in-out hover:shadow-lg grayscale hover:filter-none"
+                class="transition-all duration-300 ease-in-out hover:shadow-lg grayscale hover:filter-none"
                 loading="lazy"
               />
             </a>
