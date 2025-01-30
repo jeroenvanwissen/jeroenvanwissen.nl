@@ -30,7 +30,7 @@ if (currentPath === href) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <rect
-        x="8"
+        x="10"
         y="0"
         width="5"
         rx="1.2"
@@ -40,7 +40,7 @@ if (currentPath === href) {
         fill-opacity="0.5"
         style="width:calc(var(--rect-gradient-width) * 1px)"></rect>
       <rect
-        x="7.5"
+        x="9.5"
         y="0"
         rx="1.2"
         ry="1.2"
@@ -73,13 +73,17 @@ if (currentPath === href) {
 
   .nav-item {
     a svg {
+      transition: 0.4s ease;
       rect:nth-of-type(2) {
         fill: #fff;
         opacity: 0.8;
         transform-origin: bottom;
         transform: skewX(-10deg);
-        transition: 0.4s ease;
-        x: 9.5;
+        transition:
+          opacity 0.4s ease,
+          transform 0.4s ease,
+          skew 0.4s ease,
+          width 0.4s ease;
         width: var(--rect-width);
       }
       rect:nth-of-type(1) {
@@ -87,8 +91,10 @@ if (currentPath === href) {
         transform-origin: bottom;
         transform: skewX(-10deg);
         transition: 0.4s ease;
-        x: 9;
         width: var(--rect-gradient-width);
+      }
+      linearGradient stop {
+        stop-color: #ff2bb9;
       }
     }
 
@@ -100,19 +106,14 @@ if (currentPath === href) {
           fill: #ff2bb9;
           opacity: 1;
           transform-origin: bottom;
-          transform: skewX(-10deg);
-          x: 7.5;
+          transform: translateX(-2px) skewX(-10deg);
           --rect-width: 5.5;
         }
         rect:nth-of-type(1) {
           opacity: 1;
           transform-origin: bottom;
-          transform: skewX(24deg);
-          x: 8;
+          transform: translateX(-2px) skewX(24deg);
           --rect-gradient-width: 5;
-        }
-        linearGradient stop {
-          stop-color: #ff2bb9;
         }
       }
       span {
