@@ -1,18 +1,16 @@
 ---
 date: '2023-09-04T00:00:00.000Z'
-title: Published @fastone/eslint-config npm package
+title: '@fastone/eslint-config npm package'
 categories:
 - Tech
 - JavaScript
 - TypeScript
 - ESLint
 - npm
-description: 'In my journey to learn more about TypeScript and locking in a personal
+description: In my journey to learn more about TypeScript and locking in a personal
   development stack I decided to publish my own ESLint config package, to be used
   in all my projects.
-
-  '
-type: blog
+type: project
 draft: false
 ---
 As I'm finally getting more and more into TypeScript and working out a development stack based on MongoDB, Express, React and Node.js I decided to publish my own ESLint config package, to be used in all my projects.

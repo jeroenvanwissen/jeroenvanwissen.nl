@@ -80,7 +80,11 @@ article a {
     }
 
     h2 {
-      @apply text-xl font-bold text-quaternary-400;
+      @apply text-xl font-extralight text-quaternary-400;
+    }
+
+    h3 {
+      @apply text-lg font-extralight text-quaternary-400;
     }
 
     .company {
@@ -99,8 +103,9 @@ article a {
       @apply text-base text-white my-2;
     }
 
-    li {
-      @apply text-base text-white;
+    ul,
+    ol {
+      @apply text-base text-white my-2;
     }
 
     a {

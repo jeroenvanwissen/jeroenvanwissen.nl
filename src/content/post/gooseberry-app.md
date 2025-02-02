@@ -1,14 +1,14 @@
 ---
-title: GooseBerry, an open source Twitch livestream companion app
+title: GooseBerry.app
 categories:
-- JavaScript
-- TypeScript
-- Tech
-description: I've started yet another new personal coding project :) GooseBerry is
-  an open source Twitch livestream companion app. It's a cross-platform desktop application
-  built with Electron and React.
+- JavaScript / TypeScript
+- Twitch
+description: Twitch chat bot, overlays and more for my live streams.
 date: '2024-01-18T13:22:00.000Z'
-type: blog
+type: project
+image:
+  url: ../../assets/images/gooseberry.png
+  alt: GooseBerry
 draft: false
 ---
 It's still in an really early prototyping phase, but I've started yet another new personal coding project :)

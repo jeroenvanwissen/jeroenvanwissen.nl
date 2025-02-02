@@ -2,17 +2,18 @@
 date: '2023-01-02T00:00:00.000Z'
 title: Built with Astro.build
 categories:
-- Tech
-- JavaScript
-- Astro.build
-description: 'I started to build simple websites like this one with Astro.build, a
+  - JavaScript / TypeScript
+  - Astro.build
+description:
+  I started to build simple websites like this one with Astro.build, a
   static html generator framework.
-
-  '
 type: blog
 draft: false
 ---
-In a search of a simple static html page generator framework I stumbled up on [Astro.build](https://astro.build "Link to Astro.build website")
+
+**_This needs to be rewritten and updated_**
+
+In a search of a simple static html page generator framework I stumbled up on [Astro.build](https://astro.build 'Link to Astro.build website')
 
 Immediately I liked the simplicity and ease of use. And mostly to be able to extend it with other JavaScript frameworks like React and Svelte (and more..)
 
@@ -42,4 +43,4 @@ Start the local dev server..
 npm run dev
 ```
 
-Load the link [localhost:3000](http://localhost:3000/ "Link to localhost port 3000") in your browser and start creating :)
+Load the link [localhost:3000](http://localhost:3000/ 'Link to localhost port 3000') in your browser and start creating :)

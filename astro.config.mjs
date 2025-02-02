@@ -34,5 +34,11 @@ export default defineConfig({
     '/weblog/php/howto-generate-animated-gif-with-php': '/',
     '/weblog/wordpress/add-custom-fields-to-a-taxonomy': '/',
     '/weblog': '/posts',
+    '/post/gooseberry-an-open-source-twitch-livestream-companion-app':
+      '/post/gooseberry-app',
+    '/post/published-eslint-config-npm-package':
+      '/post/fastone-eslint-config-npm-package',
+    '/post/building-a-simple-blockchain-network-application-in-javascript':
+      '/post/blockchain-ts',
   },
 });

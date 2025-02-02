@@ -19,7 +19,8 @@ FUTURE:
 [ ] Fix ther hero section styling and add ascii "HI!" or ";//" in background
 [ ] Figure out color scheme for skillpills ( hard/soft ) and langaugepills
 [ ] Research oklch https://evilmartians.com/chronicles/oklch-in-css-why-quit-rgb-hsl
-
+[ ] Restructure and rewrite all posts Markdown files. Only use title/description frontmatter in blocks. Detail page should show only Markdown!
+[ ] Reorganise and split collections in /post, /photo, /project, /recipe
+[ ] Implement sticky post, each collection can have sticky posts on the homepage where date is ignored
+[ ] Add 'site updates' bar that will show posts of type 'updates'
 [X] MAKE SOME TEA <<<<<<<
-
-

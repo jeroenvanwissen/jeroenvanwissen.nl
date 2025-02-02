@@ -11,6 +11,9 @@ categories:
 - JavaScript
 type: blog
 ---
+
+**_This needs to be rewritten and updated_**
+
 It might not be perfect code, I'm well aware of that. And it might not work for your setup, but with some modifications it might :)
 
 In this post I'll explain the solution I've implemented on my photography portfolio site [31f-fotografie.nl](https://31f-fotografie.nl "Link to 31f-fotografie.nl website")
