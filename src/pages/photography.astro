@@ -34,7 +34,7 @@ const posts = await getSortedPostsByType('post', 'photo');
     <link href={`${import.meta.env.SITE}/photography`} rel="canonical" />
   </Fragment>
   <div class="w-full">
-    <div class="mx-auto container my-8">
+    <div class="mx-auto max-w-6xl px-6 py-4">
       <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
         {
           posts.map((post) => (
@@ -60,140 +60,151 @@ const posts = await getSortedPostsByType('post', 'photo');
         }
       </div>
     </div>
-</div>
+  </div>
 
-<style>
-  .masonry-item {
-    display: inline-block;
-    width: 100%;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .masonry-item.expanded {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 50;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .masonry-item.expanded img {
-    width: auto;
-    max-width: 90vw;
-    height: auto;
-    max-height: 90vh;
-    object-fit: contain;
-    filter: none;
-    animation: zoomIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  @keyframes zoomIn {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
+  <style>
+    .masonry-item {
+      display: inline-block;
+      width: 100%;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    to {
-      opacity: 1;
-      transform: scale(1);
+
+    .masonry-item.expanded {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 50;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-  }
-</style>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const photoItems = document.querySelectorAll('.masonry-item');
-    
-    const expandPhoto = (item: Element) => {
-      photoItems.forEach(otherItem => {
-        if (otherItem !== item) {
-          otherItem.classList.remove('expanded');
-        }
-      });
-      
-      item.classList.add('expanded');
-      item.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    };
+    .masonry-item.expanded img {
+      width: auto;
+      max-width: 90vw;
+      height: auto;
+      max-height: 90vh;
+      object-fit: contain;
+      filter: none;
+      animation: zoomIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
 
-    photoItems.forEach(item => {
-      const link = item.querySelector('[data-photo-link]');
-      
-      link?.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent the link from navigating
-        const slug = link.getAttribute('href')?.split('/').pop();
-        if (slug) {
-          history.pushState(null, '', `#${slug}`);
-          expandPhoto(item);
-        }
-      });
-    });
-
-    // Rest of the event handlers remain the same, just update the selectors
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1);
-      if (hash) {
-        const targetLink = document.querySelector(`[href="/post/${hash}"]`);
-        if (targetLink) {
-          const targetItem = targetLink.closest('.masonry-item');
-          if (targetItem) {
-            expandPhoto(targetItem);
-          }
-        }
-      } else {
-        photoItems.forEach(item => item.classList.remove('expanded'));
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
       }
-    };
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
 
-    const handleKeyPress = (e: KeyboardEvent) => {
-      const expandedItem = document.querySelector('.masonry-item.expanded');
-      if (!expandedItem) return;
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const photoItems = document.querySelectorAll('.masonry-item');
 
-      switch (e.key) {
-        case 'Escape':
-          expandedItem.classList.remove('expanded');
+      const expandPhoto = (item: Element) => {
+        photoItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('expanded');
+          }
+        });
+
+        item.classList.add('expanded');
+        item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+
+      photoItems.forEach((item) => {
+        const link = item.querySelector('[data-photo-link]');
+
+        link?.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent the link from navigating
+          const slug = link.getAttribute('href')?.split('/').pop();
+          if (slug) {
+            history.pushState(null, '', `#${slug}`);
+            expandPhoto(item);
+          }
+        });
+      });
+
+      // Rest of the event handlers remain the same, just update the selectors
+      const handleHashChange = () => {
+        const hash = window.location.hash.slice(1);
+        if (hash) {
+          const targetLink = document.querySelector(`[href="/post/${hash}"]`);
+          if (targetLink) {
+            const targetItem = targetLink.closest('.masonry-item');
+            if (targetItem) {
+              expandPhoto(targetItem);
+            }
+          }
+        } else {
+          photoItems.forEach((item) => item.classList.remove('expanded'));
+        }
+      };
+
+      const handleKeyPress = (e: KeyboardEvent) => {
+        const expandedItem = document.querySelector('.masonry-item.expanded');
+        if (!expandedItem) return;
+
+        switch (e.key) {
+          case 'Escape':
+            expandedItem.classList.remove('expanded');
+            history.pushState(null, '', window.location.pathname);
+            break;
+          case 'ArrowLeft':
+            const prevItem =
+              expandedItem.previousElementSibling ||
+              photoItems[photoItems.length - 1];
+            expandedItem.classList.remove('expanded');
+            const prevSlug = prevItem
+              .querySelector('[data-photo-link]')
+              ?.getAttribute('href')
+              ?.split('/')
+              .pop();
+            if (prevSlug) {
+              history.pushState(null, '', `#${prevSlug}`);
+              expandPhoto(prevItem);
+            }
+            break;
+          case 'ArrowRight':
+            const nextItem = expandedItem.nextElementSibling || photoItems[0];
+            expandedItem.classList.remove('expanded');
+            const nextSlug = nextItem
+              .querySelector('[data-photo-link]')
+              ?.getAttribute('href')
+              ?.split('/')
+              .pop();
+            if (nextSlug) {
+              history.pushState(null, '', `#${nextSlug}`);
+              expandPhoto(nextItem);
+            }
+            break;
+        }
+      };
+
+      // Handle initial hash and hash changes
+      handleHashChange();
+      window.addEventListener('hashchange', handleHashChange);
+
+      // Add keyboard event listener
+      document.addEventListener('keydown', handleKeyPress);
+
+      // Close expanded image when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.masonry-item')) {
+          photoItems.forEach((item) => item.classList.remove('expanded'));
           history.pushState(null, '', window.location.pathname);
-          break;
-        case 'ArrowLeft':
-          const prevItem = expandedItem.previousElementSibling || photoItems[photoItems.length - 1];
-          expandedItem.classList.remove('expanded');
-          const prevSlug = prevItem.querySelector('[data-photo-link]')?.getAttribute('href')?.split('/').pop();
-          if (prevSlug) {
-            history.pushState(null, '', `#${prevSlug}`);
-            expandPhoto(prevItem);
-          }
-          break;
-        case 'ArrowRight':
-          const nextItem = expandedItem.nextElementSibling || photoItems[0];
-          expandedItem.classList.remove('expanded');
-          const nextSlug = nextItem.querySelector('[data-photo-link]')?.getAttribute('href')?.split('/').pop();
-          if (nextSlug) {
-            history.pushState(null, '', `#${nextSlug}`);
-            expandPhoto(nextItem);
-          }
-          break;
-      }
-    };
-
-    // Handle initial hash and hash changes
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-
-    // Add keyboard event listener
-    document.addEventListener('keydown', handleKeyPress);
-
-    // Close expanded image when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.masonry-item')) {
-        photoItems.forEach(item => item.classList.remove('expanded'));
-        history.pushState(null, '', window.location.pathname);
-      }
+        }
+      });
     });
-  });
-</script>
+  </script>
+</Layout>

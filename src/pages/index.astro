@@ -70,12 +70,7 @@ const projects = (await getSortedPostsByType('post', 'project')).slice(0, 3);
       >
         {
           blogposts.map((blogpost) => (
-            <PostBlock
-              post={blogpost}
-              color="quaternary"
-              direction="left"
-              type="blog"
-            />
+            <PostBlock post={blogpost} direction="left" type="blog" />
           ))
         }
       </div>
@@ -95,12 +90,7 @@ const projects = (await getSortedPostsByType('post', 'project')).slice(0, 3);
       >
         {
           projects.map((project) => (
-            <PostBlock
-              post={project}
-              color="tertiary"
-              direction="right"
-              type="project"
-            />
+            <PostBlock post={project} direction="right" type="project" />
           ))
         }
       </div>
@@ -120,12 +110,7 @@ const projects = (await getSortedPostsByType('post', 'project')).slice(0, 3);
       >
         {
           photos.map((photo) => (
-            <PostBlock
-              post={photo}
-              color="secondary"
-              direction="left"
-              type="photo"
-            />
+            <PostBlock post={photo} direction="left" type="photo" />
           ))
         }
       </div>

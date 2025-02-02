@@ -73,16 +73,50 @@ article a {
   vertical-align: middle;
 }
 
-/* 
-article h2 {
-  @apply mt-4 text-base font-bold text-primary-50 md:mt-6 md:text-xl;
+@layer components {
+  article {
+    h1 {
+      @apply text-4xl text-quaternary-400;
+    }
+
+    h2 {
+      @apply text-xl font-bold text-quaternary-400;
+    }
+
+    .company {
+      @apply text-2xl text-quaternary-400;
+    }
+
+    .jobtitle {
+      @apply text-quaternary-400/90;
+    }
+
+    .date {
+      @apply text-sm text-quaternary-400/80;
+    }
+
+    p {
+      @apply text-base text-white my-2;
+    }
+
+    li {
+      @apply text-base text-white;
+    }
+
+    a {
+      @apply text-quaternary-400/80 font-bold underline hover:text-quaternary-400;
+    }
+
+    .astro-code {
+      @apply rounded-lg border border-secondary-700 p-2 text-xl shadow md:p-4 md:text-base;
+    }
+
+    .skillpill {
+      @apply inline-block text-primary-200 bg-primary-400/25 text-xs rounded-full px-3 py-1 mr-1 mb-1 whitespace-nowrap;
+    }
+
+    .langpill {
+      @apply inline-block text-tertiary-200 bg-tertiary-400/25 text-xs rounded-full px-3 py-1 mr-1 mb-1 whitespace-nowrap;
+    }
+  }
 }
-article p {
-  @apply mt-3 mb-4 text-primary-50;
-}
-article a {
-  @apply text-primary-500 underline hover:text-primary-300;
-}
-article .astro-code {
-  @apply rounded-lg border border-secondary-700 p-2 text-xs shadow md:p-4 md:text-base;
-} */

@@ -7,12 +7,6 @@ export interface Props {
 
 const { href, label, id } = Astro.props;
 const currentPath = Astro.url.pathname;
-
-let color = '#FFFFFF';
-
-if (currentPath === href) {
-  color = '#FF2BB9';
-}
 ---
 
 <li class="leading-6 nav-item">
@@ -23,7 +17,7 @@ if (currentPath === href) {
       : 'text-white opacity-60'}
   >
     <svg
-      class="inline mr-1"
+      class="inline mr-0.5"
       width="20"
       height="20"
       viewBox="0 0 20 20"
@@ -96,8 +90,8 @@ if (currentPath === href) {
         width: var(--rect-gradient-width);
       }
       linearGradient stop {
-        stop-color: #ff2bb9;
-        --color-stop: #ff2bb9;
+        stop-color: var(--color-quaternary-400);
+        --color-stop: var(--color-quaternary-400);
       }
     }
 
@@ -106,7 +100,7 @@ if (currentPath === href) {
       opacity: 1;
       svg {
         rect:nth-of-type(2) {
-          fill: #ff2bb9;
+          fill: var(--color-quaternary-400);
           opacity: 1;
           transform-origin: bottom;
           transform: translateX(-2px) skewX(-10deg);
@@ -120,7 +114,7 @@ if (currentPath === href) {
         }
       }
       span {
-        color: #ff2bb9;
+        color: var(--color-quaternary-400);
         opacity: 1;
       }
     }
