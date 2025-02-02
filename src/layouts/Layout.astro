@@ -1,7 +1,7 @@
 ---
-import Logo from "@components/Logo.astro";
-import NavItem from "@components/NavItem.astro";
-import "@style/main.css";
+import Logo from '@components/Logo.astro';
+import NavItem from '@components/NavItem.astro';
+import '@styles/global.css';
 ---
 
 <!doctype html>
@@ -12,7 +12,7 @@ import "@style/main.css";
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <script
       defer
-      data-domain={import.meta.env.SITE.replace("https://", "")}
+      data-domain={import.meta.env.SITE.replace('https://', '')}
       src="https://plausible.public-void.nl/js/plausible.js"></script>
     <meta content="@jvwissen" name="twitter:creator" />
     <meta content="summary_large_image" name="twitter:card" />
@@ -26,7 +26,7 @@ import "@style/main.css";
             <a href="/" class="inline-block" aria-label=";// Logo"><Logo /></a>
             <a
               href="/"
-              class="inline-block px-2 text-quaternary-50 text-xl lg:text-3xl xl:text-logo-lg font-extrabold italic"
+              class="inline-block px-2 text-quaternary-50 text-xl lg:text-3xl xl:text-6xl xl:leading-14 font-extrabold italic"
               aria-label="Jeroen van Wissen">jeroenvanwissen</a
             >
           </div>

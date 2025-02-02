@@ -1,13 +1,12 @@
 ---
-import { getSortedPostsByType } from "@lib/util";
-import Layout from "@layouts/Layout.astro";
-import { Image } from "astro:assets";
-import Header from "@components/Header.astro";
-import PostBlock from "@components/PostBlock.astro";
+import { getSortedPostsByType } from '@lib/util';
+import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import PostBlock from '@components/PostBlock.astro';
 
-const blogposts = (await getSortedPostsByType("post", "blog")).slice(0, 3);
-const photos = (await getSortedPostsByType("post", "photo")).slice(0, 3);
-const projects = (await getSortedPostsByType("post", "project")).slice(0, 3);
+const blogposts = (await getSortedPostsByType('post', 'blog')).slice(0, 3);
+const photos = (await getSortedPostsByType('post', 'photo')).slice(0, 3);
+const projects = (await getSortedPostsByType('post', 'project')).slice(0, 3);
 ---
 
 <Layout>
@@ -59,7 +58,13 @@ const projects = (await getSortedPostsByType("post", "project")).slice(0, 3);
   </div>
   <div class="w-full bg-quaternary-950 border-b border-quaternary-900">
     <div class="max-w-6xl mx-auto px-2 pb-6">
-      <Header label="blog posts" color="quaternary" />
+      <div class="leading-6">
+        <h2
+          class="text-sm md:text-lg font-bold text-left text-quaternary-400 md:py-4"
+        >
+          <span class="leading-10 inline-block">.blog posts</span>
+        </h2>
+      </div>
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6"
       >
@@ -78,7 +83,13 @@ const projects = (await getSortedPostsByType("post", "project")).slice(0, 3);
   </div>
   <div class="w-full bg-tertiary-950 border-b border-tertiary-900">
     <div class="max-w-6xl mx-auto px-2 pb-6">
-      <Header label="projects" color="tertiary" />
+      <div class="leading-6">
+        <h2
+          class="text-sm md:text-lg font-bold text-left text-tertiary-400 md:py-4"
+        >
+          <span class="leading-10 inline-block">.projects</span>
+        </h2>
+      </div>
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6"
       >
@@ -97,7 +108,13 @@ const projects = (await getSortedPostsByType("post", "project")).slice(0, 3);
   </div>
   <div class="w-full bg-secondary-950 border-b border-secondary-900">
     <div class="max-w-6xl mx-auto px-2 pb-6">
-      <Header label="photography" color="secondary" />
+      <div class="leading-6">
+        <h2
+          class="text-sm md:text-lg font-bold text-left text-secondary-400 md:py-4"
+        >
+          <span class="leading-10 inline-block">.photography</span>
+        </h2>
+      </div>
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6"
       >
