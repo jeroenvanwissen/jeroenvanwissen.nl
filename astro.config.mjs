@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jeroenvanwissen.nl',
-  integrations: [tailwind()],
+  integrations: [],
   redirects: {
     '/blog/[slug]': '/post/[slug]',
     '/blog/categories-pages-added': '/post/category-pages-added',
@@ -23,5 +23,8 @@ export default defineConfig({
     '/weblog/php/howto-generate-animated-gif-with-php': '/',
     '/weblog/wordpress/add-custom-fields-to-a-taxonomy': '/',
     '/weblog': '/posts',
+  },
+  vite: {
+    plugins: [tailwindcss()],
   }
 });

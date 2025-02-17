@@ -37,7 +37,7 @@ const entries = await getSortedEntriesFromCollection('post', 'blog');
                                 <p class="py-2 text-base text-primary-50">{entry.data.description}</p>
                             </div>
                             <div class="flex flex-row-reverse place-self-end">
-                                <a href={`/${entry.collection}/${entry.slug}`} class="text-md font-bold text-primary-800 rounded-lg bg-primary-50 px-4 pt-1.5 pb-2 shadow hover:bg-primary-300">
+                                <a href={`/${entry.collection}/${entry.slug}`} class="text-md font-bold text-primary-800 rounded-lg bg-primary-50 px-4 pt-1.5 pb-2 shadow-sm hover:bg-primary-300">
                                     read more..
                                 </a>
                             </div>
@@ -48,15 +48,3 @@ const entries = await getSortedEntriesFromCollection('post', 'blog');
         </div>
     </div>
 </Layout>
-
-<style is:global>
-    article h2 {
-        @apply mt-6 text-xl text-neutral-100;
-    }
-    article p {
-        @apply mt-3 mb-4 text-justify text-neutral-200;
-    }
-    article a {
-        @apply text-wissen-orange underline hover:text-wissen-blue;
-    }
-</style>

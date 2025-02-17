@@ -1,5 +1,79 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap'); */
 
+@import "tailwindcss";
+
+@import 'tailwindcss/theme' layer(theme);
+@import 'tailwindcss/preflight' layer(base);
+
+@theme {
+  --text-xs: 0.65rem;
+  --text-xs--line-height: 130%;
+  --text-sm: 0.8rem;
+  --text-sm--line-height: 140%;
+  --text-md: 1rem;
+  --text-md--line-height: 130%;
+  --text-base: 1rem;
+  --text-base--line-height: 130%;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 120%;
+  --text-xl: 1.55rem;
+  --text-xl--line-height: 120%;
+  --text-2xl: 1.95rem;
+  --text-2xl--line-height: 120%;
+  --text-3xl: 2.45rem;
+  --text-3xl--line-height: 120%;
+  --text-4xl: 3.05rem;
+  --text-4xl--line-height: 120%;
+  --text-5xl: 3.8rem;
+  --text-5xl--line-height: 120%;
+
+  --color-primary-50: #f7fcee;
+  --color-primary-100: #e2f4c2;
+  --color-primary-200: #b8e56b;
+  --color-primary-300: #b8e56b;
+  --color-primary-400: #a3de40;
+  --color-primary-500: #8cca23;
+  --color-primary-600: #6c9c1b;
+  --color-primary-700: #4e7114;
+  --color-primary-800: #30460c;
+  --color-primary-900: #121a05;
+
+  --color-secondary-50: #f1fafe;
+  --color-secondary-100: #c1ebfb;
+  --color-secondary-200: #92dcf7;
+  --color-secondary-300: #62cdf4;
+  --color-secondary-400: #32bdf0;
+  --color-secondary-500: #10a8e0;
+  --color-secondary-600: #0d84b0;
+  --color-secondary-700: #096081;
+  --color-secondary-800: #063d51;
+  --color-secondary-900: #021921;
+
+  --color-wissen-green: #8cca23;
+  --color-wissen-blue: #10a8e0;
+  --color-wissen-purple: #7539a1;
+  --color-wissen-brown: #a07500;
+  --color-wissen-orange: #f3a031;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
 :root {
   --main-family: 'Roboto Mono', monospace;
 }
@@ -12,4 +86,17 @@ html {
 
 article a {
   word-wrap: break-word;
+}
+
+article h2 {
+  @apply mt-4 text-base font-bold text-primary-50 md:mt-6 md:text-xl;
+}
+article p {
+  @apply mt-3 mb-4 text-primary-50;
+}
+article a {
+  @apply text-primary-500 underline hover:text-primary-300;
+}
+article .astro-code {
+  @apply rounded-lg border border-secondary-700 p-2 text-xs shadow md:p-4 md:text-base;
 }
