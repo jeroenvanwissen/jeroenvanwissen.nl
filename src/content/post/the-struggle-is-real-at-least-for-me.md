@@ -1,6 +1,6 @@
 ---
 draft: true
-date: '2023-03-23T20:55:00.000Z'
+date: 2023-03-23
 title: The struggle is real... at least, for me.
 categories:
   - Tech

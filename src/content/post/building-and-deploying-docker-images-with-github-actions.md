@@ -10,7 +10,7 @@ description:
   Slowly moving my projects from a self-hosted GitLab instance to GitHub,
   while doing so I'm learning how to use GitHub Actions to build and deploy Docker
   images to the GitHub Container Registry (ghcr.io).
-date: '2024-05-04T15:29:00.000Z'
+date: 2024-05-04
 type: blog
 draft: false
 ---

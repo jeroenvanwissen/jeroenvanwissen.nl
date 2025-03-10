@@ -1,6 +1,6 @@
 ---
 draft: false
-date: '2023-03-22T10:38:00.000Z'
+date: 2023-03-22
 title:
   'Moved back to simple static self hosting in a Docker container from having
   this site hosted at Netlify '

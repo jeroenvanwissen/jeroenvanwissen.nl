@@ -1,9 +1,19 @@
 ---
-import { getSortedPostsByType } from '@lib/util';
-import Layout from '@layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
+import Layout from '@layouts/Layout.astro';
 
-const posts = await getSortedPostsByType('post', 'photo');
+const photos: CollectionEntry<'photo'>[] = await getCollection(
+  'photo',
+  ({ data }) => {
+    return !data.draft;
+  }
+);
+
+photos.sort(
+  (a: CollectionEntry<'photo'>, b: CollectionEntry<'photo'>) =>
+    a.data.date.getTime() - b.data.date.getTime()
+);
 ---
 
 <Layout>
@@ -35,28 +45,30 @@ const posts = await getSortedPostsByType('post', 'photo');
   </Fragment>
   <div class="w-full">
     <div class="mx-auto max-w-6xl px-6 py-4">
-      <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
+      <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 [&>*]:mb-4">
         {
-          posts.map((post) => (
-            <div class="masonry-item mb-4 break-inside-avoid">
-              <a
-                href={`/post/${post.slug}`}
-                class="block rounded-tl-xl rounded-br-xl overflow-hidden"
-                data-photo-link
-              >
-                <Image
-                  src={post.data.image!.url}
-                  alt={post.data.image!.alt}
-                  width={1600}
-                  height={900}
-                  format="webp"
-                  quality={85}
-                  class="w-full transition-all duration-500 ease-in-out hover:shadow-lg grayscale hover:filter-none"
-                  loading="lazy"
-                />
-              </a>
-            </div>
-          ))
+          photos.map((photo) =>
+            photo.data.image && (
+              <div class="masonry-item break-inside-avoid" data-index={photos.indexOf(photo)}>
+                <a
+                  href={`/photo/${photo.slug}`}
+                  class="block rounded-tl-xl rounded-br-xl overflow-hidden"
+                  data-photo-link
+                >
+                  <Image
+                    src={photo.data.image.img}
+                    alt={photo.data.image.alt}
+                    width={photo.data.image.img.width}
+                    height={photo.data.image.img.height}
+                    format="webp"
+                    quality={85}
+                    class="w-full transition-all duration-500 ease-in-out hover:shadow-lg grayscale hover:filter-none"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+            )
+          )
         }
       </div>
     </div>
@@ -64,8 +76,8 @@ const posts = await getSortedPostsByType('post', 'photo');
 
   <style>
     .masonry-item {
-      display: inline-block;
-      width: 100%;
+      break-inside: avoid;
+      margin-bottom: 1rem;
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -109,24 +121,24 @@ const posts = await getSortedPostsByType('post', 'photo');
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const photoItems = document.querySelectorAll('.masonry-item');
-
+      const photoItems = Array.from(document.querySelectorAll('.masonry-item'));
+    
       const expandPhoto = (item: Element) => {
         photoItems.forEach((otherItem) => {
           if (otherItem !== item) {
             otherItem.classList.remove('expanded');
           }
         });
-
+    
         item.classList.add('expanded');
         item.scrollIntoView({ behavior: 'smooth', block: 'start' });
       };
-
+    
       photoItems.forEach((item) => {
         const link = item.querySelector('[data-photo-link]');
-
+    
         link?.addEventListener('click', (e) => {
-          e.preventDefault(); // Prevent the link from navigating
+          e.preventDefault();
           const slug = link.getAttribute('href')?.split('/').pop();
           if (slug) {
             history.pushState(null, '', `#${slug}`);
@@ -134,12 +146,11 @@ const posts = await getSortedPostsByType('post', 'photo');
           }
         });
       });
-
-      // Rest of the event handlers remain the same, just update the selectors
+    
       const handleHashChange = () => {
         const hash = window.location.hash.slice(1);
         if (hash) {
-          const targetLink = document.querySelector(`[href="/post/${hash}"]`);
+          const targetLink = document.querySelector(`[href="/photo/${hash}"]`);
           if (targetLink) {
             const targetItem = targetLink.closest('.masonry-item');
             if (targetItem) {
@@ -150,21 +161,22 @@ const posts = await getSortedPostsByType('post', 'photo');
           photoItems.forEach((item) => item.classList.remove('expanded'));
         }
       };
-
+    
       const handleKeyPress = (e: KeyboardEvent) => {
         const expandedItem = document.querySelector('.masonry-item.expanded');
         if (!expandedItem) return;
-
+    
+        const currentIndex = parseInt(expandedItem.getAttribute('data-index') || '0');
+    
         switch (e.key) {
           case 'Escape':
             expandedItem.classList.remove('expanded');
             history.pushState(null, '', window.location.pathname);
             break;
           case 'ArrowLeft':
-            const prevItem =
-              expandedItem.previousElementSibling ||
-              photoItems[photoItems.length - 1];
+            const prevIndex = (currentIndex - 1 + photoItems.length) % photoItems.length;
             expandedItem.classList.remove('expanded');
+            const prevItem = photoItems[prevIndex];
             const prevSlug = prevItem
               .querySelector('[data-photo-link]')
               ?.getAttribute('href')
@@ -176,8 +188,9 @@ const posts = await getSortedPostsByType('post', 'photo');
             }
             break;
           case 'ArrowRight':
-            const nextItem = expandedItem.nextElementSibling || photoItems[0];
+            const nextIndex = (currentIndex + 1) % photoItems.length;
             expandedItem.classList.remove('expanded');
+            const nextItem = photoItems[nextIndex];
             const nextSlug = nextItem
               .querySelector('[data-photo-link]')
               ?.getAttribute('href')
@@ -190,17 +203,17 @@ const posts = await getSortedPostsByType('post', 'photo');
             break;
         }
       };
-
+    
       // Handle initial hash and hash changes
       handleHashChange();
       window.addEventListener('hashchange', handleHashChange);
-
+    
       // Add keyboard event listener
       document.addEventListener('keydown', handleKeyPress);
-
+    
       // Close expanded image when clicking outside
       document.addEventListener('click', (e) => {
-        if (!e.target.closest('.masonry-item')) {
+        if (!(e.target as HTMLElement).closest('.masonry-item')) {
           photoItems.forEach((item) => item.classList.remove('expanded'));
           history.pushState(null, '', window.location.pathname);
         }

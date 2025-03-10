@@ -1,6 +1,6 @@
 {
   // Theme Configuration
-  "workbench.colorTheme": "Catppuccin Mocha", // Ensure the theme is installed
+  "workbench.colorTheme": "Dark", // Ensure the theme is installed
 
   // General Editor Settings
   "editor.scrollBeyondLastLine": false,

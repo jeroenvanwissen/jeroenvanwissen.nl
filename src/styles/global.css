@@ -113,7 +113,7 @@ article a {
     }
 
     .astro-code {
-      @apply rounded-lg border border-secondary-700 p-2 text-xl shadow md:p-4 md:text-base;
+      @apply rounded-sm border border-primary-50 p-2 text-xl shadow md:p-2 md:text-base;
     }
 
     .skillpill {

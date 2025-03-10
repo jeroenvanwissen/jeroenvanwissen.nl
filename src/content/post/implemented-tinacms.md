@@ -1,5 +1,5 @@
 ---
-date: '2023-02-23T23:00:00.000Z'
+date: 2023-02-23
 title: Implemented TinaCMS
 categories:
   - JavaScript / TypeScript

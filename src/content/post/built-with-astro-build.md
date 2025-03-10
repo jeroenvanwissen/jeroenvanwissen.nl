@@ -1,5 +1,5 @@
 ---
-date: '2023-01-02T00:00:00.000Z'
+date: 2023-01-02
 title: Built with Astro.build
 categories:
   - JavaScript / TypeScript

@@ -7,12 +7,27 @@ export interface Props {
 
 const { href, label, id } = Astro.props;
 const currentPath = Astro.url.pathname;
+
+function getActivePath(currentPath: string): string {
+  switch (true) {
+    case currentPath === '/projects' || currentPath.startsWith('/project'):
+      return '/projects';
+    case currentPath === '/posts' || currentPath.startsWith('/post'):
+      return '/posts';
+    case currentPath === '/photography' || currentPath.startsWith('/photo'):
+      return '/photography';
+    case currentPath === '/resume':
+      return '/resume';
+    default:
+      return '/';
+  }
+}
 ---
 
 <li class="leading-6 nav-item">
   <a
     href={href}
-    class={currentPath === href
+    class={getActivePath(currentPath) === href
       ? 'active text-quaternary-400'
       : 'text-white opacity-60'}
   >

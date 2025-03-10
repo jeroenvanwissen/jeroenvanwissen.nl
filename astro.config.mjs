@@ -15,6 +15,12 @@ export default defineConfig({
   },
   site: 'https://jeroenvanwissen.nl',
   integrations: [],
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula',
+      wrap: true,
+    },
+  },
   redirects: {
     '/blog/[slug]': '/post/[slug]',
     '/blog/categories-pages-added': '/post/category-pages-added',

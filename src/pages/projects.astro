@@ -1,32 +1,42 @@
 ---
-import { getSortedPostsByType } from '@lib/util';
+import { getSortedCollection } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
 import PostBlock from '@components/PostBlock.astro';
 
-const posts = await getSortedPostsByType('post', 'project');
+const posts = await getSortedCollection('project');
 ---
 
 <Layout>
-    <Fragment slot="head">
-        <title>Projects by Jeroen van Wissen</title>
-        <meta content="website" property="og:type" />
-        <meta content="Projects by Jeroen van Wissen" property="og:title" />
-        <meta content="An overview of the projects Jeroen has worked on" name="description" />
-        <meta content="An overview of the projects Jeroen has worked on" property="og:description" />
-        <meta content={`${import.meta.env.SITE}/photography`} property="og:url" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="og:image" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="twitter:image:src" />
-        <link href={`${import.meta.env.SITE}/photography`} rel="canonical" />
-    </Fragment>
-    <div class="w-full">
-        <div class="mx-auto max-w-6xl px-8 py-4">
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3">
-            {
-                posts.map((post: any) => (
-                    <PostBlock post={post} />
-                ))
-            }
-            </div>
-        </div>
+  <Fragment slot="head">
+    <title>Projects by Jeroen van Wissen</title>
+    <meta content="website" property="og:type" />
+    <meta content="Projects by Jeroen van Wissen" property="og:title" />
+    <meta
+      content="An overview of the projects Jeroen has worked on"
+      name="description"
+    />
+    <meta
+      content="An overview of the projects Jeroen has worked on"
+      property="og:description"
+    />
+    <meta content={`${import.meta.env.SITE}/photography`} property="og:url" />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="og:image"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="twitter:image:src"
+    />
+    <link href={`${import.meta.env.SITE}/photography`} rel="canonical" />
+  </Fragment>
+  <div class="w-full">
+    <div class="mx-auto max-w-6xl px-8 py-4">
+      <div
+        class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3"
+      >
+        {posts.map((post: any) => <PostBlock post={post} type="project" />)}
+      </div>
     </div>
+  </div>
 </Layout>

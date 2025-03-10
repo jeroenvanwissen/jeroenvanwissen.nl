@@ -1,6 +1,6 @@
 ---
 draft: false
-date: '2023-02-25T19:00:00.000Z'
+date: 2023-02-25
 title: Generate a simple sitemap.xml on your Astro.build website
 description: Without adding an external dependency to your project, I worked out a
   simple solution to generate a sitemap.xml on your Server-Side-Rendered Astro.build

@@ -1,11 +1,9 @@
 ---
-import { getSortedPostsByType } from '@lib/util';
+import { getSortedCollection } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
 import PostBlock from '@components/PostBlock.astro';
 
-const posts = await getSortedPostsByType('post', 'blog');
-
-const colors = ['primary', 'secondary', 'tertiary', 'quaternary'];
+const posts = await getSortedCollection('post');
 const directions = ['left', 'right'];
 ---
 
@@ -38,12 +36,9 @@ const directions = ['left', 'right'];
       <div class="columns-2 md:columns-3 gap-4 space-y-4" id="masonry-grid">
         {
           posts.map((post: any) => {
-            const color = colors[Math.floor(Math.random() * colors.length)];
             const direction =
               directions[Math.floor(Math.random() * directions.length)];
-            return (
-              <PostBlock post={post} color={color} direction={direction} />
-            );
+            return <PostBlock post={post} direction={direction} />;
           })
         }
       </div>

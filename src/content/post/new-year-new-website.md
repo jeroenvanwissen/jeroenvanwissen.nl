@@ -1,5 +1,5 @@
 ---
-date: '2023-01-01T00:00:00.000Z'
+date: 2023-01-01
 title: New Year, New Website
 categories:
   - Random Thoughts

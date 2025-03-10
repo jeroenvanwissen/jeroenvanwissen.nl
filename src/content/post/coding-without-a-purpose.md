@@ -1,5 +1,5 @@
 ---
-date: '2023-06-29T12:20:00.000Z'
+date: 2023-06-29
 title: Coding without a purpose...
 categories:
   - Tech

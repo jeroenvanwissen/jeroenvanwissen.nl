@@ -1,6 +1,6 @@
 ---
 draft: false
-date: '2023-09-11T19:00:00.000Z'
+date: 2023-09-11
 title: Automatically switching NodeJS version per project with nvm and a .nvmrc file
 description:
   I've been running multiple NodeJS projects locked in older versions for
