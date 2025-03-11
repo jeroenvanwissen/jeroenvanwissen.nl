@@ -1,0 +1,232 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '@layouts/Layout.astro';
+
+const photos: CollectionEntry<'photo'>[] = await getCollection(
+  'photo',
+  ({ data }) => {
+    return !data.draft;
+  }
+);
+
+photos.sort(
+  (a: CollectionEntry<'photo'>, b: CollectionEntry<'photo'>) =>
+    a.data.date.getTime() - b.data.date.getTime()
+);
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>Photography by Jeroen van Wissen - 31F Fotografie</title>
+    <meta content="website" property="og:type" />
+    <meta
+      content="Photography by Jeroen van Wissen - 31F Fotografie"
+      property="og:title"
+    />
+    <meta
+      content="An overview of pictures taken by Jeroen van Wissen - 31F Fotografie"
+      name="description"
+    />
+    <meta
+      content="An overview of pictures taken by Jeroen van Wissen - 31F Fotografie"
+      property="og:description"
+    />
+    <meta content={`${import.meta.env.SITE}/photography`} property="og:url" />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="og:image"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="twitter:image:src"
+    />
+    <link href={`${import.meta.env.SITE}/photography`} rel="canonical" />
+  </Fragment>
+  <div class="w-full">
+    <div class="mx-auto max-w-6xl px-6 py-4">
+      <div
+        class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 [&>*]:mb-4"
+      >
+        {
+          photos.map(
+            (photo) =>
+              photo.data.image && (
+                <div
+                  class="masonry-item break-inside-avoid"
+                  data-index={photos.indexOf(photo)}
+                >
+                  <a
+                    href={`/photo/${photo.slug}`}
+                    class="block rounded-tl-xl rounded-br-xl overflow-hidden"
+                    data-photo-link
+                  >
+                    <Image
+                      src={photo.data.image.img}
+                      alt={photo.data.image.alt}
+                      width={photo.data.image.img.width}
+                      height={photo.data.image.img.height}
+                      format="webp"
+                      quality={85}
+                      class="w-full transition-all duration-500 ease-in-out hover:shadow-lg grayscale hover:filter-none"
+                      loading="lazy"
+                    />
+                  </a>
+                </div>
+              )
+          )
+        }
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .masonry-item.expanded {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 50;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .masonry-item.expanded img {
+      width: auto;
+      max-width: 90vw;
+      height: auto;
+      max-height: 90vh;
+      object-fit: contain;
+      filter: none;
+      animation: zoomIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const photoItems = Array.from(document.querySelectorAll('.masonry-item'));
+
+      const expandPhoto = (item: Element) => {
+        photoItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('expanded');
+          }
+        });
+
+        item.classList.add('expanded');
+        item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+
+      photoItems.forEach((item) => {
+        const link = item.querySelector('[data-photo-link]');
+
+        link?.addEventListener('click', (e) => {
+          e.preventDefault();
+          const slug = link.getAttribute('href')?.split('/').pop();
+          if (slug) {
+            history.pushState(null, '', `#${slug}`);
+            expandPhoto(item);
+          }
+        });
+      });
+
+      const handleHashChange = () => {
+        const hash = window.location.hash.slice(1);
+        if (hash) {
+          const targetLink = document.querySelector(`[href="/photo/${hash}"]`);
+          if (targetLink) {
+            const targetItem = targetLink.closest('.masonry-item');
+            if (targetItem) {
+              expandPhoto(targetItem);
+            }
+          }
+        } else {
+          photoItems.forEach((item) => item.classList.remove('expanded'));
+        }
+      };
+
+      const handleKeyPress = (e: KeyboardEvent) => {
+        const expandedItem = document.querySelector('.masonry-item.expanded');
+        if (!expandedItem) return;
+
+        const currentIndex = parseInt(
+          expandedItem.getAttribute('data-index') || '0'
+        );
+
+        switch (e.key) {
+          case 'Escape':
+            expandedItem.classList.remove('expanded');
+            history.pushState(null, '', window.location.pathname);
+            break;
+          case 'ArrowLeft':
+            const prevIndex =
+              (currentIndex - 1 + photoItems.length) % photoItems.length;
+            expandedItem.classList.remove('expanded');
+            const prevItem = photoItems[prevIndex];
+            const prevSlug = prevItem
+              .querySelector('[data-photo-link]')
+              ?.getAttribute('href')
+              ?.split('/')
+              .pop();
+            if (prevSlug) {
+              history.pushState(null, '', `#${prevSlug}`);
+              expandPhoto(prevItem);
+            }
+            break;
+          case 'ArrowRight':
+            const nextIndex = (currentIndex + 1) % photoItems.length;
+            expandedItem.classList.remove('expanded');
+            const nextItem = photoItems[nextIndex];
+            const nextSlug = nextItem
+              .querySelector('[data-photo-link]')
+              ?.getAttribute('href')
+              ?.split('/')
+              .pop();
+            if (nextSlug) {
+              history.pushState(null, '', `#${nextSlug}`);
+              expandPhoto(nextItem);
+            }
+            break;
+        }
+      };
+
+      // Handle initial hash and hash changes
+      handleHashChange();
+      window.addEventListener('hashchange', handleHashChange);
+
+      // Add keyboard event listener
+      document.addEventListener('keydown', handleKeyPress);
+
+      // Close expanded image when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!(e.target as HTMLElement).closest('.masonry-item')) {
+          photoItems.forEach((item) => item.classList.remove('expanded'));
+          history.pushState(null, '', window.location.pathname);
+        }
+      });
+    });
+  </script>
+</Layout>

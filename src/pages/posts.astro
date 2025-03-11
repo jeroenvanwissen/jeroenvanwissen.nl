@@ -1,50 +1,83 @@
 ---
-import { getSortedEntriesFromCollection } from '@lib/util';
+import { getSortedCollection } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
+import PostBlock from '@components/PostBlock.astro';
 
-const entries = await getSortedEntriesFromCollection('post', 'blog');
+const posts = await getSortedCollection('post');
+const directions = ['left', 'right'];
 ---
 
 <Layout>
-    <Fragment slot="head">
-        <title>Posts - Jeroen van Wissen</title>
-        <meta content="website" property="og:type" />
-        <meta content="Posts - Jeroen van Wissen" property="og:title" />
-        <meta content="Overview of all posts by Jeroen van Wissen" name="description" />
-        <meta content="Overview of all posts by Jeroen van Wissen" property="og:description" />
-        <meta content={`${import.meta.env.SITE}/posts`} property="og:url" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="og:image" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="twitter:image:src" />
-        <link href={`${import.meta.env.SITE}/posts`} rel="canonical" />
-    </Fragment>
-    <Fragment slot="title">Posts - Jeroen van Wissen</Fragment>
-    <div class="mx-auto">
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-            {
-                entries.map((entry: any) => (
-                    <div class="flex flex-col overflow-hidden rounded-lg shadow-lg h-full">
-                        <div class="flex flex-col grow justify-between bg-secondary-800 p-4">
-                            <div class="flex-1">
-                                <p class="pb-2 text-xs text-primary-50">
-                                    {entry.data.date.toLocaleString('en-US', {
-                                        day: 'numeric',
-                                        month: 'long',
-                                        year: 'numeric',
-                                        timeZone: 'Europe/Amsterdam'
-                                    })}
-                                </p>
-                                <p class="py-2 text-lg font-bold text-primary-50">{entry.data.title}</p>
-                                <p class="py-2 text-base text-primary-50">{entry.data.description}</p>
-                            </div>
-                            <div class="flex flex-row-reverse place-self-end">
-                                <a href={`/${entry.collection}/${entry.slug}`} class="text-md font-bold text-primary-800 rounded-lg bg-primary-50 px-4 pt-1.5 pb-2 shadow-sm hover:bg-primary-300">
-                                    read more..
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
+  <Fragment slot="head">
+    <title>Blog posts by Jeroen van Wissen</title>
+    <meta content="website" property="og:type" />
+    <meta content="Blog posts by Jeroen van wissen" property="og:title" />
+    <meta
+      content="Overview of all blog posts by Jeroen van Wissen"
+      name="description"
+    />
+    <meta
+      content="Overview of all blog posts by Jeroen van Wissen"
+      property="og:description"
+    />
+    <meta content={`${import.meta.env.SITE}/posts`} property="og:url" />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="og:image"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="twitter:image:src"
+    />
+    <link href={`${import.meta.env.SITE}/posts`} rel="canonical" />
+  </Fragment>
+  <div class="w-full">
+    <div class="mx-auto max-w-6xl px-6 py-4">
+      <div class="columns-2 md:columns-3 gap-4 space-y-4" id="masonry-grid">
+        {
+          posts.map((post: any) => {
+            const direction =
+              directions[Math.floor(Math.random() * directions.length)];
+            return <PostBlock post={post} direction={direction} />;
+          })
+        }
+      </div>
     </div>
+  </div>
 </Layout>
+
+<script is:inline>
+  const masonryGrid = document.getElementById('masonry-grid');
+  const columnWidth = 440;
+  const gap = 20;
+  function createMasonryGrid() {
+    const gridWidth = masonryGrid.offsetWidth;
+    const columns = Math.floor(gridWidth / columnWidth) || 1;
+
+    masonryGrid.style.columnCount = columns.toString();
+    masonryGrid.style.columnGap = `${gap}px`;
+
+    masonryGrid.style.display = 'block';
+    masonryGrid.style.gridTemplateColumns = '';
+    masonryGrid.style.gridTemplateRows = '';
+    const items = Array.from(masonryGrid.children);
+    items.forEach((item) => {
+      item.style.gridRowStart = '';
+      item.style.gridColumnStart = '';
+
+      item.style.breakInside = 'avoid';
+      item.style.marginBottom = `${gap}px`;
+    });
+  }
+
+  createMasonryGrid();
+
+  window.addEventListener('resize', createMasonryGrid);
+  window.addEventListener('load', createMasonryGrid);
+
+  const observer = new MutationObserver(createMasonryGrid);
+  observer.observe(masonryGrid, {
+    childList: true,
+    subtree: true,
+  });
+</script>

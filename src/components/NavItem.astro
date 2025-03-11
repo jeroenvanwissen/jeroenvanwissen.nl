@@ -1,0 +1,137 @@
+---
+export interface Props {
+  href: string;
+  label: string;
+  id: string;
+}
+
+const { href, label, id } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+function getActivePath(currentPath: string): string {
+  switch (true) {
+    case currentPath === '/projects' || currentPath.startsWith('/project'):
+      return '/projects';
+    case currentPath === '/posts' || currentPath.startsWith('/post'):
+      return '/posts';
+    case currentPath === '/photography' || currentPath.startsWith('/photo'):
+      return '/photography';
+    case currentPath === '/resume':
+      return '/resume';
+    default:
+      return '/';
+  }
+}
+---
+
+<li class="leading-6 nav-item">
+  <a
+    href={href}
+    class={getActivePath(currentPath) === href
+      ? 'active text-quaternary-400'
+      : 'text-white opacity-60'}
+  >
+    <svg
+      class="inline mr-0.5"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="10"
+        y="0"
+        width="5"
+        rx="1.2"
+        ry="1.2"
+        height="20"
+        fill=`url(#${id})`
+        fill-opacity="0.5"
+        style="width:calc(var(--rect-gradient-width) * 1px)"></rect>
+      <rect
+        x="9.5"
+        y="0"
+        rx="1.2"
+        ry="1.2"
+        width="5.5"
+        height="20"
+        style="width:calc(var(--rect-width) * 1px)"></rect>
+      <defs>
+        <linearGradient
+          id={id}
+          x1="10"
+          y1="0.5"
+          x2="3.5"
+          y2="20"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0" stop-color="var(--color-stop)" stop-opacity="0"
+          ></stop>
+          <stop offset="0.25" stop-color="var(--color-stop)" stop-opacity="0.7"
+          ></stop>
+          <stop offset="1" stop-color="var(--color-stop)"></stop>
+        </linearGradient>
+      </defs>
+    </svg><span>{label}</span>
+  </a>
+</li>
+
+<style>
+  :root {
+    --rect-width: 3.5;
+    --rect-gradient-width: 4;
+  }
+
+  .nav-item {
+    a svg {
+      transition: 0.4s ease;
+      rect:nth-of-type(2) {
+        fill: #fff;
+        opacity: 0.8;
+        transform-origin: bottom;
+        transform: skewX(-10deg);
+        transition:
+          opacity 0.4s ease,
+          transform 0.4s ease,
+          skew 0.4s ease,
+          width 0.4s ease;
+        width: var(--rect-width);
+      }
+      rect:nth-of-type(1) {
+        opacity: 0;
+        transform-origin: bottom;
+        transform: skewX(-10deg);
+        transition: 0.4s ease;
+        width: var(--rect-gradient-width);
+      }
+      linearGradient stop {
+        stop-color: var(--color-quaternary-400);
+        --color-stop: var(--color-quaternary-400);
+      }
+    }
+
+    a.active,
+    a:hover {
+      opacity: 1;
+      svg {
+        rect:nth-of-type(2) {
+          fill: var(--color-quaternary-400);
+          opacity: 1;
+          transform-origin: bottom;
+          transform: translateX(-2px) skewX(-10deg);
+          --rect-width: 5.5;
+        }
+        rect:nth-of-type(1) {
+          opacity: 1;
+          transform-origin: bottom;
+          transform: translateX(-2px) skewX(24deg);
+          --rect-gradient-width: 5;
+        }
+      }
+      span {
+        color: var(--color-quaternary-400);
+        opacity: 1;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,105 @@
+@layer base {
+  :root {
+    --primary-base: 266, 100%;
+    --secondary-base: 80, 80%;
+    --tertiary-base: 36, 100%;
+    --quaternary-base: 320, 100%;
+  }
+}
+
+@theme {
+  --text-xs: 0.6rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.8rem;
+  --text-sm--line-height: 1.2rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.4rem;
+  --text-lg: 1.2rem;
+  --text-lg--line-height: 1.6rem;
+  --text-xl: 1.4rem;
+  --text-xl--line-height: 1.8rem;
+  --text-2xl: 1.6rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl: 1.8rem;
+  --text-3xl--line-height: 2.2rem;
+  --text-4xl: 2rem;
+  --text-4xl--line-height: 2.4rem;
+  --text-5xl: 2.2rem;
+  --text-5xl--line-height: 2.6rem;
+  --text-6xl: 2.4rem;
+  --text-6xl--line-height: 2.8rem;
+  --text-7xl: 2.6rem;
+  --text-7xl--line-height: 3rem;
+  --text-8xl: 2.8rem;
+  --text-8xl--line-height: 3.2rem;
+  --text-9xl: 3rem;
+  --text-9xl--line-height: 3.4rem;
+
+  --color-primary-50: hsl(var(--primary-base), 95%);
+  --color-primary-100: hsl(var(--primary-base), 90%);
+  --color-primary-200: hsl(var(--primary-base), 80%);
+  --color-primary-300: hsl(var(--primary-base), 70%);
+  --color-primary-400: hsl(var(--primary-base), 60%);
+  --color-primary-500: hsl(var(--primary-base), 50%);
+  --color-primary-600: hsl(var(--primary-base), 40%);
+  --color-primary-700: hsl(var(--primary-base), 30%);
+  --color-primary-800: hsl(var(--primary-base), 20%);
+  --color-primary-900: hsl(var(--primary-base), 10%);
+  --color-primary-950: hsl(var(--primary-base), 5%);
+
+  --color-secondary-50: hsl(var(--secondary-base), 95%);
+  --color-secondary-100: hsl(var(--secondary-base), 90%);
+  --color-secondary-200: hsl(var(--secondary-base), 80%);
+  --color-secondary-300: hsl(var(--secondary-base), 70%);
+  --color-secondary-400: hsl(var(--secondary-base), 60%);
+  --color-secondary-500: hsl(var(--secondary-base), 50%);
+  --color-secondary-600: hsl(var(--secondary-base), 40%);
+  --color-secondary-700: hsl(var(--secondary-base), 30%);
+  --color-secondary-800: hsl(var(--secondary-base), 20%);
+  --color-secondary-900: hsl(var(--secondary-base), 10%);
+  --color-secondary-950: hsl(var(--secondary-base), 5%);
+
+  --color-tertiary-50: hsl(var(--tertiary-base), 95%);
+  --color-tertiary-100: hsl(var(--tertiary-base), 90%);
+  --color-tertiary-200: hsl(var(--tertiary-base), 80%);
+  --color-tertiary-300: hsl(var(--tertiary-base), 70%);
+  --color-tertiary-400: hsl(var(--tertiary-base), 60%);
+  --color-tertiary-500: hsl(var(--tertiary-base), 50%);
+  --color-tertiary-600: hsl(var(--tertiary-base), 40%);
+  --color-tertiary-700: hsl(var(--tertiary-base), 30%);
+  --color-tertiary-800: hsl(var(--tertiary-base), 20%);
+  --color-tertiary-900: hsl(var(--tertiary-base), 10%);
+  --color-tertiary-950: hsl(var(--tertiary-base), 5%);
+
+  --color-quaternary-50: hsl(var(--quaternary-base), 95%);
+  --color-quaternary-100: hsl(var(--quaternary-base), 90%);
+  --color-quaternary-200: hsl(var(--quaternary-base), 80%);
+  --color-quaternary-300: hsl(var(--quaternary-base), 70%);
+  --color-quaternary-400: hsl(var(--quaternary-base), 60%);
+  --color-quaternary-500: hsl(var(--quaternary-base), 50%);
+  --color-quaternary-600: hsl(var(--quaternary-base), 40%);
+  --color-quaternary-700: hsl(var(--quaternary-base), 30%);
+  --color-quaternary-800: hsl(var(--quaternary-base), 20%);
+  --color-quaternary-900: hsl(var(--quaternary-base), 10%);
+  --color-quaternary-950: hsl(var(--quaternary-base), 5%);
+
+  --color-primary: var(--primary-500);
+  --color-secondary: var(--secondary-500);
+  --color-tertiary: var(--tertiary-500);
+  --color-quaternary: var(--quaternary-500);
+
+  --color-primary-dark: var(--primary-900);
+  --color-secondary-dark: var(--secondary-900);
+  --color-tertiary-dark: var(--tertiary-900);
+  --color-quaternary-dark: var(--quaternary-900);
+
+  --color-primary-light: var(--primary-50);
+  --color-secondary-light: var(--secondary-50);
+  --color-tertiary-light: var(--tertiary-50);
+  --color-quaternary-light: var(--quaternary-50);
+}
+
+:root {
+  --main-family: 'Roboto', sans-serif;
+  --logo-font-family: 'Roboto', sans-serif;
+}

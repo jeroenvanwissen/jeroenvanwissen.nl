@@ -1,0 +1,73 @@
+---
+// TODO: We should create a photo redirect /post/<photo slug> > /photo#<photo slug>
+
+import { getSortedPostsByType } from '@lib/util';
+import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  return (await getSortedPostsByType('post', 'all')).map((post: any) => {
+    return {
+      params: { slug: post.slug },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>{post.data.title} - Jeroen van Wissen</title>
+    <meta content="website" property="og:type" />
+    <meta
+      content={`${post.data.title} - Jeroen van Wissen`}
+      property="og:title"
+    />
+    <meta content={post.data.description} name="description" />
+    <meta content={post.data.description} property="og:description" />
+    <meta
+      content={`${import.meta.env.SITE}/post/${post.slug}`}
+      property="og:url"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="og:image"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="twitter:image:src"
+    />
+    <link href={`${import.meta.env.SITE}/post/${post.slug}`} rel="canonical" />
+  </Fragment>
+  <div class="w-full bg-primary-950">
+    <div class="max-w-6xl mx-auto p-2">
+      <article>
+        <div class="items-center justify-between md:flex">
+          {
+            post.data.image && (
+              <div class="">
+                <Image
+                  src={post.data.image.img}
+                  alt={post.data.image.alt}
+                  quality={50}
+                  format="webp"
+                  loading="lazy"
+                  width={1420}
+                  class={
+                    post.data.type !== 'photo'
+                      ? 'h-32 sm:h-48 md:h-64 lg:h-96 object-cover object-middle'
+                      : ''
+                  }
+                />
+              </div>
+            )
+          }
+        </div>
+        <Content />
+      </article>
+    </div>
+  </div>
+</Layout>

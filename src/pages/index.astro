@@ -1,37 +1,117 @@
 ---
-import { getAllSortedEntries } from '@lib/util';
+import { getSortedCollection } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import PostBlock from '@components/PostBlock.astro';
 
-const entries = await getAllSortedEntries();
+const posts = (await getSortedCollection('post')).slice(0, 3);
+const photos = (await getSortedCollection('photo')).slice(0, 3);
+const projects = (await getSortedCollection('project')).slice(0, 3);
 ---
 
 <Layout>
-    <Fragment slot="head">
-        <title>Jeroen van Wissen - Full Stack JavaScript/TypeScript Developer</title>
-        <meta content="website" property="og:type" />
-        <meta content="Jeroen van Wissen" property="og:title" />
-        <meta content="Jeroen van Wissen - More than two decades of experience in development, including over five years as a Tech Lead/Engineering Manager" name="description" />
-        <meta content="Jeroen van Wissen - More than two decades of experience in development, including over five years as a Tech Lead/Engineering Manager" property="og:description" />
-        <meta content={import.meta.env.SITE} property="og:url" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="og:image" />
-        <meta content={`${import.meta.env.SITE}/images/og-image.webp`} property="twitter:image:src" />
-        <link href={import.meta.env.SITE} rel="canonical" />
-    </Fragment>
-    <Fragment slot="title">Jeroen van Wissen</Fragment>
-    <div class="mx-auto rounded-lg xl:rounded-br-xl bg-secondary-800 shadow-lg relative">
-        <img alt="Image of Jeroen van Wissen" src="/images/jeroen.webp" class="hidden xl:object-cover xl:object-left xl:inline-block xl:h-[650px] xl:max-w-[650px] xl:absolute xl:right-0 xl:bottom-0 xl:rounded-none xl:rounded-br-lg" />
-        <div class="flex flex-col justify-start items-start gap-3 xl:gap-5 px-4 pt-2.5 pb-5 relative xl:pr-0 xl:pl-5 xl:w-4/5">
-            <div class="md:flex justify-center">
-                <img alt="Image of Jeroen van Wissen" src="/images/jeroen.webp" class="mb-2 w-full max-w-[310px] h-52 md:h-[225px] mx-auto rounded-sm object-cover object-top xl:hidden" />
-                <p class="md:text-2xl lg:text-3xl xl:text-4xl md:ml-2 xl:ml-0 font-bold text-left text-primary-50">
-                    Hey!<br />I’m <span class="text-primary-500">Jeroen</span>, a Full Stack JavaScript/TypeScript Developer from the Netherlands.</span>
-                </p>
-                </div>
-            <p class="text-sm text-left text-primary-50 md:text-base">With more than two decades of experience in development, including over five years as a Tech Lead/Engineering Manager, I have refined my skills and expertise. While I began my journey with PHP, my focus has now shifted entirely to JavaScript/TypeScript, specifically ReactJS and NodeJS. I am a versatile and passionate professional, dedicated to finding solutions and constantly seeking opportunities for growth. Additionally, I possess hands-on experience with AWS DevOps and GitLab CI/CD, enhancing my proficiency in delivering efficient and streamlined development processes.</p>
-            <!-- <div class="px-5 py-2 rounded-lg bg-primary-50 hover:bg-primary-300">
-                <p class="text-base font-bold text-primary-800">More about me</p>
-            </div> -->
-            <p class="text-sm text-left text-primary-50 md:text-base">Connect with Jeroen van Wissen on <a href="https://linkedin.com/in/jeroenvanwissen" rel="me" title="Connect with me on LinkedIn" class="inline-block align-bottom pb-[2px]"><img src="/images/linkedin.png" alt="LinkedIn logo" class="h-5"/></a></p>
+  <Fragment slot="head">
+    <title>Jeroen van Wissen - Full Stack Developer</title>
+    <meta content="website" property="og:type" />
+    <meta content="Jeroen van Wissen" property="og:title" />
+    <meta
+      content="Jeroen van Wissen - More than two decades of experience in development, including over five years as a Tech Lead/Engineering Manager"
+      name="description"
+    />
+    <meta
+      content="Jeroen van Wissen - More than two decades of experience in development, including over five years as a Tech Lead/Engineering Manager"
+      property="og:description"
+    />
+    <meta content={import.meta.env.SITE} property="og:url" />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="og:image"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="twitter:image:src"
+    />
+    <link href={import.meta.env.SITE} rel="canonical" />
+  </Fragment>
+  <div class="w-full bg-primary-950 border-b border-primary-900">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 lg:px-20">
+      <div class="flex items-center gap-4 lg:gap-12">
+        <Image
+          src="/images/jeroenvanwissen.png"
+          alt="Jeroen van Wissen"
+          width={400}
+          height={400}
+          class="w-1/3 pt-4 md:pt-8 lg:pt-12"
+        />
+        <div class="w-2/3 flex items-center">
+          <p
+            class="text-base sm:text-xl md:text-4xl lg:text-6xl xl:text-9xl font-bold text-primary-400"
+          >
+            I'm <span class="text-primary-50">Jeroen</span>,<br />Full Stack
+            Developer<br />from the Netherlands
+          </p>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="w-full bg-quaternary-950 border-b border-quaternary-900">
+    <div class="max-w-6xl mx-auto px-2">
+      <div class="leading-6">
+        <h2
+          class="text-sm md:text-xl font-bold text-left text-quaternary-400 md:py-4"
+        >
+          .blog posts
+        </h2>
+      </div>
+      {
+        posts.length > 0 && (
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 pb-2 sm:pb-4 lg:pb-6">
+            {posts.map((post) => (
+              <PostBlock post={post} direction="left" type="blog" />
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
+  <div class="w-full bg-tertiary-950 border-b border-tertiary-900">
+    <div class="max-w-6xl mx-auto px-2">
+      <div class="leading-6">
+        <h2
+          class="text-sm md:text-xl font-bold text-left text-tertiary-400 md:py-4"
+        >
+          .projects
+        </h2>
+      </div>
+      {
+        projects.length > 0 && (
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 pb-2 sm:pb-4 lg:pb-6">
+            {projects.map((project) => (
+              <PostBlock post={project} direction="right" type="project" />
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
+  <div class="w-full bg-secondary-950 border-b border-secondary-900">
+    <div class="max-w-6xl mx-auto px-2">
+      <div class="leading-6">
+        <h2
+          class="text-sm md:text-xl font-bold text-left text-secondary-400 md:py-4"
+        >
+          .photography
+        </h2>
+      </div>
+      {
+        photos.length > 0 && (
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 pb-2 sm:pb-4 lg:pb-6">
+            {photos.map((photo) => (
+              <PostBlock post={photo} direction="left" type="photo" />
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </div>
 </Layout>

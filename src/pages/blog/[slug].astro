@@ -1,20 +1,23 @@
 ---
-import { getSortedEntriesFromCollection } from '@lib/util';
+//TODO: Rewrite this one for /blog > /post redirects
+
+import { getSortedPostsByType } from '@lib/util';
 
 export async function getStaticPaths() {
-    return (await getSortedEntriesFromCollection('post', 'blog')).map((entry: any) => {
-        return {
-            params: { slug: entry.slug },
-            props: { destination: `/post/${entry.slug}` }
-        };
-    });
+  return (await getSortedPostsByType('post', 'blog')).map((entry: any) => {
+    return {
+      params: { slug: entry.slug },
+      props: { destination: `/post/${entry.slug}` },
+    };
+  });
 }
 
 const { destination } = Astro.props;
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html>
   <head>
-    <meta http-equiv="refresh" content={`0;url=${destination}`}>
+    <meta http-equiv="refresh" content={`0;url=${destination}`} />
   </head>
 </html>
