@@ -4,6 +4,8 @@
 @import 'tailwindcss';
 @import './theme.css';
 
+@import './prism.css';
+
 html {
   font-family: var(--main-family);
   min-height: 100%;
@@ -114,6 +116,14 @@ article a {
     ul,
     ol {
       @apply text-base text-white my-2;
+    }
+
+    ol {
+      @apply list-decimal list-inside;
+    }
+
+    ul {
+      @apply list-disc list-inside;
     }
 
     a {

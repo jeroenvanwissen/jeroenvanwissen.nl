@@ -16,10 +16,7 @@ export default defineConfig({
   site: 'https://jeroenvanwissen.nl',
   integrations: [],
   markdown: {
-    shikiConfig: {
-      theme: 'dracula',
-      wrap: true,
-    },
+    syntaxHighlight: 'prism',
   },
   redirects: {
     '/blog/[slug]': '/post/[slug]',
@@ -46,5 +43,17 @@ export default defineConfig({
       '/post/fastone-eslint-config-npm-package',
     '/post/building-a-simple-blockchain-network-application-in-javascript':
       '/post/blockchain-ts',
+    '/post/website-layout-updates': '/post/website-devlog',
+    '/post/new-year-new-website': '/post/website-devlog',
+    '/post/implemented-tinacms': '/post/website-devlog',
+    '/post/moved-back-to-simple-static-self-hosting-in-a-docker-container-from-netlify':
+      '/post/website-devlog',
+    '/post/category-pages-added': '/post/website-devlog',
+    '/post/building-and-deploying-docker-images-with-github-actions':
+      '/post/github-actions/building-and-deploying-docker-images',
+    '/post/built-with-astro-build':
+      '/post/astro-build/building-a-static-website',
+    '/post/generate-a-simple-sitemapxml-on-your-astrobuild-website':
+      '/post/astro-build/generate-a-simple-sitemapxml',
   },
 });

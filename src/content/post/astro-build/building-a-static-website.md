@@ -1,21 +1,17 @@
 ---
-date: 2023-01-02
-title: Built with Astro.build
 categories:
-  - JavaScript / TypeScript
   - Astro.build
-description:
-  I started to build simple websites like this one with Astro.build, a
-  static html generator framework.
-type: blog
+  - JavaScript / TypeScript
+date: 2023-01-02
+description: Explaining how I've setup my current website with Astro.build
 draft: false
+title: 'Astro.build: Building a static website'
+type: blog
 ---
 
-# Built with Astro.build
+# Astro.build: Building a static website
 
-> This post was written in 2023, when I just started out with Astro.build. Astro.build has changed a lot since then, and so has my website. This post should be updated to reflect the current state of my website and the tools I use.
-
-**_This needs to be rewritten and updated_**
+> This post was written in 2023, when I just started out with Astro.build. Astro.build has changed a lot since then, and so has my website. This post should be updated to reflect the current state of my website and the Astro.build setup.
 
 In a search of a simple static html page generator framework I stumbled up on [Astro.build](https://astro.build 'Link to Astro.build website')
 
@@ -48,3 +44,13 @@ npm run dev
 ```
 
 Load the link [localhost:3000](http://localhost:3000/ 'Link to localhost port 3000') in your browser and start creating :)
+
+<sub>last updated: 2025-03-11</sub>
+
+I hope this post was helpful to you.
+
+If you have any questions or feedback, feel free to contact me on
+[Twitter/X](https://x.com/jvwissen),
+[Bluesky](https://bsky.app/profile/jeroenvanwissen.nl), or
+[Mastodon](https://mastodon.social/@jeroenvanwissen). I'd love to hear
+from you! 🚀

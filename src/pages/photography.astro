@@ -45,29 +45,35 @@ photos.sort(
   </Fragment>
   <div class="w-full">
     <div class="mx-auto max-w-6xl px-6 py-4">
-      <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 [&>*]:mb-4">
+      <div
+        class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 [&>*]:mb-4"
+      >
         {
-          photos.map((photo) =>
-            photo.data.image && (
-              <div class="masonry-item break-inside-avoid" data-index={photos.indexOf(photo)}>
-                <a
-                  href={`/photo/${photo.slug}`}
-                  class="block rounded-tl-xl rounded-br-xl overflow-hidden"
-                  data-photo-link
+          photos.map(
+            (photo) =>
+              photo.data.image && (
+                <div
+                  class="masonry-item break-inside-avoid"
+                  data-index={photos.indexOf(photo)}
                 >
-                  <Image
-                    src={photo.data.image.img}
-                    alt={photo.data.image.alt}
-                    width={photo.data.image.img.width}
-                    height={photo.data.image.img.height}
-                    format="webp"
-                    quality={85}
-                    class="w-full transition-all duration-500 ease-in-out hover:shadow-lg grayscale hover:filter-none"
-                    loading="lazy"
-                  />
-                </a>
-              </div>
-            )
+                  <a
+                    href={`/photo/${photo.slug}`}
+                    class="block rounded-tl-xl rounded-br-xl overflow-hidden"
+                    data-photo-link
+                  >
+                    <Image
+                      src={photo.data.image.img}
+                      alt={photo.data.image.alt}
+                      width={photo.data.image.img.width}
+                      height={photo.data.image.img.height}
+                      format="webp"
+                      quality={85}
+                      class="w-full transition-all duration-500 ease-in-out hover:shadow-lg grayscale hover:filter-none"
+                      loading="lazy"
+                    />
+                  </a>
+                </div>
+              )
           )
         }
       </div>
@@ -122,21 +128,21 @@ photos.sort(
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const photoItems = Array.from(document.querySelectorAll('.masonry-item'));
-    
+
       const expandPhoto = (item: Element) => {
         photoItems.forEach((otherItem) => {
           if (otherItem !== item) {
             otherItem.classList.remove('expanded');
           }
         });
-    
+
         item.classList.add('expanded');
         item.scrollIntoView({ behavior: 'smooth', block: 'start' });
       };
-    
+
       photoItems.forEach((item) => {
         const link = item.querySelector('[data-photo-link]');
-    
+
         link?.addEventListener('click', (e) => {
           e.preventDefault();
           const slug = link.getAttribute('href')?.split('/').pop();
@@ -146,7 +152,7 @@ photos.sort(
           }
         });
       });
-    
+
       const handleHashChange = () => {
         const hash = window.location.hash.slice(1);
         if (hash) {
@@ -161,20 +167,23 @@ photos.sort(
           photoItems.forEach((item) => item.classList.remove('expanded'));
         }
       };
-    
+
       const handleKeyPress = (e: KeyboardEvent) => {
         const expandedItem = document.querySelector('.masonry-item.expanded');
         if (!expandedItem) return;
-    
-        const currentIndex = parseInt(expandedItem.getAttribute('data-index') || '0');
-    
+
+        const currentIndex = parseInt(
+          expandedItem.getAttribute('data-index') || '0'
+        );
+
         switch (e.key) {
           case 'Escape':
             expandedItem.classList.remove('expanded');
             history.pushState(null, '', window.location.pathname);
             break;
           case 'ArrowLeft':
-            const prevIndex = (currentIndex - 1 + photoItems.length) % photoItems.length;
+            const prevIndex =
+              (currentIndex - 1 + photoItems.length) % photoItems.length;
             expandedItem.classList.remove('expanded');
             const prevItem = photoItems[prevIndex];
             const prevSlug = prevItem
@@ -203,14 +212,14 @@ photos.sort(
             break;
         }
       };
-    
+
       // Handle initial hash and hash changes
       handleHashChange();
       window.addEventListener('hashchange', handleHashChange);
-    
+
       // Add keyboard event listener
       document.addEventListener('keydown', handleKeyPress);
-    
+
       // Close expanded image when clicking outside
       document.addEventListener('click', (e) => {
         if (!(e.target as HTMLElement).closest('.masonry-item')) {

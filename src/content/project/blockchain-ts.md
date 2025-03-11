@@ -1,17 +1,16 @@
 ---
-title: Blockchain.TS
 categories:
   - JavaScript / TypeScript
   - Blockchain
+  - Coding
+title: Blockchain.ts
 description: Building a simple blockchain network application in TypeScript
 date: 2025-02-02
 type: project
 draft: false
 ---
 
-# Blockchain.TS
-
-**_This needs to be rewritten and updated_**
+# Blockchain.ts
 
 This is a project I started a while ago to learn more about blockchain technology. It started out as a simple JavaScript project to create a blockchain and networking between nodes. I've decided to rewrite the project in TypeScript and make it a bit more advanced.
 
@@ -21,10 +20,8 @@ Please note that this is a learning project and not intended for production use.
 
 ## Progress
 
-Check out the progress of this project on [GitHub](https://github.com/jeroenvanwissen/blockchain-ts 'Blockchain.TS on GitHub')
-
 I'll update this page with more information as I make progress on the project.
 
-### Updates
+## Links
 
-- **2025-02-02**: Restarted the project and set up the basic structure.
+- [GitHub Repository](https://github.com/jeroenvanwissen/blockchain-ts 'Blockchain.TS on GitHub')

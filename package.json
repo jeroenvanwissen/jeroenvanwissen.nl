@@ -9,14 +9,14 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^5.4.2",
+    "astro": "^5.4.3",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.11"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.0.12",
-    "@tailwindcss/vite": "^4.0.12",
-    "tailwindcss": "^4.0.12"
+    "@tailwindcss/cli": "^4.0.13",
+    "@tailwindcss/vite": "^4.0.13",
+    "tailwindcss": "^4.0.13"
   }
 }

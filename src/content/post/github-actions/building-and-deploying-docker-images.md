@@ -1,25 +1,19 @@
 ---
-title: Building and deploying Docker images with GitHub Actions
 categories:
-  - Docker
-  - GitHub Actions
   - CI/CD
+  - Docker
   - GitHub
-  - Tech
-description:
-  Slowly moving my projects from a self-hosted GitLab instance to GitHub,
-  while doing so I'm learning how to use GitHub Actions to build and deploy Docker
-  images to the GitHub Container Registry (ghcr.io).
+  - GitHub Actions
 date: 2024-05-04
-type: blog
+description: 'Building and deploying Docker images to the GitHub Container Registry using GitHub Actions.'
 draft: false
+title: 'GitHub Actions: Building and deploying Docker images'
+type: blog
 ---
 
-# Building and deploying Docker images with GitHub Actions
+# GitHub Actions: Building and deploying Docker images
 
-> This article was written at the time when I was moving my projects from a self-hosted GitLab instance to GitHub. I was learning how to use GitHub Actions to build and deploy Docker images to the GitHub Container Registry (ghcr.io).
-
-> I'm now running my site on GitHub Pages, which is a much simpler solution for a static site like mine. I have rewritten the article a bit since.
+> This article was written at the time when I was moving my projects from a self-hosted GitLab instance to GitHub. I was learning how to use GitHub Actions to build and deploy Docker images to the GitHub Container Registry (ghcr.io). I am now running this website on GitHub pages, which is a much simpler solution for a static site like mine. I should rewrite this article in a more generic way, so it can be used for any project.
 
 After having most of my personal projects hosted on a Docker server at home, I decided to move everything out again after a power outage and multiple fiber outages.
 
@@ -33,7 +27,7 @@ Website repository: [github.com/jeroenvanwissen/jeroenvanwissen.nl](https://gith
 
 First, create a Dockerfile in the root of your repository. This file will be used to build the Docker image. Here is the Dockerfile used to build the Docker image of this website, which is an Astro.build application deployed using Nginx:
 
-```Dockerfile
+```docker
 FROM node:lts-alpine as build-stage
 
 WORKDIR /app
@@ -134,5 +128,11 @@ services:
 
 That's it! You have successfully built and deployed a Docker image to the GitHub Container Registry using GitHub Actions. You can now use this workflow as a template for building and deploying other Docker images in your projects.
 
-I hope this blog post was helpful to you.
-If you have any questions or feedback, feel free to contact me on [Twitter/X](https://x.com/jvwissen) or [Mastodon](https://mastodon.social/@jeroenvanwissen). I'd love to hear from you!
+<sub>last updated: 2025-03-11</sub>
+
+I hope this post was helpful to you.
+If you have any questions or feedback, feel free to contact me on
+[Twitter/X](https://x.com/jvwissen),
+[Bluesky](https://bsky.app/profile/jeroenvanwissen.nl), or
+[Mastodon](https://mastodon.social/@jeroenvanwissen). I'd love to hear
+from you! 🚀
