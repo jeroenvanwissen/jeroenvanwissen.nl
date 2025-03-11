@@ -19,7 +19,7 @@ export default defineConfig({
     syntaxHighlight: 'prism',
   },
   redirects: {
-    '/blog/[slug]': '/post/[slug]',
+    '/blog': '/post',
     '/blog/categories-pages-added': '/post/category-pages-added',
     '/blog/adding-mdx-and-image-integration': '/',
     '/contact': '/',
