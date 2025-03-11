@@ -87,6 +87,14 @@ article a {
       @apply text-lg font-extralight text-quaternary-400;
     }
 
+    blockquote {
+      @apply border-l-4 border-quaternary-400 pl-4 my-4;
+
+      p {
+        @apply text-sm text-quaternary-50/80;
+      }
+    }
+
     .company {
       @apply text-2xl text-quaternary-400;
     }

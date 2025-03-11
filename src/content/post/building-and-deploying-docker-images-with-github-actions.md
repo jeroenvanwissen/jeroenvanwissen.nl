@@ -15,7 +15,11 @@ type: blog
 draft: false
 ---
 
-**_This needs to be rewritten and updated_**
+# Building and deploying Docker images with GitHub Actions
+
+> This article was written at the time when I was moving my projects from a self-hosted GitLab instance to GitHub. I was learning how to use GitHub Actions to build and deploy Docker images to the GitHub Container Registry (ghcr.io).
+
+> I'm now running my site on GitHub Pages, which is a much simpler solution for a static site like mine. I have rewritten the article a bit since.
 
 After having most of my personal projects hosted on a Docker server at home, I decided to move everything out again after a power outage and multiple fiber outages.
 

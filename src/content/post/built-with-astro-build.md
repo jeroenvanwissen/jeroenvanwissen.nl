@@ -11,6 +11,10 @@ type: blog
 draft: false
 ---
 
+# Built with Astro.build
+
+> This post was written in 2023, when I just started out with Astro.build. Astro.build has changed a lot since then, and so has my website. This post should be updated to reflect the current state of my website and the tools I use.
+
 **_This needs to be rewritten and updated_**
 
 In a search of a simple static html page generator framework I stumbled up on [Astro.build](https://astro.build 'Link to Astro.build website')
