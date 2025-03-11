@@ -1,42 +1,42 @@
 name: Bump version
 
 on:
-    push:
-        branches:
-            - main
-        paths-ignore:
-            - 'package.json'
-            - 'CHANGELOG.md'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'package.json'
+      - 'CHANGELOG.md'
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        permissions:
-            contents: write
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
-        steps:
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-                  fetch-tags: true
-                  persist-credentials: false
-                  token: ${{ secrets.GH_TOKEN_ACTION }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          persist-credentials: false
+          token: ${{ secrets.GH_TOKEN_ACTION }}
 
-            - name: Bump version and push tag
-              id: changelog
-              uses: TriPSs/conventional-changelog-action@v6
-              with:
-                  github-token: ${{ secrets.GH_TOKEN_ACTION }}
-                  git-message: 'chore(release): {version}'
-                  skip-on-empty: 'false'
-                  output-file: 'false'
+      - name: Bump version and push tag
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v6
+        with:
+          github-token: ${{ secrets.GH_TOKEN_ACTION }}
+          git-message: 'chore(release): {version}'
+          skip-on-empty: 'false'
+          output-file: 'false'
 
-            - name: Create Release
-              uses: actions/create-release@v1
-              if: ${{ steps.changelog.outputs.skipped == 'false' }}
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GH_TOKEN_ACTION }}
-              with:
-                  tag_name: ${{ steps.changelog.outputs.tag }}
-                  release_name: ${{ steps.changelog.outputs.tag }}
-                  body: ${{ steps.changelog.outputs.clean_changelog }}
+      - name: Create Release
+        uses: actions/create-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN_ACTION }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
