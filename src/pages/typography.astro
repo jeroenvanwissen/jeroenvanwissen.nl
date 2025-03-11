@@ -1,0 +1,207 @@
+---
+import { getSortedPostsByType } from '@lib/util';
+import Layout from '@layouts/Layout.astro';
+import PostBlock from '@components/PostBlock.astro';
+
+const posts = await getSortedPostsByType('post', 'blog');
+
+const colors = ['primary', 'secondary', 'tertiary', 'quaternary'];
+const directions = ['left', 'right'];
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>Blog posts by Jeroen van Wissen</title>
+    <meta content="website" property="og:type" />
+    <meta content="Blog posts by Jeroen van wissen" property="og:title" />
+    <meta
+      content="Overview of all blog posts by Jeroen van Wissen"
+      name="description"
+    />
+    <meta
+      content="Overview of all blog posts by Jeroen van Wissen"
+      property="og:description"
+    />
+    <meta content={`${import.meta.env.SITE}/posts`} property="og:url" />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="og:image"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="twitter:image:src"
+    />
+    <link href={`${import.meta.env.SITE}/posts`} rel="canonical" />
+  </Fragment>
+  <div class="w-full">
+    <div class="mx-auto max-w-6xl px-8 py-4">
+      <div class="text-white">
+        <div class="text-xs text-primary-400 bg-primary-800/50">
+          the quick brown fox jumps over the lazy dog
+        </div>
+        <div class="text-sm text-secondary-400 bg-secondary-800/50">
+          the quick brown fox jumps over the lazy dog
+        </div>
+        <div class="text-md text-tertiary-400 bg-tertiary-800/50">
+          the quick brown fox jumps over the lazy dog
+        </div>
+        <div class="text-lg text-quaternary-400 bg-quaternary-800/50">
+          the quick brown fox jumps over the lazy dog
+        </div>
+        <div class="text-xl">the quick brown fox jumps over the lazy dog</div>
+        <div class="text-2xl">the quick brown fox jumps over the lazy dog</div>
+        <div class="text-3xl">the quick brown fox jumps over the lazy dog</div>
+        <div class="text-4xl">the quick brown fox jumps over the lazy dog</div>
+        <div class="text-5xl">the quick brown fox jumps over the lazy dog</div>
+        <div class="text-6xl">the quick brown fox jumps over the lazy dog</div>
+        <div class="text-7xl">the quick brown fox jumps over the lazy dog</div>
+        <div class="text-8xl">the quick brown fox jumps over the lazy dog</div>
+        <div class="text-9xl">the quick brown fox jumps over the lazy dog</div>
+      </div>
+      <!-- <div class="svg-container">
+                <svg class="svg-first" viewBox="-9 0 16 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.88202 0.209106C5.80175 0.209106 6.49956 1.03786 6.34293 1.94416L3.4711 18.5608C3.34825 19.2717 2.73157 19.7909 2.01019 19.7909H1.48297C0.562689 19.7909 -0.13526 18.9612 0.0222798 18.0546L2.90947 1.43788C3.03287 0.727641 3.64927 0.209106 4.37015 0.209106H4.88202Z" fill="white"></path>
+                </svg>
+
+                <svg class="svg-second" viewBox="0 0 16 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.52228 0.208984C0.454777 0.208984 -0.262864 1.30317 0.162478 2.28228L7.38106 18.899C7.6163 19.4405 8.15044 19.7908 8.74086 19.7908H11.044C12.112 19.7908 12.8297 18.6957 12.4034 17.7164L5.16943 1.09978C4.93393 0.558818 4.40008 0.208984 3.81009 0.208984H1.52228Z" fill="url(#paint0_linear_97_170)" fill-opacity="0.5" style=""></path>
+                    <path d="M14.1475 0.208984C15.0672 0.208984 15.765 1.03774 15.6084 1.94404L12.7366 18.5607C12.6137 19.2716 11.997 19.7908 11.2757 19.7908H8.74844C7.82816 19.7908 7.13021 18.9611 7.28775 18.0544L10.1749 1.43776C10.2983 0.727519 10.9147 0.208984 11.6356 0.208984H14.1475Z" fill="#FF2BB9" style="fill:#FF2BB9;fill:color(display-p3 1.0000 0.1686 0.7255);fill-opacity:1;"></path>
+                    <defs>
+                        <linearGradient id="paint0_linear_97_170" x1="12.5854" y1="0.208984" x2="3.64701" y2="20.5175" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.185" stop-color="#FF2BB9" stop-opacity="0" style="stop-color:none;stop-opacity:0;"></stop>
+                            <stop offset="1" stop-color="#FF2BB9" style="stop-color:#FF2BB9;stop-color:color(display-p3 1.0000 0.1686 0.7255);stop-opacity:1;"></stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div> -->
+
+      <div class="mt-10">
+        <span class="text-white text-2xl"
+          >yes, ugly aligned .. just hover it</span
+        >
+        <a href="#" class="link">
+          <svg
+            class="svg-third"
+            viewBox="0 0 16 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="gradient"
+              d="M1.52228 0.208984C0.454777 0.208984 -0.262864 1.30317 0.162478 2.28228L7.38106 18.899C7.6163 19.4405 8.15044 19.7908 8.74086 19.7908H11.044C12.112 19.7908 12.8297 18.6957 12.4034 17.7164L5.16943 1.09978C4.93393 0.558818 4.40008 0.208984 3.81009 0.208984H1.52228Z"
+              fill="url(#paint0_linear_97_170)"
+              fill-opacity="0.5"
+              style=""></path>
+            <path
+              class="slash"
+              d="M14.1475 0.208984C15.0672 0.208984 15.765 1.03774 15.6084 1.94404L12.7366 18.5607C12.6137 19.2716 11.997 19.7908 11.2757 19.7908H8.74844C7.82816 19.7908 7.13021 18.9611 7.28775 18.0544L10.1749 1.43776C10.2983 0.727519 10.9147 0.208984 11.6356 0.208984H14.1475Z"
+            ></path>
+            <defs>
+              <linearGradient
+                id="paint0_linear_97_170"
+                x1="12.5854"
+                y1="0.208984"
+                x2="3.64701"
+                y2="20.5175"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop
+                  offset="0.185"
+                  stop-color="#FF2BB9"
+                  stop-opacity="0"
+                  style="stop-color:none;stop-opacity:0;"></stop>
+                <stop
+                  offset="1"
+                  stop-color="#FF2BB9"
+                  style="stop-color:#FF2BB9;stop-color:color(display-p3 1.0000 0.1686 0.7255);stop-opacity:1;"
+                ></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="text-4xl">home</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  a {
+    .svg-third {
+      display: inline;
+      height: 50px;
+      color: #ffffff;
+      .gradient {
+        transform-origin: 100% 90%;
+        transform: rotate(34deg);
+        opacity: 0;
+        transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
+      }
+      .slash {
+        fill: #ffffff;
+        opacity: 0.8;
+        transition: 0.4s ease;
+      }
+    }
+    span {
+      color: #ffffff;
+      opacity: 0.8;
+      transition: 0.4s ease;
+    }
+  }
+
+  a:hover {
+    .svg-third {
+      .gradient {
+        transform-origin: 100% 90%;
+        transform: rotate(0deg);
+        opacity: 1;
+      }
+      .slash {
+        fill: #ff2bb9;
+        opacity: 1;
+      }
+    }
+    span {
+      color: #ff2bb9;
+      opacity: 1;
+    }
+  }
+
+  .svg-container {
+    position: relative;
+    width: 20px; /* Adjusted width to accommodate the larger SVG */
+    height: 20px; /* Both SVGs have height 20 */
+    cursor: pointer;
+  }
+
+  .svg-container svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  /* Initial visibility */
+  .svg-first {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .svg-second {
+    opacity: 0;
+    z-index: 1;
+  }
+
+  /* Hover effect: Fade out the first SVG and fade in the second */
+  .svg-container:hover .svg-first {
+    opacity: 0;
+  }
+
+  .svg-container:hover .svg-second {
+    opacity: 1;
+  }
+</style>

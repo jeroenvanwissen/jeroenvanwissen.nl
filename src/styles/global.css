@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,800&display=swap');
+
+@import 'tailwindcss';
+@import './theme.css';
+
+@import './prism.css';
+
+html {
+  font-family: var(--main-family);
+  min-height: 100%;
+  font-size: 1.25rem;
+}
+
+.logo {
+  font-family: var(--logo-font-family);
+}
+
+article a {
+  word-wrap: break-word;
+}
+
+.cutoff-tl-br {
+  clip-path: polygon(
+    24px 0,
+    100% 0,
+    100% calc(100% - 24px),
+    calc(100% - 24px) 100%,
+    0 100%,
+    0 24px
+  );
+}
+
+.cutoff-bl-tr {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 24px) 0,
+    100% 24px,
+    100% 100%,
+    24px 100%,
+    0 calc(100% - 24px)
+  );
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.photo-ribbon {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.photo-ribbon-content {
+  display: inline-block;
+  animation: scroll 30s linear infinite;
+}
+
+.photo-ribbon-content:hover {
+  animation-play-state: paused;
+}
+
+.photo-ribbon img {
+  height: 200px;
+  width: auto;
+  margin-right: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@layer components {
+  article {
+    h1 {
+      @apply text-4xl text-quaternary-400;
+    }
+
+    h2 {
+      @apply text-xl font-extralight text-quaternary-400;
+    }
+
+    h3 {
+      @apply text-lg font-extralight text-quaternary-400;
+    }
+
+    blockquote {
+      @apply border-l-4 border-quaternary-400 pl-4 my-4;
+
+      p {
+        @apply text-sm text-quaternary-50/80;
+      }
+    }
+
+    .company {
+      @apply text-2xl text-quaternary-400;
+    }
+
+    .jobtitle {
+      @apply text-quaternary-400/90;
+    }
+
+    .date {
+      @apply text-sm text-quaternary-400/80;
+    }
+
+    p {
+      @apply text-base text-white my-2;
+    }
+
+    ul,
+    ol {
+      @apply text-base text-white my-2;
+    }
+
+    ol {
+      @apply list-decimal list-inside;
+    }
+
+    ul {
+      @apply list-disc list-inside;
+    }
+
+    a {
+      @apply text-quaternary-400/80 font-bold underline hover:text-quaternary-400;
+    }
+
+    .astro-code {
+      @apply rounded-sm border border-primary-50 p-2 text-xl shadow md:p-2 md:text-base;
+    }
+
+    .skillpill {
+      @apply inline-block text-primary-200 bg-primary-400/25 text-xs rounded-full px-3 py-1 mr-1 mb-1 whitespace-nowrap;
+    }
+
+    .langpill {
+      @apply inline-block text-tertiary-200 bg-tertiary-400/25 text-xs rounded-full px-3 py-1 mr-1 mb-1 whitespace-nowrap;
+    }
+  }
+}

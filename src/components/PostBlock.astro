@@ -1,0 +1,80 @@
+---
+import { Image } from 'astro:assets';
+
+import type { PostType, ProjectType, PhotoType } from '../content/config';
+
+export interface Props {
+  post: {
+    data: PostType | ProjectType | PhotoType;
+    slug: string;
+  };
+  direction?: string;
+  type?: string;
+}
+
+const { post, direction, type = 'post' } = Astro.props;
+
+let border = '';
+if (direction === 'left') {
+  border = 'rounded-tl-xl rounded-br-xl';
+} else if (direction === 'right') {
+  border = 'rounded-bl-xl rounded-tr-xl';
+}
+
+let href = `/post/${post.slug}`;
+if (type === 'photo') {
+  href = `http://31f-fotografie.nl/post/${post.slug}`;
+}
+if (type === 'project') {
+  href = `/project/${post.slug}`;
+}
+---
+
+<a
+  href={href}
+  class={`block text-white/80 hover:text-white bg-white/5 hover:bg-white/10 ${border} overflow-hidden relative cursor-pointer`}
+>
+  {
+    post.data.image && (
+      <div class="aspect-video">
+        <Image
+          src={post.data.image.img}
+          alt={post.data.image.alt}
+          format="webp"
+          width={post.data.image.img.width}
+          height={post.data.image.img.height}
+          quality={50}
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+    )
+  }
+  {
+    post.data.type !== 'photo' && (
+      <div
+        class={`${post.data.image ? 'absolute bottom-0 left-0 right-0' : 'p-2 sm:p-4'}`}
+      >
+        <div class={`${post.data.image ? 'bg-black/60 p-2 sm:p-4' : ''}`}>
+          <h2 class={`font-black text-sm sm:text-md lg:text-lg`}>
+            {post.data.title}
+          </h2>
+          <p class="font-extralight text-xs sm:text-sm lg:text-md">
+            {post.data.description}
+          </p>
+          {post.data.type === 'blog' && (
+            <div class="my-1">
+              {post.data.categories.map((category: string) => (
+                <span
+                  class={`text-xs rounded-full px-3 py-1 mr-1 whitespace-nowrap inline-block text-primary-100 ${post.data.image ? 'bg-primary-950/50' : 'bg-primary-400/15'}`}
+                >
+                  {category}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    )
+  }
+</a>

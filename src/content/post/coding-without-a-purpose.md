@@ -1,16 +1,41 @@
 ---
-date: '2023-06-29T12:20:00.000Z'
-title: Coding without a purpose...
 categories:
-  - Tech
+  - Coding
   - Random Thoughts
-description: >-
-  Why does everything need to have a purpose. Often when I read about some
-  interesting tech thing on the internet I start thinking about where could I
-  use it for, what could I build with it..
+date: 2023-06-29
+description: Why does everything we code need to have a purpose?'
+draft: false
+title: 'Coding Without a Purpose: Rediscovering the Joy of Building'
 type: blog
 ---
 
-And that's also where it ends most of the times. As my creativity mostly ends on the technology level and I'm not that good in creating actual product ideas that could be used by end-users. I recently had a chat with a friend about just building and creating things just for the process and journey. Not so much for having an actual useful product at the end. This process gives so much more freedom to just experiment with things, without the pressure of needing to have a vision on a product. And meanwhile learn some new technology...
+# Coding Without a Purpose: Rediscovering the Joy of Building
 
-It's about time for me to give my brains a little kick and start coding without a purpose...
+Why does everything we code need to have a purpose?
+
+Every time I come across an interesting framework, library or tool, my mind jumps to the same question: What can I build with this? I start brainstorming use cases, thinking about potential projects, imagining how it could be useful in some way. And more often than not... that’s where it ends.
+
+The excitement fades as I realize I don’t have a multimillion dollar product idea to go along with this piece of tech. I get stuck in the mindset that every project should have an end goal, a user base, or some measurable value. And because I struggle with coming up with meaningful product ideas, I end up building nothing at all.
+
+But recently, I had a chat with a friend that completely shifted my perspective. We talked about the simple joy of building things just for the sake of building. No roadmap, no end-user in mind, no pressure to create something useful.. just the pure act of experimenting and exploring. It was a refreshing take on coding: what if we just coded without a purpose?
+
+## The Freedom to Experiment
+
+When you remove the expectation of needing a finished, polished product at the end, something interesting happens. You start focusing more on the process rather than the outcome. You try out new tools without worrying if they’re "worth it." You build things that might never see the light of day but still teach you something valuable along the way.
+
+These experiments aren't failures, they are fuel for curiosity and growth.
+
+## Learning Without Pressure
+
+We often forget that learning isn’t always about direct application. Sometimes, it’s just about play. When you’re not constrained by a project scope or a deadline, you can dive deeper into technologies just because they seem fun. You might not build the next big startup, but you will become a better developer.
+
+So, it’s time to give my brain a little kick. No more waiting for the perfect product idea. No more hesitating because I don’t have a clear roadmap. I’m just going to code...for fun, for learning, and for the sheer joy of creating something without a purpose.
+
+<sub>last updated: 2025-03-11</sub>
+
+I hope this post was helpful to you.
+If you have any questions or feedback, feel free to contact me on
+[Twitter/X](https://x.com/jvwissen),
+[Bluesky](https://bsky.app/profile/jeroenvanwissen.nl), or
+[Mastodon](https://mastodon.social/@jeroenvanwissen). I'd love to hear
+from you! 🚀
