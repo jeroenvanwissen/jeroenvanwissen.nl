@@ -1,10 +1,9 @@
 ---
 import { getSortedPostsByType } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
-import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
-  return (await getSortedPostsByType('project', 'all')).map((post) => {
+  return (await getSortedPostsByType('recipe', 'all')).map((post) => {
     return {
       params: { slug: post.slug },
       props: { post },
@@ -27,7 +26,7 @@ const { Content } = await post.render();
     <meta content={post.data.description} name="description" />
     <meta content={post.data.description} property="og:description" />
     <meta
-      content={`${import.meta.env.SITE}/project/${post.slug}`}
+      content={`${import.meta.env.SITE}/recipe/${post.slug}`}
       property="og:url"
     />
     <meta
@@ -39,37 +38,13 @@ const { Content } = await post.render();
       property="twitter:image:src"
     />
     <link
-      href={`${import.meta.env.SITE}/project/${post.slug}`}
+      href={`${import.meta.env.SITE}/recipe/${post.slug}`}
       rel="canonical"
     />
-    <script>
-      const activeNav = 'projects';
-    </script>
   </Fragment>
   <div class="w-full bg-primary-950">
     <div class="max-w-6xl mx-auto p-2">
       <article>
-        <div class="items-center justify-between md:flex">
-          {
-            post.data.image && (
-              <div class="hidden">
-                <Image
-                  src={post.data.image.img}
-                  alt={post.data.image.alt}
-                  quality={50}
-                  format="webp"
-                  loading="lazy"
-                  width={1420}
-                  class={
-                    post.data.type !== 'photo'
-                      ? 'h-32 sm:h-48 md:h-64 lg:h-96 object-cover object-middle'
-                      : ''
-                  }
-                />
-              </div>
-            )
-          }
-        </div>
         <Content />
       </article>
     </div>

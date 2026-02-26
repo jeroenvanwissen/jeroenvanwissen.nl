@@ -65,17 +65,6 @@ export async function getSortedCollection<
   );
 }
 
-// export async function getAllSortedEntries(): Promise<Post[]> {
-//     return [...(await getEntriesFromCollection('post', 'all'))].sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
-// }
-
-// export async function getLatestPhotoEntries(): Promise<Post[]> {
-//     return [...(await getEntriesFromCollection('post', 'photo'))]
-//         .filter((entry) => entry.data.image?.url)
-//         .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf())
-//         .slice(0, 10);
-// }
-
 export async function generateSitemapXml(
   entries: Post[] = [],
   site: ISite
