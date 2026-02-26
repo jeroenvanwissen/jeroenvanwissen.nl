@@ -5,12 +5,6 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    server: {
-      allowedHosts: [
-        '5d80-2a02-a462-bf6b-0-38d4-9610-eaf7-ee48.ngrok-free.app',
-      ],
-    },
-
     plugins: [tailwindcss()],
   },
   site: 'https://jeroenvanwissen.nl',

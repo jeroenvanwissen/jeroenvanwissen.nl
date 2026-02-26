@@ -3,23 +3,23 @@ import { getSortedCollection } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
 import PostBlock from '@components/PostBlock.astro';
 
-const posts = await getSortedCollection('project');
+const recipes = await getSortedCollection('recipe');
 ---
 
 <Layout>
   <Fragment slot="head">
-    <title>Projects by Jeroen van Wissen</title>
+    <title>Recipes by Jeroen van Wissen</title>
     <meta content="website" property="og:type" />
-    <meta content="Projects by Jeroen van Wissen" property="og:title" />
+    <meta content="Recipes by Jeroen van Wissen" property="og:title" />
     <meta
-      content="An overview of the projects Jeroen has worked on"
+      content="An overview of recipes by Jeroen van Wissen"
       name="description"
     />
     <meta
-      content="An overview of the projects Jeroen has worked on"
+      content="An overview of recipes by Jeroen van Wissen"
       property="og:description"
     />
-    <meta content={`${import.meta.env.SITE}/projects`} property="og:url" />
+    <meta content={`${import.meta.env.SITE}/recipes`} property="og:url" />
     <meta
       content={`${import.meta.env.SITE}/images/og-image.webp`}
       property="og:image"
@@ -28,14 +28,14 @@ const posts = await getSortedCollection('project');
       content={`${import.meta.env.SITE}/images/og-image.webp`}
       property="twitter:image:src"
     />
-    <link href={`${import.meta.env.SITE}/projects`} rel="canonical" />
+    <link href={`${import.meta.env.SITE}/recipes`} rel="canonical" />
   </Fragment>
   <div class="w-full">
     <div class="mx-auto max-w-6xl px-8 py-4">
       <div
         class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3"
       >
-        {posts.map((post) => <PostBlock post={post} type="project" />)}
+        {recipes.map((recipe) => <PostBlock post={recipe} type="recipe" />)}
       </div>
     </div>
   </div>

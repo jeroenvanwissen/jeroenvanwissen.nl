@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 
-import type { PostType, ProjectType, PhotoType } from '../content/config';
+import type { PostType, ProjectType, PhotoType, RecipeType } from '../content/config';
 
 export interface Props {
   post: {
-    data: PostType | ProjectType | PhotoType;
+    data: PostType | ProjectType | PhotoType | RecipeType;
     slug: string;
   };
   direction?: string;
@@ -23,10 +23,13 @@ if (direction === 'left') {
 
 let href = `/post/${post.slug}`;
 if (type === 'photo') {
-  href = `http://31f-fotografie.nl/post/${post.slug}`;
+  href = `https://31f-fotografie.nl/post/${post.slug}`;
 }
 if (type === 'project') {
   href = `/project/${post.slug}`;
+}
+if (type === 'recipe') {
+  href = `/recipe/${post.slug}`;
 }
 ---
 

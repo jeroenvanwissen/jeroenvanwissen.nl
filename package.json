@@ -2,6 +2,7 @@
   "name": "@jeroenvanwissen/jeroenvanwissen.nl",
   "version": "1.0.23",
   "private": true,
+  "packageManager": "pnpm@10.29.3",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -18,5 +19,8 @@
     "@tailwindcss/cli": "^4.1.18",
     "@tailwindcss/vite": "^4.1.18",
     "tailwindcss": "^4.1.18"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@parcel/watcher", "esbuild", "sharp"]
   }
 }
