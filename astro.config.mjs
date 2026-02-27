@@ -19,7 +19,7 @@ export default defineConfig({
     '/contact': '/',
     '/donated': '/',
     '/images.json': '/',
-    '/index.xml': '/',
+    '/index.xml': '/feed.xml',
     '/lastfm-blocks-module': '/',
     '/lead-story/2008/10/08/howto-iphone-application-development-environment.html':
       '/',

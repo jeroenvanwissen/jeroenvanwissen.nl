@@ -2,7 +2,7 @@
   "name": "@jeroenvanwissen/jeroenvanwissen.nl",
   "version": "1.0.24",
   "private": true,
-  "packageManager": "pnpm@10.29.3",
+  "packageManager": "pnpm@10.30.3",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -10,15 +10,16 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^5.16.15",
+    "astro": "^5.18.0",
     "prettier": "^3.8.1",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.18",
-    "@tailwindcss/vite": "^4.1.18",
-    "tailwindcss": "^4.1.18"
+    "@astrojs/rss": "^4.0.15",
+    "@tailwindcss/cli": "^4.2.1",
+    "@tailwindcss/vite": "^4.2.1",
+    "tailwindcss": "^4.2.1"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
