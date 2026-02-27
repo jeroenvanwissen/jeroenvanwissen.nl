@@ -13,7 +13,7 @@ export async function GET(context: APIContext) {
       title: recipe.data.title,
       pubDate: recipe.data.date,
       description: recipe.data.description,
-      link: `/recipe/${recipe.slug}/`,
+      link: `/recipe/${recipe.slug}`,
     })),
   });
 }
