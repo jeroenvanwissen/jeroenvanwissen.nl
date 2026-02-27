@@ -1,12 +1,18 @@
 ---
 import { Image } from 'astro:assets';
 
-import type { PostType, ProjectType, PhotoType, RecipeType } from '../content/config';
+import type {
+  PostType,
+  ProjectType,
+  PhotoType,
+  RecipeType,
+} from '../content/config';
 
 export interface Props {
   post: {
     data: PostType | ProjectType | PhotoType | RecipeType;
     slug: string;
+    body?: string;
   };
   direction?: string;
   type?: string;
@@ -31,15 +37,40 @@ if (type === 'project') {
 if (type === 'recipe') {
   href = `/recipe/${post.slug}`;
 }
+
+// Calculate reading time (200 words per minute)
+const wordCount = post.body ? post.body.split(/\s+/).length : 0;
+const readingTime = wordCount > 0 ? Math.ceil(wordCount / 200) : null;
+
+// Format date
+const formattedDate = post.data.date
+  ? post.data.date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
+  : null;
+
+// Check if post is new (within last 30 days)
+const isNew = post.data.date
+  ? Date.now() - post.data.date.getTime() < 30 * 24 * 60 * 60 * 1000
+  : false;
 ---
 
 <a
   href={href}
-  class={`block text-white/80 hover:text-white bg-white/5 hover:bg-white/10 ${border} overflow-hidden relative cursor-pointer`}
+  class={`block text-white/80 hover:text-white bg-white/5 hover:bg-white/10 ${border} overflow-hidden relative cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group`}
 >
   {
+    isNew && (
+      <div class="bg-quaternary-400 absolute top-2 right-2 z-10 rounded-full px-2 py-1 text-xs font-bold text-white">
+        NEW
+      </div>
+    )
+  }
+  {
     post.data.image && (
-      <div class="aspect-video">
+      <div class="aspect-video overflow-hidden">
         <Image
           src={post.data.image.img}
           alt={post.data.image.alt}
@@ -47,7 +78,7 @@ if (type === 'recipe') {
           width={post.data.image.img.width}
           height={post.data.image.img.height}
           quality={50}
-          class="w-full h-full object-cover"
+          class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
           loading="lazy"
         />
       </div>
@@ -56,24 +87,107 @@ if (type === 'recipe') {
   {
     post.data.type !== 'photo' && (
       <div
-        class={`${post.data.image ? 'absolute bottom-0 left-0 right-0' : 'p-2 sm:p-4'}`}
+        class={`${post.data.image ? 'absolute right-0 bottom-0 left-0' : 'p-2 sm:p-4'}`}
       >
-        <div class={`${post.data.image ? 'bg-black/60 p-2 sm:p-4' : ''}`}>
-          <h2 class={`font-black text-sm sm:text-md lg:text-lg`}>
+        <div
+          class={`${post.data.image ? 'bg-black/60 p-2 backdrop-blur-sm sm:p-4' : ''}`}
+        >
+          <h2
+            class={`mb-1 line-clamp-2 text-sm font-black sm:text-base lg:text-lg`}
+          >
             {post.data.title}
           </h2>
-          <p class="font-extralight text-xs sm:text-sm lg:text-md">
+          <p class="mb-2 line-clamp-2 text-xs font-extralight opacity-90 sm:text-sm">
             {post.data.description}
           </p>
-          {post.data.type === 'blog' && (
-            <div class="my-1">
+
+          <div class="mb-2 flex flex-wrap items-center gap-2 text-xs opacity-75">
+            {formattedDate && (
+              <span class="flex items-center gap-1">
+                <svg
+                  width="12"
+                  height="12"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                {formattedDate}
+              </span>
+            )}
+            {readingTime && type !== 'project' && (
+              <span class="flex items-center gap-1">
+                <svg
+                  width="12"
+                  height="12"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                {readingTime} min read
+              </span>
+            )}
+          </div>
+
+          {post.data.type === 'blog' && post.data.categories && (
+            <div class="flex flex-wrap gap-1">
               {post.data.categories.map((category: string) => (
                 <span
-                  class={`text-xs rounded-full px-3 py-1 mr-1 whitespace-nowrap inline-block text-primary-100 ${post.data.image ? 'bg-primary-950/50' : 'bg-primary-400/15'}`}
+                  class={`text-primary-100 inline-block rounded-full px-2 py-0.5 text-xs whitespace-nowrap ${post.data.image ? 'bg-primary-950/50' : 'bg-primary-400/15'}`}
                 >
                   {category}
                 </span>
               ))}
+            </div>
+          )}
+
+          {post.data.type === 'project' && (
+            <div class="space-y-2">
+              {post.data.status && (
+                <div class="flex items-center gap-1">
+                  <span
+                    class={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${
+                      post.data.status === 'active'
+                        ? 'bg-tertiary-400/25 text-tertiary-200'
+                        : post.data.status === 'completed'
+                          ? 'bg-secondary-400/25 text-secondary-400'
+                          : post.data.status === 'on-hold'
+                            ? 'bg-quaternary-400/25 text-quaternary-400'
+                            : 'bg-primary-400/25 text-primary-200'
+                    }`}
+                  >
+                    {post.data.status === 'active'
+                      ? '🟢 Active'
+                      : post.data.status === 'completed'
+                        ? '✅ Completed'
+                        : post.data.status === 'on-hold'
+                          ? '⏸️ On Hold'
+                          : '📦 Archived'}
+                  </span>
+                </div>
+              )}
+              {(post.data.tech || post.data.categories) && (
+                <div class="flex flex-wrap gap-1">
+                  {(post.data.tech || post.data.categories || []).map(
+                    (tech: string) => (
+                      <span
+                        class={`text-primary-100 inline-block rounded-full px-2 py-0.5 text-xs whitespace-nowrap ${post.data.image ? 'bg-primary-950/50' : 'bg-primary-400/15'}`}
+                      >
+                        {tech}
+                      </span>
+                    )
+                  )}
+                </div>
+              )}
             </div>
           )}
         </div>

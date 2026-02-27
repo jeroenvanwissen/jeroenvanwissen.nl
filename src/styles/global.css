@@ -11,6 +11,7 @@ html {
   font-family: var(--main-family);
   min-height: 100%;
   font-size: 1.25rem;
+  scroll-padding-top: 7rem; /* Account for fixed header + some spacing */
 }
 
 .logo {
@@ -185,11 +186,60 @@ article a {
     }
 
     .skillpill {
-      @apply text-primary-200 bg-primary-400/25 mr-1 mb-1 inline-block rounded-full px-3 py-1 text-xs whitespace-nowrap;
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      margin-right: 0.25rem;
+      margin-bottom: 0.25rem;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      white-space: nowrap;
+      border-radius: 9999px;
+      color: var(--color-primary-200);
+      background: color-mix(in srgb, var(--color-primary-400) 25%, transparent);
     }
 
     .langpill {
-      @apply text-tertiary-200 bg-tertiary-400/25 mr-1 mb-1 inline-block rounded-full px-3 py-1 text-xs whitespace-nowrap;
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      margin-right: 0.25rem;
+      margin-bottom: 0.25rem;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      white-space: nowrap;
+      border-radius: 9999px;
+      color: var(--color-tertiary-200);
+      background: color-mix(
+        in srgb,
+        var(--color-tertiary-400) 25%,
+        transparent
+      );
     }
+  }
+
+  /* Global skillpill and langpill for use outside article (e.g. in sidebar) */
+  .skillpill {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    white-space: nowrap;
+    border-radius: 9999px;
+    color: var(--color-primary-200);
+    background: color-mix(in srgb, var(--color-primary-400) 25%, transparent);
+  }
+
+  .langpill {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    white-space: nowrap;
+    border-radius: 9999px;
+    color: var(--color-tertiary-200);
+    background: color-mix(in srgb, var(--color-tertiary-400) 25%, transparent);
   }
 }

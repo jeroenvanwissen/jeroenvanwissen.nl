@@ -30,6 +30,8 @@ export type PhotoType = BaseSchema & {
 
 export type ProjectType = BaseSchema & {
   type: 'project';
+  status?: 'active' | 'completed' | 'archived' | 'on-hold';
+  tech?: string[];
 };
 
 export type RecipeType = BaseSchema & {
@@ -86,6 +88,8 @@ const projectCollection = defineCollection({
   schema: ({ image }) =>
     baseSchema({ image }).extend({
       type: z.literal('project'),
+      status: z.enum(['active', 'completed', 'archived', 'on-hold']).optional(),
+      tech: z.array(z.string()).optional(),
     }),
 });
 

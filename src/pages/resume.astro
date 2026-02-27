@@ -20,26 +20,28 @@ import Layout from '@layouts/Layout.astro';
     />
     <link href={`${import.meta.env.SITE}/resume`} rel="canonical" />
   </Fragment>
-  <div class="w-full">
-    <div class="mx-auto max-w-6xl px-6 py-4">
-      <article class="flex flex-col sm:flex-row">
-        <div class="flex flex-col sm:w-2/3 sm:pr-10">
+  <div class="bg-primary-950 w-full">
+    <div class="page-wrapper-resume">
+      <article class="content-resume">
+        <div class="flex flex-col" id="resume-main">
           <!-- Intro block //-->
-          <div class="pb-3 border border-b-quaternary-800">
+          <div class="border-b-quaternary-800 border pb-3">
             <h1>Jeroen van Wissen</h1>
             <h2 class="jobtitle">Senior Full Stack Developer</h2>
             <div class="description">
               <p>
-                With more than two decades of experience in development,
-                including over five years as a Tech Lead/Engineering Manager, I
-                have refined my skills and expertise. While I began my journey
-                with PHP , my focus has now shifted entirely to
-                JavaScript/TypeScript, specifically React and NodeJS. I am a
-                versatile and passionate professional, dedicated to finding
-                solutions and constantly seeking opportunities for growth.
-                Additionally, I possess hands-on experience with AWS DevOps and
-                GitLab CI/CD, enhancing my skills in delivering efficient and
-                streamlined development processes.
+                Experienced JavaScript/TypeScript software engineer and
+                technical lead with over 20 years in development. Jeroen focuses
+                on delivering reliable, maintainable solutions through effective
+                collaboration and quality engineering. His work spans full-stack
+                development, CI/CD, and test automation—helping teams build
+                confidence through better feedback and tooling.
+              </p>
+              <p>
+                Pragmatic and calm, Jeroen values practical problem-solving and
+                team success over individual recognition. He brings together
+                technical, product, and organizational perspectives while
+                staying focused on stable delivery and helping others grow.
               </p>
               <p>
                 See my full profile on <a
@@ -51,28 +53,43 @@ import Layout from '@layouts/Layout.astro';
           </div>
 
           <!-- Employment History Block //-->
-          <div class="py-3 border-b border-b-primary-800">
+          <div class="border-b-primary-800 border-b py-3">
             <h2 class="company">Team Rockstars IT</h2>
             <span class="date">August 2025 - Present</span>
             <div class="description">
               <p>&nbsp;</p>
             </div>
-            <div class="pl-6 mt-4">
+            <div class="mt-4 pl-6">
               <h2 class="jobtitle">Software Engineer at Essent</h2>
               <span class="date">August 2025 - Present</span>
               <div class="description">
-                <p>&nbsp;</p>
+                <p>
+                  Contributed to workflow modernization using Temporal.io and
+                  event-driven architecture. Analyzed REST and SOAP libraries to
+                  define migration strategies, refactoring applications to adopt
+                  REST-based implementations for improved maintainability.
+                  Collaborated with feature teams to gather test data and verify
+                  response consistency during the migration. Updated automated
+                  tests and performed end-to-end testing to ensure stable
+                  production transitions. Focused on code quality, system
+                  integration, and supporting teams through technical changes.
+                </p>
                 <div class="my-2">
                   <span class="skillpill">Temporal.io</span>
                   <span class="skillpill">Event Driven Architecture (EDA)</span>
                   <span class="skillpill">JavaScript / TypeScript</span>
+                  <span class="skillpill">Node.js</span>
+                  <span class="skillpill">REST API</span>
+                  <span class="skillpill">SOAP</span>
+                  <span class="skillpill">Test Automation</span>
+                  <span class="skillpill">End-to-End Testing</span>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Employment History Block //-->
-          <div class="py-3 border-b border-b-primary-800">
+          <div class="border-b-primary-800 border-b py-3">
             <h2 class="company">Sogeti, part of Capgemini</h2>
             <span class="date">January 2024 - July 2025</span>
             <div class="description">
@@ -82,7 +99,7 @@ import Layout from '@layouts/Layout.astro';
                 Cross-Functional Teams' certification.
               </p>
             </div>
-            <div class="pl-6 mt-4">
+            <div class="mt-4 pl-6">
               <h2 class="jobtitle">
                 Test Automation Engineer at Dutch Ministry of Foreign Affairs
               </h2>
@@ -132,7 +149,7 @@ import Layout from '@layouts/Layout.astro';
           </div>
 
           <!-- Employment History Block //-->
-          <div class="py-3 border-b border-b-primary-800">
+          <div class="border-b-primary-800 border-b py-3">
             <h2 class="company">Gracenote, a Nielsen company</h2>
             <span class="date">August 2016 - November 2023</span>
             <div class="description">
@@ -147,7 +164,7 @@ import Layout from '@layouts/Layout.astro';
                 leadership skills and a deeper understanding of team dynamics.
               </p>
             </div>
-            <div class="pl-6 mt-4">
+            <div class="mt-4 pl-6">
               <h2 class="jobtitle">Manager Engineering at Gracenote Sports</h2>
               <span class="date">July 2021 - November 2023</span>
               <div class="description">
@@ -198,7 +215,7 @@ import Layout from '@layouts/Layout.astro';
                 <span class="skillpill">AWS</span>
               </div>
             </div>
-            <div class="pl-6 mt-4">
+            <div class="mt-4 pl-6">
               <h2 class="jobtitle">
                 Associate Manager Engineering at Gracenote Sports
               </h2>
@@ -242,7 +259,7 @@ import Layout from '@layouts/Layout.astro';
                 <span class="skillpill">AWS</span>
               </div>
             </div>
-            <div class="pl-6 mt-4">
+            <div class="mt-4 pl-6">
               <h2 class="jobtitle">Tech Lead at Gracenote Sports</h2>
               <span class="date">December 2017 - April 2018</span>
               <div class="description">
@@ -280,7 +297,7 @@ import Layout from '@layouts/Layout.astro';
                 <span class="skillpill">AWS</span>
               </div>
             </div>
-            <div class="pl-6 mt-4">
+            <div class="mt-4 pl-6">
               <h2 class="jobtitle">Web Developer at Gracenote Sports</h2>
               <span class="date">August 2016 - November 2017</span>
               <div class="description">
@@ -309,10 +326,10 @@ import Layout from '@layouts/Layout.astro';
           </div>
 
           <!-- Employment History Block //-->
-          <div class="py-3 border-b border-b-primary-800">
+          <div class="border-b-primary-800 border-b py-3">
             <h2 class="company">Emendis BV</h2>
             <span class="date">February 2015 - July 2016</span>
-            <div class="pl-6 mt-4">
+            <div class="mt-4 pl-6">
               <h2 class="jobtitle">Lead Developer at Fysio24</h2>
               <span class="date">September 2015 - July 2016</span>
               <div class="description">
@@ -347,7 +364,7 @@ import Layout from '@layouts/Layout.astro';
                 <span class="skillpill">Laravel</span>
               </div>
             </div>
-            <div class="pl-6 mt-4">
+            <div class="mt-4 pl-6">
               <h2 class="jobtitle">Senior Frontend Developer at Emendis BV</h2>
               <span class="date">February 2015 - July 2016</span>
               <div class="description">
@@ -371,43 +388,140 @@ import Layout from '@layouts/Layout.astro';
             </div>
           </div>
         </div>
-        <div class="flex flex-col sm:w-1/3">
-          <div class="mt-6">
-            <h2 class="text-tertiary-400">Languages</h2>
+      </article>
+
+      <aside class="sidebar-resume">
+        <div class="sidebar-inner">
+          <div class="resume-section">
+            <h3 class="resume-section-label">Languages</h3>
             <div class="my-2">
               <span class="langpill">Dutch</span>
               <span class="langpill">French</span>
               <span class="langpill">English</span>
             </div>
           </div>
-          <div class="my-3">
-            <h2 class="text-primary-400">Skills</h2>
+
+          <div class="resume-section">
+            <h3 class="resume-section-label">Skills</h3>
             <div class="my-2">
               <span class="skillpill">Technical Leadership</span>
               <span class="skillpill">Team Management</span>
               <span class="skillpill">Coaching &amp; Mentoring</span>
               <span class="skillpill">Agile Development</span>
+              <span class="skillpill">Scrum</span>
+              <span class="skillpill">SAFe</span>
               <span class="skillpill">Full Stack Development</span>
-              <span class="skillpill">Unit Testing</span>
-              <span class="skillpill">Test Automation</span>
-              <span class="skillpill">Behavior-Driven Development (BDD)</span>
               <span class="skillpill">DevOps</span>
               <span class="skillpill">CI/CD</span>
-              <span class="skillpill">MongoDB</span>
-              <span class="skillpill">AWS</span>
+              <span class="skillpill">Developer Experience</span>
+              <span class="skillpill">Unit Testing</span>
+              <span class="skillpill">Test Automation</span>
+              <span class="skillpill">End-to-End Testing</span>
+              <span class="skillpill">Test Driven Development (TDD)</span>
+              <span class="skillpill">Behavior-Driven Development (BDD)</span>
               <span class="skillpill">JavaScript / TypeScript</span>
-              <span class="skillpill">Playwright</span>
-              <span class="skillpill">Cucumber</span>
-              <span class="skillpill">Cypress</span>
-              <span class="skillpill">Postman</span>
               <span class="skillpill">React</span>
+              <span class="skillpill">Vue.js</span>
               <span class="skillpill">Node.js</span>
               <span class="skillpill">NestJS</span>
+              <span class="skillpill">Express</span>
               <span class="skillpill">Python</span>
+              <span class="skillpill">Swift</span>
+              <span class="skillpill">Kotlin</span>
+              <span class="skillpill">REST API</span>
+              <span class="skillpill">SOAP</span>
+              <span class="skillpill">Temporal.io</span>
+              <span class="skillpill">Event Driven Architecture (EDA)</span>
+              <span class="skillpill">MongoDB</span>
+              <span class="skillpill">DynamoDB</span>
+              <span class="skillpill">PostgreSQL</span>
+              <span class="skillpill">MySQL</span>
+              <span class="skillpill">MariaDB</span>
+              <span class="skillpill">SQLite</span>
+              <span class="skillpill">Redis</span>
+              <span class="skillpill">AWS</span>
+              <span class="skillpill">GitLab</span>
+              <span class="skillpill">GitHub</span>
+              <span class="skillpill">Nx</span>
+              <span class="skillpill">Monorepo</span>
+              <span class="skillpill">Vite</span>
+              <span class="skillpill">Webpack</span>
+              <span class="skillpill">Grunt</span>
+              <span class="skillpill">Playwright</span>
+              <span class="skillpill">Cucumber</span>
+              <span class="skillpill">CucumberJS</span>
+              <span class="skillpill">Cypress</span>
+              <span class="skillpill">Postman</span>
+              <span class="skillpill">ChatGPT</span>
+              <span class="skillpill">Claude</span>
+              <span class="skillpill">OpenCode</span>
+              <span class="skillpill">AI Assisted Development (AIAD)</span>
             </div>
           </div>
         </div>
-      </article>
+      </aside>
     </div>
   </div>
+
+  <style is:global>
+    .page-wrapper-resume {
+      display: grid;
+      grid-template-columns: var(--content-width) var(--sidebar-width);
+      gap: 4rem;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+      justify-content: center;
+    }
+
+    .content-resume {
+      grid-column: 1;
+    }
+
+    .sidebar-resume {
+      grid-column: 2;
+      position: relative;
+    }
+
+    .sidebar-inner {
+      position: sticky;
+      top: 7rem;
+    }
+
+    @media (max-width: 1060px) {
+      .page-wrapper-resume {
+        grid-template-columns: 1fr;
+        max-width: var(--content-width);
+        gap: 0;
+      }
+      .content-resume {
+        grid-column: 1;
+      }
+      .sidebar-resume {
+        display: none;
+      }
+    }
+
+    /* Resume Sections in Sidebar */
+    .resume-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .resume-section:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .resume-section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+  </style>
 </Layout>

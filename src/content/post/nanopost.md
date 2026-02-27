@@ -4,8 +4,8 @@ categories:
   - development
 date: 2026-02-27
 description: A tiny CLI for capturing dev notes and short posts as Markdown files right inside your project.
-draft: false
-title: "nanopost: Write Small Thoughts, Commit Them to Your Repo"
+draft: true
+title: 'nanopost: Write Small Thoughts, Commit Them to Your Repo'
 type: blog
 ---
 
@@ -46,7 +46,7 @@ Plugins live in `.nanopost/plugins/` in your project, or you can install them fr
 
 ```javascript
 module.exports = {
-  name: "notify",
+  name: 'notify',
   async onPostSaved({ filePath, frontmatter, body }) {
     console.log(`Post saved: ${frontmatter.title} → ${filePath}`);
   },

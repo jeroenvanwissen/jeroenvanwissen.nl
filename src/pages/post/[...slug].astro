@@ -205,7 +205,7 @@ const formattedDate = post.data.date.toLocaleDateString('en-US', {
     );
   </script>
 
-  <style>
+  <style is:global>
     .page-wrapper {
       display: grid;
       grid-template-columns: var(--content-width) var(--sidebar-width);
@@ -287,7 +287,7 @@ const formattedDate = post.data.date.toLocaleDateString('en-US', {
       gap: 0.1rem;
     }
 
-    .toc ul a {
+    .toc a {
       display: block;
       font-size: 0.8rem;
       color: var(--color-quaternary-400);

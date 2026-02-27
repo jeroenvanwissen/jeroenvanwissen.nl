@@ -15,6 +15,13 @@ function formatDate(date: Date): string {
     day: '2-digit',
   });
 }
+
+// Calculate approximate reading time
+const totalWords = devlogs.reduce(
+  (acc, devlog) => acc + devlog.body.split(/\s+/).length,
+  0
+);
+const readingTime = Math.ceil(totalWords / 200);
 ---
 
 <Layout>
@@ -42,8 +49,8 @@ function formatDate(date: Date): string {
     <link href={`${import.meta.env.SITE}/devlog`} rel="canonical" />
   </Fragment>
   <div class="bg-primary-950 w-full">
-    <div class="mx-auto max-w-6xl p-2">
-      <article class="prose prose-invert max-w-none">
+    <div class="page-wrapper">
+      <article class="content prose prose-invert max-w-none">
         <h1>Website Devlog</h1>
 
         <blockquote>
@@ -68,9 +75,9 @@ function formatDate(date: Date): string {
 
             return (
               <div class="devlog-entry">
-                <h3>
-                  - {formatDate(devlog.data.date)} - {devlog.data.title}
-                </h3>
+                <h2>
+                  {formatDate(devlog.data.date)} - {devlog.data.title}
+                </h2>
                 <Content />
               </div>
             );
@@ -81,6 +88,328 @@ function formatDate(date: Date): string {
           <sub>last updated: {formatDate(lastUpdated)}</sub>
         </p>
       </article>
+
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+          <div class="toc-label">On this page</div>
+          <ul class="toc" id="toc">
+            <!-- TOC will be populated by JavaScript -->
+          </ul>
+
+          <div class="reading-progress-section">
+            <div class="progress-label">
+              <span>Progress</span>
+              <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="reading-time">
+              <svg
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              ~{readingTime} min read
+            </div>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
+
+  <div class="top-progress" id="topProgress"></div>
+
+  <script>
+    // Reading progress
+    function updateProgress() {
+      const article = document.querySelector('.content');
+      if (!article) return;
+
+      const rect = article.getBoundingClientRect();
+      const articleTop = rect.top + window.scrollY;
+      const articleHeight = rect.height;
+      const viewportHeight = window.innerHeight;
+      const scrolled = window.scrollY - articleTop + viewportHeight * 0.5;
+      const progress = Math.min(
+        100,
+        Math.max(0, (scrolled / articleHeight) * 100)
+      );
+
+      const progressFill = document.getElementById('progressFill');
+      const topProgress = document.getElementById('topProgress');
+      const progressPercent = document.getElementById('progressPercent');
+
+      if (progressFill) progressFill.style.width = progress + '%';
+      if (topProgress) topProgress.style.width = progress + '%';
+      if (progressPercent)
+        progressPercent.textContent = Math.round(progress) + '%';
+    }
+
+    // Active TOC tracking
+    function updateTOC() {
+      const headings = document.querySelectorAll('.content h2[id]');
+      const links = document.querySelectorAll('.toc a');
+      let current = '';
+
+      headings.forEach((h) => {
+        if (window.scrollY >= h.offsetTop - 120) {
+          current = h.id;
+        }
+      });
+
+      links.forEach((a) => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }
+
+    // Generate TOC
+    function generateTOC() {
+      const headings = document.querySelectorAll('.content h2');
+      const tocList = document.getElementById('toc');
+      if (!tocList) return;
+
+      tocList.innerHTML = '';
+      headings.forEach((heading, index) => {
+        if (!heading.id) {
+          heading.id = `section-${index}`;
+        }
+
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = `#${heading.id}`;
+        a.textContent = heading.textContent;
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      generateTOC();
+      updateProgress();
+      updateTOC();
+    });
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        updateProgress();
+        updateTOC();
+      },
+      { passive: true }
+    );
+  </script>
+
+  <style is:global>
+    .page-wrapper {
+      display: grid;
+      grid-template-columns: var(--content-width) var(--sidebar-width);
+      gap: 4rem;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+      justify-content: center;
+    }
+
+    .content {
+      grid-column: 1;
+    }
+
+    .sidebar {
+      grid-column: 2;
+      position: relative;
+    }
+
+    .sidebar-inner {
+      position: sticky;
+      top: 7rem;
+    }
+
+    @media (max-width: 1060px) {
+      .page-wrapper {
+        grid-template-columns: 1fr;
+        max-width: var(--content-width);
+        gap: 0;
+      }
+      .content {
+        grid-column: 1;
+      }
+      .sidebar {
+        display: none;
+      }
+    }
+
+    /* Article Header */
+    .article-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .article-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .article-lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      border-left: 3px solid var(--color-quaternary-400);
+      padding-left: 1rem;
+      margin-top: 1rem;
+    }
+
+    /* Sidebar: TOC */
+    .toc-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .toc {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .toc a {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--color-quaternary-400);
+      text-decoration: none;
+      padding: 0.35rem 0.75rem;
+      border-left: 2px solid transparent;
+      border-radius: 0 4px 4px 0;
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+
+    .toc a:hover {
+      color: var(--text-bright);
+      border-left-color: var(--color-quaternary-400);
+      background: rgba(232, 77, 202, 0.06);
+    }
+
+    .toc a.active {
+      color: var(--color-quaternary-400);
+      border-left-color: var(--color-quaternary-400);
+      background: rgba(232, 77, 202, 0.12);
+    }
+
+    /* Sidebar: Progress */
+    .reading-progress-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .progress-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 3px;
+      background: var(--border-subtle);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--color-quaternary-400);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.15s ease-out;
+    }
+
+    .reading-time {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .reading-time svg {
+      opacity: 0.5;
+    }
+
+    /* Sidebar: Tags */
+    .tags-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .tags-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 0.25em 0.65em;
+      background: var(--code-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 100px;
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .tag:hover {
+      color: var(--color-quaternary-400);
+      border-color: var(--color-quaternary-400);
+      background: rgba(232, 77, 202, 0.12);
+    }
+
+    /* Top Progress Bar */
+    .top-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: var(--color-quaternary-400);
+      z-index: 200;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+  </style>
 </Layout>
