@@ -4,6 +4,7 @@ import Layout from '@layouts/Layout.astro';
 import PostBlock from '@components/PostBlock.astro';
 
 const recipes = await getSortedCollection('recipe');
+const directions = ['left', 'right'];
 ---
 
 <Layout>
@@ -30,12 +31,29 @@ const recipes = await getSortedCollection('recipe');
     />
     <link href={`${import.meta.env.SITE}/recipes`} rel="canonical" />
   </Fragment>
-  <div class="w-full">
-    <div class="mx-auto max-w-6xl px-8 py-4">
-      <div
-        class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3"
-      >
-        {recipes.map((recipe) => <PostBlock post={recipe} type="recipe" />)}
+  <div class="bg-primary-950 w-full">
+    <div class="mx-auto max-w-6xl px-6 py-8">
+      <!-- Hero Section -->
+      <div class="mb-12 text-center">
+        <h1 class="text-quaternary-400 mb-4 text-4xl font-black md:text-6xl">
+          Recipes
+        </h1>
+        <p class="mb-6 text-lg text-white/60">
+          Delicious dishes and cooking experiments from my kitchen
+        </p>
+      </div>
+
+      <!-- Recipes Grid -->
+      <div class="columns-1 gap-4 space-y-4 sm:columns-2 md:columns-3">
+        {
+          recipes.map((recipe) => {
+            const direction =
+              directions[Math.floor(Math.random() * directions.length)];
+            return (
+              <PostBlock post={recipe} type="recipe" direction={direction} />
+            );
+          })
+        }
       </div>
     </div>
   </div>

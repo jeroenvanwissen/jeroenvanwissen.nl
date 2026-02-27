@@ -31,9 +31,20 @@ const directions = ['left', 'right'];
     />
     <link href={`${import.meta.env.SITE}/posts`} rel="canonical" />
   </Fragment>
-  <div class="w-full">
-    <div class="mx-auto max-w-6xl px-6 py-4">
-      <div class="columns-2 md:columns-3 gap-4 space-y-4" id="masonry-grid">
+  <div class="bg-primary-950 w-full">
+    <div class="mx-auto max-w-6xl px-6 py-8">
+      <!-- Hero Section -->
+      <div class="mb-12 text-center">
+        <h1 class="text-quaternary-400 mb-4 text-4xl font-black md:text-6xl">
+          Blog Posts
+        </h1>
+        <p class="mb-6 text-lg text-white/60">
+          Thoughts, tutorials, and updates from my journey
+        </p>
+      </div>
+
+      <!-- All Posts -->
+      <div class="columns-1 gap-4 space-y-4 sm:columns-2 md:columns-3">
         {
           posts.map((post) => {
             const direction =
@@ -45,39 +56,3 @@ const directions = ['left', 'right'];
     </div>
   </div>
 </Layout>
-
-<script is:inline>
-  const masonryGrid = document.getElementById('masonry-grid');
-  const columnWidth = 440;
-  const gap = 20;
-  function createMasonryGrid() {
-    const gridWidth = masonryGrid.offsetWidth;
-    const columns = Math.floor(gridWidth / columnWidth) || 1;
-
-    masonryGrid.style.columnCount = columns.toString();
-    masonryGrid.style.columnGap = `${gap}px`;
-
-    masonryGrid.style.display = 'block';
-    masonryGrid.style.gridTemplateColumns = '';
-    masonryGrid.style.gridTemplateRows = '';
-    const items = Array.from(masonryGrid.children);
-    items.forEach((item) => {
-      item.style.gridRowStart = '';
-      item.style.gridColumnStart = '';
-
-      item.style.breakInside = 'avoid';
-      item.style.marginBottom = `${gap}px`;
-    });
-  }
-
-  createMasonryGrid();
-
-  window.addEventListener('resize', createMasonryGrid);
-  window.addEventListener('load', createMasonryGrid);
-
-  const observer = new MutationObserver(createMasonryGrid);
-  observer.observe(masonryGrid, {
-    childList: true,
-    subtree: true,
-  });
-</script>

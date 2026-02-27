@@ -3,7 +3,7 @@ categories:
   - Updates
 date: 2026-02-27
 description: A devlog of the website, changes, updates, and new features.
-draft: false
+draft: true
 title: Website Devlog
 type: blog
 ---

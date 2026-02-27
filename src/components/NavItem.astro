@@ -14,6 +14,10 @@ function getActivePath(currentPath: string): string {
       return '/projects';
     case currentPath === '/posts' || currentPath.startsWith('/post'):
       return '/posts';
+    case currentPath === '/recipes' || currentPath.startsWith('/recipe'):
+      return '/recipes';
+    case currentPath === '/devlog' || currentPath.startsWith('/devlog'):
+      return '/devlog';
     case currentPath === '/photography' || currentPath.startsWith('/photo'):
       return '/photography';
     case currentPath === '/resume':
@@ -24,7 +28,7 @@ function getActivePath(currentPath: string): string {
 }
 ---
 
-<li class="leading-6 nav-item">
+<li class="nav-item leading-6">
   <a
     href={href}
     class={getActivePath(currentPath) === href
@@ -32,7 +36,7 @@ function getActivePath(currentPath: string): string {
       : 'text-white opacity-60'}
   >
     <svg
-      class="inline mr-0.5"
+      class="mr-0.5 inline"
       width="20"
       height="20"
       viewBox="0 0 20 20"

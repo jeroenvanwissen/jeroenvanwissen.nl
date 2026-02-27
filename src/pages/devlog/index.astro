@@ -1,45 +1,43 @@
 ---
-import { getSortedPostsByType } from '@lib/util';
+import { getSortedCollection } from '@lib/util';
 import Layout from '@layouts/Layout.astro';
-import { Image } from 'astro:assets';
 
-export async function getStaticPaths() {
-  return (await getSortedPostsByType('recipe', 'all')).map((post) => {
-    return {
-      params: { slug: post.slug },
-      props: { post },
-    };
+const devlogs = await getSortedCollection('devlog');
+
+// Get the most recent update date
+const lastUpdated = devlogs.length > 0 ? devlogs[0].data.date : new Date();
+
+// Format date helper
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
   });
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
-
-// Calculate reading time (200 words per minute)
-const wordCount = post.body.split(/\s+/).length;
-const readingTime = Math.ceil(wordCount / 200);
-
-// Format date
-const formattedDate = post.data.date.toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'short',
-});
+// Calculate approximate reading time
+const totalWords = devlogs.reduce(
+  (acc, devlog) => acc + devlog.body.split(/\s+/).length,
+  0
+);
+const readingTime = Math.ceil(totalWords / 200);
 ---
 
 <Layout>
   <Fragment slot="head">
-    <title>{post.data.title} - Jeroen van Wissen</title>
+    <title>Website Devlog - Jeroen van Wissen</title>
     <meta content="website" property="og:type" />
+    <meta content="Website Devlog - Jeroen van Wissen" property="og:title" />
     <meta
-      content={`${post.data.title} - Jeroen van Wissen`}
-      property="og:title"
+      content="Development log and updates for jeroenvanwissen.nl"
+      name="description"
     />
-    <meta content={post.data.description} name="description" />
-    <meta content={post.data.description} property="og:description" />
     <meta
-      content={`${import.meta.env.SITE}/recipe/${post.slug}`}
-      property="og:url"
+      content="Development log and updates for jeroenvanwissen.nl"
+      property="og:description"
     />
+    <meta content={`${import.meta.env.SITE}/devlog`} property="og:url" />
     <meta
       content={`${import.meta.env.SITE}/images/og-image.webp`}
       property="og:image"
@@ -48,31 +46,47 @@ const formattedDate = post.data.date.toLocaleDateString('en-US', {
       content={`${import.meta.env.SITE}/images/og-image.webp`}
       property="twitter:image:src"
     />
-    <link
-      href={`${import.meta.env.SITE}/recipe/${post.slug}`}
-      rel="canonical"
-    />
+    <link href={`${import.meta.env.SITE}/devlog`} rel="canonical" />
   </Fragment>
   <div class="bg-primary-950 w-full">
     <div class="page-wrapper">
-      <article class="content">
+      <article class="content prose prose-invert max-w-none">
+        <h1>Website Devlog</h1>
+
+        <blockquote>
+          <p>
+            This is a devlog of the website, changes, updates, and new features.
+            I'll try to keep this updated as much as possible.
+          </p>
+        </blockquote>
+
+        <p>
+          In previous versions of this website, I created a blog post for each
+          and every small change I made on the website. But as changes go fast,
+          and I often remove features again after a while I decided to create
+          this devlog page to keep track of the changes I make to the website.
+          Instead of having outdated blog posts with technical information that
+          is no longer relevant.
+        </p>
+
         {
-          post.data.image && (
-            <div class="mb-8">
-              <Image
-                src={post.data.image.img}
-                alt={post.data.image.alt}
-                quality={50}
-                format="webp"
-                loading="lazy"
-                width={1420}
-                class="object-middle h-32 rounded object-cover sm:h-48 md:h-64 lg:h-96"
-              />
-            </div>
-          )
+          devlogs.map(async (devlog) => {
+            const { Content } = await devlog.render();
+
+            return (
+              <div class="devlog-entry">
+                <h2>
+                  {formatDate(devlog.data.date)} - {devlog.data.title}
+                </h2>
+                <Content />
+              </div>
+            );
+          })
         }
 
-        <Content />
+        <p class="mt-8 text-sm opacity-60">
+          <sub>last updated: {formatDate(lastUpdated)}</sub>
+        </p>
       </article>
 
       <aside class="sidebar">
@@ -105,19 +119,6 @@ const formattedDate = post.data.date.toLocaleDateString('en-US', {
               ~{readingTime} min read
             </div>
           </div>
-
-          {
-            post.data.categories && post.data.categories.length > 0 && (
-              <div class="tags-section">
-                <div class="tags-label">Topics</div>
-                <div class="tags">
-                  {post.data.categories.map((tag) => (
-                    <span class="tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            )
-          }
         </div>
       </aside>
     </div>

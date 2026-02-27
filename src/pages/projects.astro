@@ -4,6 +4,7 @@ import Layout from '@layouts/Layout.astro';
 import PostBlock from '@components/PostBlock.astro';
 
 const posts = await getSortedCollection('project');
+const directions = ['left', 'right'];
 ---
 
 <Layout>
@@ -30,13 +31,41 @@ const posts = await getSortedCollection('project');
     />
     <link href={`${import.meta.env.SITE}/projects`} rel="canonical" />
   </Fragment>
-  <div class="w-full">
-    <div class="mx-auto max-w-6xl px-8 py-4">
-      <div
-        class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3"
-      >
-        {posts.map((post) => <PostBlock post={post} type="project" />)}
+  <div class="bg-primary-950 w-full">
+    <div class="mx-auto max-w-6xl px-6 py-8">
+      <!-- Hero Section -->
+      <div class="mb-12 text-center">
+        <h1 class="text-quaternary-400 mb-4 text-4xl font-black md:text-6xl">
+          Projects
+        </h1>
+        <p class="mb-6 text-lg text-white/60">
+          Side projects, experiments, and open source contributions
+        </p>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="columns-1 gap-4 space-y-4 sm:columns-2 md:columns-3">
+        {
+          posts.map((post) => {
+            const direction =
+              directions[Math.floor(Math.random() * directions.length)];
+            return (
+              <PostBlock post={post} type="project" direction={direction} />
+            );
+          })
+        }
       </div>
     </div>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+    {
+      posts.map((post) => {
+        const direction =
+          directions[Math.floor(Math.random() * directions.length)];
+        return <PostBlock post={post} type="project" direction={direction} />;
+      })
+    }
   </div>
 </Layout>
