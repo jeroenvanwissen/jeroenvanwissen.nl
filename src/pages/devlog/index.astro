@@ -1,0 +1,86 @@
+---
+import { getSortedCollection } from '@lib/util';
+import Layout from '@layouts/Layout.astro';
+
+const devlogs = await getSortedCollection('devlog');
+
+// Get the most recent update date
+const lastUpdated = devlogs.length > 0 ? devlogs[0].data.date : new Date();
+
+// Format date helper
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+}
+---
+
+<Layout>
+  <Fragment slot="head">
+    <title>Website Devlog - Jeroen van Wissen</title>
+    <meta content="website" property="og:type" />
+    <meta content="Website Devlog - Jeroen van Wissen" property="og:title" />
+    <meta
+      content="Development log and updates for jeroenvanwissen.nl"
+      name="description"
+    />
+    <meta
+      content="Development log and updates for jeroenvanwissen.nl"
+      property="og:description"
+    />
+    <meta content={`${import.meta.env.SITE}/devlog`} property="og:url" />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="og:image"
+    />
+    <meta
+      content={`${import.meta.env.SITE}/images/og-image.webp`}
+      property="twitter:image:src"
+    />
+    <link href={`${import.meta.env.SITE}/devlog`} rel="canonical" />
+  </Fragment>
+  <div class="bg-primary-950 w-full">
+    <div class="mx-auto max-w-6xl p-2">
+      <article class="prose prose-invert max-w-none">
+        <h1>Website Devlog</h1>
+
+        <blockquote>
+          <p>
+            This is a devlog of the website, changes, updates, and new features.
+            I'll try to keep this updated as much as possible.
+          </p>
+        </blockquote>
+
+        <p>
+          In previous versions of this website, I created a blog post for each
+          and every small change I made on the website. But as changes go fast,
+          and I often remove features again after a while I decided to create
+          this devlog page to keep track of the changes I make to the website.
+          Instead of having outdated blog posts with technical information that
+          is no longer relevant.
+        </p>
+
+        {
+          devlogs.map(async (devlog) => {
+            const { Content } = await devlog.render();
+
+            return (
+              <div class="devlog-entry">
+                <h3>
+                  - {formatDate(devlog.data.date)} - {devlog.data.title}
+                </h3>
+                <Content />
+              </div>
+            );
+          })
+        }
+
+        <p class="mt-8 text-sm opacity-60">
+          <sub>last updated: {formatDate(lastUpdated)}</sub>
+        </p>
+      </article>
+    </div>
+  </div>
+</Layout>

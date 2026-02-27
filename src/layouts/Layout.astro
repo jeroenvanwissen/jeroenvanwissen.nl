@@ -67,7 +67,9 @@ import '@styles/global.css';
                     id="photography-m"
                   />
                   <NavItem href="/posts" label="posts" id="posts-m" />
+                  <NavItem href="/recipes" label="recipes" id="recipes-m" />
                   <NavItem href="/projects" label="projects" id="projects-m" />
+                  <NavItem href="/devlog" label="devlog" id="devlog-m" />
                   <NavItem href="/resume" label="resume" id="resume-m" />
                 </menu>
               </div>
@@ -84,7 +86,9 @@ import '@styles/global.css';
               id="photography"
             />
             <NavItem href="/posts" label="posts" id="posts" />
+            <NavItem href="/recipes" label="recipes" id="recipes" />
             <NavItem href="/projects" label="projects" id="projects" />
+            <NavItem href="/devlog" label="devlog" id="devlog" />
             <NavItem href="/resume" label="resume" id="resume" />
           </ul>
         </div>
@@ -94,8 +98,38 @@ import '@styles/global.css';
     <div class="w-full">
       <div class="mx-auto max-w-6xl px-2">
         <div
-          class="mt-1 flex flex-row items-center justify-center space-x-2 py-10"
+          class="mt-8 flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-2 py-4"
         >
+          <a
+            href="/devlog"
+            class="text-quaternary-400/60 hover:text-quaternary-400 text-sm transition-colors"
+          >
+            Website Devlog
+          </a>
+          <a
+            href="/feed.xml"
+            class="inline-block transition-opacity hover:opacity-80"
+            title="Posts RSS Feed"
+          >
+            <img
+              src="https://img.shields.io/badge/RSS-Posts-FFA500?style=flat&logo=rss"
+              alt="Posts RSS"
+              loading="lazy"
+            />
+          </a>
+          <a
+            href="/recipes/feed.xml"
+            class="inline-block transition-opacity hover:opacity-80"
+            title="Recipes RSS Feed"
+          >
+            <img
+              src="https://img.shields.io/badge/RSS-Recipes-FFA500?style=flat&logo=rss"
+              alt="Recipes RSS"
+              loading="lazy"
+            />
+          </a>
+        </div>
+        <div class="flex flex-row items-center justify-center space-x-2 py-4">
           <a
             href="https://github.com/jeroenvanwissen"
             rel="me"

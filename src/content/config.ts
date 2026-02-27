@@ -36,6 +36,10 @@ export type RecipeType = BaseSchema & {
   type: 'recipe';
 };
 
+export type DevlogType = BaseSchema & {
+  type: 'devlog';
+};
+
 const baseSchema = ({ image }: { image: ImageFunction }) =>
   z.object({
     draft: z.boolean().default(true),
@@ -93,9 +97,18 @@ const recipeCollection = defineCollection({
     }),
 });
 
+const devlogCollection = defineCollection({
+  type: 'content' as const,
+  schema: ({ image }) =>
+    baseSchema({ image }).extend({
+      type: z.literal('devlog'),
+    }),
+});
+
 export const collections = {
   post: postCollection,
   photo: photoCollection,
   project: projectCollection,
   recipe: recipeCollection,
+  devlog: devlogCollection,
 };

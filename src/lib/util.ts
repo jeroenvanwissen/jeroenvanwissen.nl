@@ -32,7 +32,7 @@ export function generateSlug(category: string): string {
 }
 
 export async function getPostsByType(
-  collection: 'post' | 'photo' | 'project' | 'recipe',
+  collection: 'post' | 'photo' | 'project' | 'recipe' | 'devlog',
   type: string
 ): Promise<Post[]> {
   return (await getCollection(collection)).filter(
@@ -41,7 +41,7 @@ export async function getPostsByType(
 }
 
 export async function getSortedPostsByType(
-  collection: 'post' | 'photo' | 'project' | 'recipe',
+  collection: 'post' | 'photo' | 'project' | 'recipe' | 'devlog',
   type: string
 ): Promise<Post[]> {
   return (await getPostsByType(collection, type)).sort(
@@ -56,7 +56,7 @@ export async function getSortedPostsByType(
  * @returns
  */
 export async function getSortedCollection<
-  T extends 'post' | 'photo' | 'project' | 'recipe',
+  T extends 'post' | 'photo' | 'project' | 'recipe' | 'devlog',
 >(collection: T): Promise<CollectionEntry<T>[]> {
   return (await getCollection(collection, ({ data }) => !data.draft)).sort(
     (a: CollectionEntry<T>, b: CollectionEntry<T>) => {
