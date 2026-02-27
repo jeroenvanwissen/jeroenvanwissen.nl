@@ -12,7 +12,7 @@ type: blog
 
 # Building an AI Skill for Project Analysis
 
-> Over the last couple of weeks I've been working on a small open-source project called [project-analysis](https://github.com/jeroenvanwissen/project-analysis). It's a skill for AI coding agents that analyzes a codebase and generates a structured development backlog. It started as a personal itch and turned into something I think others might find useful too.
+> Over the last couple of weeks I've been researching and developing a fun little AI Agent Skill called [project-analysis](https://github.com/jeroenvanwissen/project-analysis). It's a skill for AI coding agents that analyzes a codebase and generates a structured development backlog. It started as a personal itch and turned into something I think others might find useful too.
 
 If you've ever dropped an AI coding agent into an existing project and asked it to "fix things" or "improve the codebase," you probably know the result. It either tries to do everything at once, or it picks something random to work on. There's no structure, no priority, no plan. It just... goes.
 
