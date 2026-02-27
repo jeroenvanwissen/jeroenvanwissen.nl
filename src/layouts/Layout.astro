@@ -27,7 +27,9 @@ import '@styles/global.css';
     <slot name="head" />
   </head>
   <body class="bg-black">
-    <div class="border-primary-900 w-full border-b">
+    <div
+      class="border-primary-900 fixed top-0 right-0 left-0 z-50 w-full border-b bg-black/85 backdrop-blur-xl"
+    >
       <nav class="mx-auto max-w-6xl px-2">
         <div class="logo flex flex-wrap items-center justify-between">
           <div class="flex justify-center">
@@ -94,6 +96,7 @@ import '@styles/global.css';
         </div>
       </nav>
     </div>
+    <div class="h-16"></div>
     <slot />
     <div class="w-full">
       <div class="mx-auto max-w-6xl px-2">

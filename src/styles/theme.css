@@ -102,4 +102,13 @@
 :root {
   --main-family: 'Roboto', sans-serif;
   --logo-font-family: 'Roboto', sans-serif;
+
+  /* Readability improvements */
+  --text-readable: #c8c8cc;
+  --text-muted: #78787e;
+  --text-bright: #ececf0;
+  --code-bg: rgba(255, 255, 255, 0.06);
+  --content-width: 900px;
+  --sidebar-width: 320px;
+  --border-subtle: #252528;
 }
