@@ -1,0 +1,19 @@
+{
+  "contentDir": "src/content/post",
+  "dateFormat": "yyyy-MM-dd",
+  "editor": "hx",
+  "filename": {
+    "format": "date-slug",
+    "maxSlugLength": 40
+  },
+  "frontmatter": {
+    "schema": ["title", "date", "description", "type", "categories", "draft"],
+    "defaults": {
+      "type": "blog",
+      "categories": [],
+      "draft": true,
+      "description": ""
+    }
+  },
+  "plugins": []
+}
