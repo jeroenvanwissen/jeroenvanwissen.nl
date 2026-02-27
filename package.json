@@ -1,6 +1,6 @@
 {
   "name": "@jeroenvanwissen/jeroenvanwissen.nl",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "private": true,
   "packageManager": "pnpm@10.30.3",
   "scripts": {
