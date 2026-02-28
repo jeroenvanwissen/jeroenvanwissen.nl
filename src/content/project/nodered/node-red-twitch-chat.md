@@ -1,13 +1,18 @@
 ---
+type: project
+draft: true
+date: 2025-03-11
+title: Node-RED Twitch Chat
 categories:
   - JavaScript / TypeScript
   - Node-RED
   - Twitch
-date: 2025-03-11
 description: Node-RED node to send messages to Twitch chat.
-draft: true
-title: Node-RED Twitch Chat
-type: project
+status: active
+tech:
+  - Node-RED
+  - TypeScript
+  - Twitch API
 ---
 
 # Node-RED Twitch Chat
