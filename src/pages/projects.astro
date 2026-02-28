@@ -57,15 +57,4 @@ const directions = ['left', 'right'];
       </div>
     </div>
   </div>
-
-  <!-- Projects Grid -->
-  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-    {
-      posts.map((post) => {
-        const direction =
-          directions[Math.floor(Math.random() * directions.length)];
-        return <PostBlock post={post} type="project" direction={direction} />;
-      })
-    }
-  </div>
 </Layout>
