@@ -1,17 +1,24 @@
 ---
+type: project
+draft: false
+date: 2024-01-16
+title: Stream Farm idle game
 categories:
   - Coding
   - Game Development
   - JavaScript / TypeScript
   - Twitch
-date: 2024-01-16
 description: A small farming game I run on my Twitch live streams
-draft: false
 image:
-  alt: Screenshot of a part of a map of the game frontend.
   img: ../../assets/images/stream-farm-idle-game1.png
-title: Stream Farm idle game
-type: project
+  alt: Screenshot of a part of a map of the game frontend.
+status: on-hold
+tech:
+  - TypeScript
+  - NestJS
+  - PostgreSQL
+  - Phaser 3
+  - Server-Sent Events
 ---
 
 # Stream Farm

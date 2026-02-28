@@ -1,11 +1,16 @@
 ---
+type: project
+draft: true
+date: 2025-03-11
+title: NodeRED Twitch API
 categories:
   - JavaScript / TypeScript
   - NodeRED
   - Twitch
-date: 2025-03-11
 description: ....
-draft: true
-title: NodeRED Twitch API
-type: project
+status: active
+tech:
+  - Node-RED
+  - TypeScript
+  - Twitch API
 ---

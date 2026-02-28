@@ -1,18 +1,138 @@
 {
-  "contentDir": "src/content/post",
-  "dateFormat": "yyyy-MM-dd",
+  "defaultType": "post",
   "editor": "hx",
-  "filename": {
-    "format": "date-slug",
-    "maxSlugLength": 40
-  },
-  "frontmatter": {
-    "schema": ["title", "date", "description", "type", "categories", "draft"],
-    "defaults": {
-      "type": "blog",
-      "categories": [],
-      "draft": true,
-      "description": ""
+  "postTypes": {
+    "post": {
+      "contentDir": "src/content/post",
+      "dateFormat": "yyyy-MM-dd",
+      "filename": {
+        "format": "{title}",
+        "maxSlugLength": 60
+      },
+      "frontmatter": {
+        "schema": {
+          "type": "string",
+          "title": "string",
+          "date": "date",
+          "description": "string",
+          "draft": "boolean",
+          "categories": "array",
+          "image": "object",
+          "socials": "object"
+        },
+        "defaults": {
+          "type": "blog",
+          "draft": false,
+          "categories": [],
+          "description": ""
+        }
+      }
+    },
+    "photo": {
+      "contentDir": "src/content/photo",
+      "dateFormat": "yyyy-MM-dd",
+      "filename": {
+        "format": "{title}",
+        "maxSlugLength": 60
+      },
+      "frontmatter": {
+        "schema": {
+          "type": "string",
+          "title": "string",
+          "date": "date",
+          "description": "string",
+          "draft": "boolean",
+          "categories": "array",
+          "image": "object",
+          "socials": "object"
+        },
+        "defaults": {
+          "type": "photo",
+          "draft": false,
+          "categories": [],
+          "description": ""
+        }
+      }
+    },
+    "project": {
+      "contentDir": "src/content/project",
+      "dateFormat": "yyyy-MM-dd",
+      "filename": {
+        "format": "{title}",
+        "maxSlugLength": 60
+      },
+      "frontmatter": {
+        "schema": {
+          "type": "string",
+          "title": "string",
+          "date": "date",
+          "description": "string",
+          "draft": "boolean",
+          "categories": "array",
+          "image": "object",
+          "socials": "object",
+          "status": "string",
+          "tech": "array"
+        },
+        "defaults": {
+          "type": "project",
+          "draft": false,
+          "categories": [],
+          "description": ""
+        }
+      }
+    },
+    "recipe": {
+      "contentDir": "src/content/recipe",
+      "dateFormat": "yyyy-MM-dd",
+      "filename": {
+        "format": "{title}",
+        "maxSlugLength": 60
+      },
+      "frontmatter": {
+        "schema": {
+          "type": "string",
+          "title": "string",
+          "date": "date",
+          "description": "string",
+          "draft": "boolean",
+          "categories": "array",
+          "image": "object",
+          "socials": "object"
+        },
+        "defaults": {
+          "type": "recipe",
+          "draft": false,
+          "categories": [],
+          "description": ""
+        }
+      }
+    },
+    "devlog": {
+      "contentDir": "src/content/devlog",
+      "dateFormat": "yyyy-MM-dd",
+      "filename": {
+        "format": "{date}-{title}",
+        "maxSlugLength": 40
+      },
+      "frontmatter": {
+        "schema": {
+          "type": "string",
+          "title": "string",
+          "date": "date",
+          "description": "string",
+          "draft": "boolean",
+          "categories": "array",
+          "image": "object",
+          "socials": "object"
+        },
+        "defaults": {
+          "type": "devlog",
+          "draft": false,
+          "categories": [],
+          "description": ""
+        }
+      }
     }
   },
   "plugins": []

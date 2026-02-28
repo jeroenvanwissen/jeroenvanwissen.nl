@@ -1,14 +1,20 @@
 ---
+type: project
+draft: true
+date: 2023-09-04
+title: '@fastone/eslint-config npm package'
 categories:
   - ESLint
   - Coding
   - JavaScript / TypeScript
   - npm package
-date: 2023-09-04
 description: ESLint config package based on the Airbnb TypeScript Style Guide.
-draft: false
-title: '@fastone/eslint-config npm package'
-type: project
+status: archived
+tech:
+  - ESLint
+  - TypeScript
+  - Node.js
+  - npm
 ---
 
 # @fastone/eslint-config npm package

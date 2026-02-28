@@ -1,37 +1,102 @@
 ---
+type: project
+draft: false
+date: 2025-03-11
+title: .dotfiles
 categories:
   - System Setup
-date: 2025-03-11
-description: Building a simple blockchain network application in TypeScript
-draft: false
-title: .dotfiles
-type: project
+  - Development Tools
+  - macOS
+  - Linux
+description: My personal dotfiles for macOS and Linux development environments with automated setup scripts and modern CLI tools
+status: active
+tech:
+  - ZSH
+  - Helix
+  - Kitty
+  - Starship
+  - Yazi
+  - NVM
+  - Homebrew
+  - Git
 ---
 
 # My personal .dotfiles
 
-Every developer should have this, a personal .dotfiles repository. A collection of configuration files and scripts that one uses to set up their development environment on a new machine.
+Every developer should have this - a personal .dotfiles repository. A collection of configuration files and scripts that automates setting up a development environment on a new machine.
 
-Mine is mostly focused on setting up a new macOS machine with all the tools I need for my daily work. I used to have a private one in the past but it was a mess. I decided to start from scratch and build a new one.
+My dotfiles support both **macOS** and **Linux** (Debian/Ubuntu, Fedora, Arch) with automated installation scripts. I used to have a private one in the past but it was a mess. I decided to start from scratch and build a new one with proper organization and documentation.
 
-My current setup includes:
+## What's Inside
 
-- **Homebrew**: Package manager for macOS
-- **GH Cli**: GitHub CLI
-- **Kitty**: GPU-based terminal emulator
-- **Midnight Commander**: File manager for the terminal
-- **Helix**: A post-modern text editor for the terminal
-- **FNM**: Fast Node Manager
-- **Python & Pipx**: Python and package installer
-- **Tmux**: Terminal multiplexer
-- **TPM**: Tmux Plugin Manager
-- **Fish Shell**: Command line shell
-- **OMF**: Oh My Fish
-- **Fisher**: Plugin manager for Fish
-- **Starship**: Cross-shell prompt
+### Shell & Terminal
 
-It needs some more work but it's a good start. I'll keep adding more tools and configurations as I go.
+- **ZSH**: Shell configuration with Oh My ZSH and Starship prompt
+- **Kitty**: GPU-based terminal emulator (macOS)
+- **Starship**: Cross-shell prompt configuration with custom theming
+- **Yazi**: Modern terminal file manager
+- **lazygit**: Terminal UI for git (integrated with Helix via Ctrl-G)
+
+### Development Tools
+
+- **Helix**: Modern text editor with LSP support for TypeScript, Rust, Swift, Python, Astro, and more
+- **NVM**: Node.js version management with auto-switching
+- **git-delta**: Syntax-highlighted, side-by-side diffs
+- **OpenCode**: Open source AI coding agent with Catppuccin theme
+
+### Modern CLI Replacements
+
+- **eza** → replaces `ls` (with git status & icons)
+- **bat** → replaces `cat` (with syntax highlighting)
+- **fd** → replaces `find` (faster)
+- **ripgrep** → replaces `grep` (faster)
+- **zoxide** → replaces `cd` (with frecency)
+- **fzf** → Fuzzy finder for everything
+
+### Development Utilities
+
+- **jq**: JSON processor
+- **hyperfine**: Benchmarking tool
+- **tokei**: Code statistics
+- **watchexec**: File watcher for running commands
+- **xcbeautify**: Xcode build output formatter (macOS)
+
+## Language Support
+
+Helix is configured with LSP support for:
+
+- **TypeScript/JavaScript**: typescript-language-server, eslint, tailwindcss, prettier
+- **Rust**: rust-analyzer, clippy
+- **Swift**: sourcekit-lsp, swiftformat
+- **Python**: pylsp, ruff, jedi, pyright
+- **Astro**: astro-ls
+- **HTML/CSS**: vscode-langservers-extracted
+- **TOML**: taplo
+- **YAML**: yaml-language-server
+- **Bash**: bash-language-server
+- **Markdown**: marksman
+
+## Installation
+
+Clone the repository and run the automated installer:
+
+```bash
+git clone https://github.com/jeroenvanwissen/.dotfiles.git
+cd .dotfiles
+
+# macOS
+./install_macos.sh
+
+# Linux (Debian/Ubuntu, Fedora, Arch)
+./install_linux.sh
+```
+
+All tools can be kept up to date with a single command:
+
+```bash
+update-tools
+```
 
 ## Links
 
-[@jeroenvanwissen/.dotfiles](https://github.com/jeroenvanwissen/.dotfiles '.dotfiles on GitHub')
+- [GitHub Repository](https://github.com/jeroenvanwissen/.dotfiles '.dotfiles on GitHub')
