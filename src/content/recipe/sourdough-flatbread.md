@@ -13,6 +13,8 @@ type: recipe
 
 This simple and delicious flatbread recipe is perfect for a quick snack or as a base for your favorite toppings. Made with just a few ingredients, it's easy to prepare and can be customized with your choice of spices and herbs.
 
+![Sourdough Flatbread](/media/flatbread3.png 'Sourdough Flatbread')
+
 ## Ingredients
 
 ### For 4 flatbreads
