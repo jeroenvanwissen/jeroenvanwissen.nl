@@ -42,6 +42,8 @@ This simple and delicious flatbread recipe is perfect for a quick snack or as a 
 4. Knead the dough lightly in the bowl until it is smooth and elastic.
 5. Cover the bowl with a clean kitchen towel and let the dough rest for about 30 minutes.
 
+![Sourdough Flatbread](/media/flatbread1.png 'Sourdough Flatbread')
+
 ### Shape the flatbreads
 
 1. After the dough has rested, divide it into 4 equal portions.
@@ -51,7 +53,7 @@ This simple and delicious flatbread recipe is perfect for a quick snack or as a 
 5. Remove from the skillet and keep warm while you cook the remaining flatbreads.
 6. Serve the flatbreads warm, with your favorite toppings or dips.
 
----
+## ![Sourdough Flatbread](/media/flatbread2.png 'Sourdough Flatbread')
 
 ## Notes & Variations
 
