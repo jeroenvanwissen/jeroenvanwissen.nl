@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.15",
-    "@tailwindcss/cli": "^4.2.1",
+    "@tailwindcss/cli": "^4.2.2",
     "@tailwindcss/vite": "^4.2.1",
     "tailwindcss": "^4.2.1"
   },
